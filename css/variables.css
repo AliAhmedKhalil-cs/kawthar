@@ -1,0 +1,44 @@
+:root {
+  /* */
+  
+  /* 1. الخلفيات والنصوص (تم الإبقاء عليها كما هي لفخامتها) */
+  --bg: #d4c4b5;
+  --bg-2: #e3d6ca;
+  --surface: rgba(238, 227, 218, 0.65);
+  --surface-strong: #ebe1d8;
+  --stroke: rgba(45, 33, 25, 0.12);
+  --stroke-strong: rgba(45, 33, 25, 0.25);
+  --text: #2d2119;
+  --text-soft: #54463d;
+  --text-faint: #7a6a60;
+
+  /* 2. ألوان العلامة التجارية الذهبية الفريدة */
+  --brand: #8c7362;
+  --brand-deep: #5e4a3d;
+  --brand-dark: #2d2119;
+  --brand-highlight: #eedacb;
+  
+  /* تخصيص هالة ذهبية ناعمة للوجو */
+  --kawthar-gold: #c9a05c; /* اللون الذهبي الأصلي من اللوجو */
+  --logo-glow: 0 0 25px rgba(201, 160, 92, 0.35); /* هالة نورية ذهبية */
+
+  /* 3. ألوان الحالة والظلال */
+  --success: #1d6f51;
+  --danger: #9b3939;
+  --shadow-sm: 0 10px 30px rgba(45, 33, 25, 0.08);
+  --shadow-md: 0 20px 50px rgba(45, 33, 25, 0.12);
+  --shadow-lg: 0 35px 90px rgba(45, 33, 25, 0.15);
+
+  /* 4. هيكل الموقع والمقاسات (تم إرجاعها لحل مشكلة التكبير والانهيار) */
+  --radius-xs: 12px;
+  --radius-sm: 18px;
+  --radius-md: 24px;
+  --radius-lg: 32px;
+  --radius-pill: 999px;
+
+  --container: 1240px;
+  --header-height: 110px; /* زيادة طول الهيدر قليلاً لاستيعاب اللوجو الملكي */
+
+  --ease: 280ms ease;
+  --ease-slow: 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
