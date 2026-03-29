@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | KAWTHAR</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./css/variables.css" />
+  <link rel="stylesheet" href="./css/base.css" />
+  <link rel="stylesheet" href="./css/layout.css" />
+  <link rel="stylesheet" href="./css/components.css" />
+  <link rel="stylesheet" href="./css/pages.css" />
+</head>
+<body>
+  <div id="splashScreen" class="splash-screen">
+    <div class="splash-content">
+      <div class="splash-logo-wrap">
+        <img src="./assets/logo/kawthar-logo-hd.svg" alt="KAWTHAR" class="splash-logo">
+      </div>
+      <div class="splash-loader"></div>
+    </div>
+  </div>
+
+  <div class="site-shell">
+    <header id="mainHeader" class="main-header scrolled">
+      <div class="container header-inner">
+        <div class="header-left">
+          <nav class="desktop-nav">
+            <a href="./index.html" class="nav-link">Home</a>
+            <a href="./shop.html" class="nav-link">Shop</a>
+            <a href="./dashboard.html" class="nav-link active">Dashboard</a>
+          </nav>
+        </div>
+        <a href="./index.html" class="brand-logo" aria-label="KAWTHAR Home">
+          <img src="./assets/logo/kawthar-logo-hd.svg" alt="Kawthar Luxury Logo" class="brand-logo-img">
+        </a>
+        <div class="header-actions">
+          <a class="btn btn-secondary" href="./shop.html">View shop</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="dashboard-section">
+        <div class="container dashboard-grid">
+          <div class="dashboard-panel">
+            <div class="section-head">
+              <p class="eyebrow">Dashboard Management</p>
+              <h2>Add new product</h2>
+            </div>
+
+            <form id="dashboardForm" class="dashboard-form">
+              <div class="form-row">
+                <label for="productImage">1. Image path</label>
+                <div style="display: flex; gap: 8px;">
+                  <input id="productImage" name="productImage" type="text" placeholder="./assets/products/1.jpg" required style="flex: 1;" />
+                  <button type="button" id="aiDetectBtn" class="btn btn-primary" style="min-width: fit-content; padding: 0 16px;">
+                    ⏳ Loading AI...
+                  </button>
+                </div>
+                <small id="aiStatus" style="color: var(--brand-deep); font-weight: 600; margin-top: 4px;">Preparing the Pro AI Model...</small>
+              </div>
+
+              <div class="form-row" style="margin-top: 12px;">
+                <label for="productCategory">2. Category</label>
+                <select id="productCategory" name="productCategory" required>
+                  <option value="necklace">Necklace (سلسلة)</option>
+                  <option value="bracelet">Bracelet (أسورة)</option>
+                  <option value="ring">Ring (خاتم)</option>
+                  <option value="earring">Earring (حلق)</option>
+                  <option value="anklet">Anklet (خلخال)</option>
+                  <option value="handmade_bag">Handmade Bag (شنطة هاند ميد)</option> <option value="set">Set (طقم)</option>
+                </select>
+              </div>
+
+              <div class="form-row">
+                <label for="productName">Product name (EN)</label>
+                <input id="productName" name="productName" type="text" required />
+              </div>
+
+              <div class="form-row">
+                <label for="productNameAr">Product name (AR)</label>
+                <input id="productNameAr" name="productNameAr" type="text" required />
+              </div>
+
+              <div class="form-row">
+                <label for="productPrice">Price (EGP)</label>
+                <input id="productPrice" name="productPrice" type="number" min="1" required />
+              </div>
+
+              <div class="form-row">
+                <label for="productDescription">Description (EN)</label>
+                <textarea id="productDescription" name="productDescription" rows="4" required></textarea>
+              </div>
+
+              <div class="form-row">
+                <label for="productDescriptionAr">Description (AR)</label>
+                <textarea id="productDescriptionAr" name="productDescriptionAr" rows="4" required></textarea>
+              </div>
+
+              <input id="productSlug" name="productSlug" type="hidden" />
+              <input id="productBadge" name="productBadge" type="hidden" value="New Arrival" />
+              <input id="productBadgeAr" name="productBadgeAr" type="hidden" value="وصل حديثاً" />
+              <input id="productMaterial" name="productMaterial" type="hidden" value="Stainless Steel Anti Rust" />
+              <input id="productMaterialAr" name="productMaterialAr" type="hidden" value="ستانلس ستيل مقاوم للصدأ" />
+              <input id="productAlt" name="productAlt" type="hidden" />
+
+              <div class="dashboard-actions" style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 12px;">
+                <button class="btn btn-primary" type="submit" style="flex: 1; min-width: 100%;">Add product to Store</button>
+                
+                <div style="display: flex; gap: 10px; width: 100%;">
+                  <button class="btn btn-secondary" id="exportProductsBtn" type="button" style="flex: 1;" title="Download backup">📥 Export</button>
+                  <button class="btn btn-secondary" id="importProductsBtn" type="button" style="flex: 1;" title="Restore backup">📤 Import</button>
+                  <button class="btn btn-secondary" id="resetProductsBtn" type="button" style="flex: 0.5; color: var(--danger); border-color: var(--danger);" title="Clear all products">Reset</button>
+                </div>
+                
+                <input type="file" id="importFileHidden" style="display: none;" accept=".json">
+              </div>
+            </form>
+          </div>
+
+          <div class="dashboard-panel">
+            <div class="section-head">
+              <p class="eyebrow">Inventory Preview</p>
+              <h2>Current local products</h2>
+            </div>
+            <div id="dashboardProductsList" class="dashboard-products-list"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="./js/dashboard.js"></script>
+</body>
+</html>

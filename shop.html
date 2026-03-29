@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="Shop the full KAWTHAR collection of luxury stainless steel anti-rust accessories and handmade bags." />
+  <meta name="theme-color" content="#b9a38f" />
+  <title>Shop | KAWTHAR</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./css/variables.css" />
+  <link rel="stylesheet" href="./css/base.css" />
+  <link rel="stylesheet" href="./css/layout.css" />
+  <link rel="stylesheet" href="./css/components.css" />
+  <link rel="stylesheet" href="./css/pages.css" />
+</head>
+<body>
+
+  <div id="splashScreen" class="splash-screen">
+    <div class="splash-content">
+      <div class="splash-logo-wrap">
+        <img src="./assets/logo/kawthar-logo-hd.svg" alt="KAWTHAR" class="splash-logo">
+      </div>
+      <div class="splash-loader"></div>
+    </div>
+  </div>
+
+  <div class="site-shell">
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+    <div class="noise-layer"></div>
+
+    <div class="announcement-bar">
+      <div class="announcement-track">
+        <span data-i18n="announce_1">KAWTHAR • Stainless Steel Anti Rust</span>
+        <span data-i18n="announce_2">Handmade Premium Bags</span>
+        <span data-i18n="announce_3">Direct inquiry via WhatsApp</span>
+        <span data-i18n="announce_1">KAWTHAR • Stainless Steel Anti Rust</span>
+        <span data-i18n="announce_2">Handmade Premium Bags</span>
+        <span data-i18n="announce_3">Direct inquiry via WhatsApp</span>
+      </div>
+    </div>
+
+    <div id="siteOverlay" class="site-overlay" aria-hidden="true"></div>
+
+    <header id="mainHeader" class="main-header">
+      <div class="container header-inner">
+        <div class="header-left">
+          <button class="icon-btn mobile-only" id="mobileMenuBtn" aria-label="Open menu" type="button">
+            <span></span><span></span><span></span>
+          </button>
+
+          <nav class="desktop-nav">
+            <a href="./index.html" class="nav-link" data-i18n="nav_home">Home</a>
+            <a href="./shop.html" class="nav-link active" data-i18n="nav_shop">Shop</a>
+            <a href="./index.html#story" class="nav-link" data-i18n="nav_story">Story</a>
+            <a href="./index.html#contact" class="nav-link" data-i18n="contact_title">Contact</a>
+          </nav>
+        </div>
+
+        <a href="./index.html" class="brand-logo" aria-label="KAWTHAR Home">
+          <img src="./assets/logo/kawthar-logo-hd.svg" alt="Kawthar Luxury Logo" class="brand-logo-img">
+        </a>
+
+        <div class="header-actions">
+          <button class="icon-circle" id="searchOpenBtn" aria-label="Open search" type="button">🔍</button>
+          <button class="icon-circle" id="langToggleBtn" type="button" aria-label="Toggle Language">ع</button>
+          <button class="icon-circle badge-anchor" id="wishlistOpenBtn" aria-label="Open wishlist" type="button">♥<span id="wishlistCount" class="badge">0</span></button>
+          <button class="icon-circle badge-anchor" id="cartOpenBtn" aria-label="Open cart" type="button">🛒<span id="cartCount" class="badge">0</span></button>
+        </div>
+      </div>
+    </header>
+
+    <aside id="mobileMenu" class="drawer left-drawer" aria-hidden="true">
+      <div class="drawer-header">
+        <div class="drawer-title-wrap">
+          <p class="eyebrow" data-i18n="nav_title">Navigation</p>
+          <h2>KAWTHAR</h2>
+        </div>
+        <button class="icon-close" id="mobileMenuCloseBtn" type="button" aria-label="Close menu">×</button>
+      </div>
+
+      <nav class="drawer-nav">
+        <a href="./index.html" class="drawer-nav-link" data-i18n="nav_home">Home</a>
+        <a href="./shop.html" class="drawer-nav-link" data-i18n="nav_shop">Shop</a>
+        <a href="./index.html#collections" class="drawer-nav-link" data-i18n="nav_collections">Collections</a>
+        <a href="./index.html#contact" class="drawer-nav-link" data-i18n="contact_title">Contact</a>
+      </nav>
+    </aside>
+
+    <aside id="searchDrawer" class="drawer top-drawer" aria-hidden="true">
+      <div class="drawer-header">
+        <div class="drawer-title-wrap">
+          <p class="eyebrow" data-i18n="search_title">Search</p>
+          <h2 data-i18n="search_heading">Find your next piece</h2>
+        </div>
+        <button class="icon-close" id="searchCloseBtn" type="button" aria-label="Close search">×</button>
+      </div>
+      <div class="search-drawer-body">
+        <div class="search-input-wrap">
+          <input type="text" id="searchInput" data-i18n-placeholder="search_placeholder" placeholder="Search..." autocomplete="off" />
+        </div>
+        <div class="search-tags">
+          <button class="chip" data-search-tag="necklace" type="button">Necklaces</button>
+          <button class="chip" data-search-tag="ring" type="button">Rings</button>
+          <button class="chip" data-search-tag="bracelet" type="button">Bracelets</button>
+          <button class="chip" data-search-tag="handmade_bag" type="button">Handmade Bags</button>
+          <button class="chip" data-search-tag="set" type="button">Sets</button>
+        </div>
+        <div id="searchResults" class="search-results"></div>
+      </div>
+    </aside>
+
+    <aside id="wishlistDrawer" class="drawer right-drawer" aria-hidden="true">
+      <div class="drawer-header">
+        <div class="drawer-title-wrap">
+          <p class="eyebrow">Saved</p>
+          <h2>Your wishlist</h2>
+        </div>
+        <button class="icon-close" id="wishlistCloseBtn" type="button" aria-label="Close wishlist">×</button>
+      </div>
+      <div id="wishlistItems" class="drawer-scroll-body"></div>
+    </aside>
+
+    <aside id="cartDrawer" class="drawer right-drawer" aria-hidden="true">
+      <div class="drawer-header">
+        <div class="drawer-title-wrap">
+          <p class="eyebrow">Selection</p>
+          <h2>Your products</h2>
+        </div>
+        <button class="icon-close" id="cartCloseBtn" type="button" aria-label="Close cart">×</button>
+      </div>
+      <div id="cartItems" class="drawer-scroll-body"></div>
+      <div class="drawer-footer">
+        <div class="cart-summary">
+          <div class="cart-summary-row">
+            <span>Items</span>
+            <strong id="cartItemsCount">0</strong>
+          </div>
+        </div>
+        <a id="checkoutWhatsAppBtn" class="btn btn-primary btn-block" href="https://wa.me/201556694041" target="_blank" rel="noreferrer">
+          Check on WhatsApp
+        </a>
+      </div>
+    </aside>
+
+    <main>
+      <section class="hero-section shop-hero">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow" data-i18n="shop_eyebrow">Full collection</p>
+            <h1 class="shop-title" data-i18n="shop_title">Shop the full KAWTHAR selection</h1>
+            <p class="shop-subtitle" data-i18n="shop_desc">
+              Explore premium stainless steel accessories and artisan handmade bags curated for a polished style.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="featured-section shop-page-section">
+        <div class="container">
+          <div class="store-toolbar reveal">
+            <div class="toolbar-left">
+              <button class="filter-pill active" data-filter="all" type="button" data-i18n="filter_all">All</button>
+              <button class="filter-pill" data-filter="necklace" type="button" data-i18n="filter_necklaces">Necklaces</button>
+              <button class="filter-pill" data-filter="ring" type="button">Rings</button>
+              <button class="filter-pill" data-filter="bracelet" type="button" data-i18n="filter_bracelets">Bracelets</button>
+              <button class="filter-pill" data-filter="handmade_bag" type="button">Handmade Bags</button>
+              <button class="filter-pill" data-filter="anklet" type="button" data-i18n="filter_anklets">Anklets</button>
+              <button class="filter-pill" data-filter="set" type="button" data-i18n="filter_sets">Sets</button>
+              <button class="gift-mode-btn" id="giftModeBtn" type="button" data-i18n="gift_mode_btn">
+                <span class="gift-icon">🎁</span> Gift for someone?
+              </button>
+            </div>
+
+            <div class="toolbar-right">
+              <div class="price-filter-wrap">
+                <div class="price-filter-label">
+                  <span data-i18n="price_filter_label">Max price</span>
+                  <span id="priceRangeLabel">—</span>
+                </div>
+                <input type="range" id="priceRangeSlider" class="price-range-slider" min="0" max="2000" value="2000" step="50" />
+                <button id="priceFilterReset" class="price-filter-reset" type="button" data-i18n="price_filter_reset">Reset price</button>
+              </div>
+
+              <select id="sortSelect" class="select-input" aria-label="Sort products">
+                <option value="featured" data-i18n="sort_featured">Featured</option>
+                <option value="name-asc" data-i18n="sort_asc">Name A-Z</option>
+                <option value="name-desc" data-i18n="sort_desc">Name Z-A</option>
+                <option value="price-asc" data-i18n="sort_price_asc">Price: Low to High</option>
+                <option value="price-desc" data-i18n="sort_price_desc">Price: High to Low</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="productsGrid" class="products-grid"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="main-footer">
+      <div class="container footer-grid">
+        <div>
+          <a href="./index.html" class="brand-logo footer-brand" aria-label="KAWTHAR Home">
+            <img src="./assets/logo/kawthar-logo-hd.svg" alt="Kawthar Luxury Logo" class="brand-logo-img">
+          </a>
+          <p class="footer-text" data-i18n="footer_desc">
+            A luxury-first storefront inspired by premium commerce experiences, rebuilt with KAWTHAR identity.
+          </p>
+        </div>
+
+        <div>
+          <h4 data-i18n="nav_shop">Shop</h4>
+          <ul class="footer-list">
+            <li><a href="./shop.html">All products</a></li>
+            <li><a href="#" data-filter-trigger="handmade_bag">Handmade Bags</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 data-i18n="contact_title">Contact</h4>
+          <ul class="footer-list">
+            <li><a href="https://wa.me/201556694041" target="_blank" rel="noreferrer">WhatsApp</a></li>
+            <li><a href="https://www.instagram.com/kawtheraeg_/" target="_blank" rel="noreferrer">Instagram</a></li>
+            <li><span data-i18n="footer_material">Premium Stainless Steel & Artisan Crafts</span></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="./js/app.js"></script>
+
+  <!-- Gift Modal -->
+  <div id="giftModalOverlay" class="gift-modal-overlay" aria-hidden="true">
+    <div class="gift-modal" role="dialog" aria-modal="true">
+      <button id="giftModalClose" class="gift-modal-close" type="button" aria-label="Close">×</button>
+      <p class="eyebrow">Gift Guide</p>
+      <h3 data-i18n="gift_modal_title">Order as a Gift</h3>
+      <p data-i18n="gift_modal_desc">Tell us the occasion and we'll help you pick the perfect piece.</p>
+
+      <div class="gift-options">
+        <button class="gift-option" type="button">
+          <span class="gift-option-icon">🎂</span>
+          <div class="gift-option-text">
+            <strong data-i18n="gift_opt_1_title">Birthday Gift 🎂</strong>
+            <span data-i18n="gift_opt_1_desc">Celebrate her special day</span>
+          </div>
+        </button>
+        <button class="gift-option" type="button">
+          <span class="gift-option-icon">🌸</span>
+          <div class="gift-option-text">
+            <strong data-i18n="gift_opt_2_title">Mother's Day 🌸</strong>
+            <span data-i18n="gift_opt_2_desc">Show your love and appreciation</span>
+          </div>
+        </button>
+        <button class="gift-option" type="button">
+          <span class="gift-option-icon">💍</span>
+          <div class="gift-option-text">
+            <strong data-i18n="gift_opt_3_title">Engagement Gift 💍</strong>
+            <span data-i18n="gift_opt_3_desc">A premium piece for a special milestone</span>
+          </div>
+        </button>
+        <button class="gift-option" type="button">
+          <span class="gift-option-icon">💝</span>
+          <div class="gift-option-text">
+            <strong data-i18n="gift_opt_4_title">Just Because 💝</strong>
+            <span data-i18n="gift_opt_4_desc">Surprise someone you care about</span>
+          </div>
+        </button>
+      </div>
+
+      <div class="gift-modal-actions">
+        <a id="giftSendWhatsApp" class="btn btn-primary btn-block" href="#" target="_blank" rel="noreferrer" data-i18n="gift_send_wa">
+          Send on WhatsApp
+        </a>
+        <button id="giftCancel" class="btn btn-secondary btn-block" type="button" data-i18n="gift_cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
