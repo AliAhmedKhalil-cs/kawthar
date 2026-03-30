@@ -358,24 +358,16 @@ export const UI = {
     if (!btn) return;
 
     if (!cart.length) {
+      // حالة السلة فارغة: إعادة الزر للوضع الافتراضي
       btn.href = `https://wa.me/${CONFIG.whatsappNumber}`;
+      btn.textContent = getLang() === "ar" ? "تواصل عبر الواتساب" : "Chat on WhatsApp";
+      btn.style.background = ""; // تفريغ الستايل ليعود للشكل الأصلي للواتساب
       return;
     }
 
-    const lines = cart
-      .map((item, index) => {
-        const lineTotal = (Number(item.price) || 0) * item.quantity;
-        return `${index + 1}. ${item.name} - Qty: ${item.quantity} - ${lineTotal} EGP`;
-      })
-      .join("\n");
-
-    const totalPrice = cart.reduce(
-      (sum, item) => sum + (Number(item.price) || 0) * item.quantity,
-      0
-    );
-
-    const message = `${t("cart_message_intro")}\n${lines}\n\n${t("total")}: ${totalPrice} EGP`;
-
-    btn.href = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
+    // حالة السلة ممتلئة: التوجيه لصفحة الدفع بدلاً من الواتساب
+    btn.href = "./checkout.html";
+    btn.textContent = getLang() === "ar" ? "ادفعي عبر InstaPay ←" : "Pay via InstaPay ←";
+    btn.style.background = "linear-gradient(135deg, #2d2119, #5e4a3d)";
   }
 };

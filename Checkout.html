@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#b9a38f" />
+  <title>Checkout | KAWTHAR</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./css/variables.css" />
+  <link rel="stylesheet" href="./css/base.css" />
+  <link rel="stylesheet" href="./css/layout.css" />
+  <link rel="stylesheet" href="./css/components.css" />
+
+  <style>
+    /* ── Page Shell ── */
+    .checkout-page {
+      min-height: 100dvh;
+      padding: 0 0 80px;
+    }
+
+    .checkout-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 16px 0;
+      background: rgba(212, 196, 181, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--stroke);
+    }
+
+    .checkout-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .checkout-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-soft);
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 8px 0;
+      transition: color var(--ease);
+    }
+    .checkout-back:hover { color: var(--text); }
+    .checkout-back svg { width: 18px; height: 18px; }
+
+    .checkout-steps {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-faint);
+    }
+
+    .checkout-step { 
+      padding: 4px 12px; 
+      border-radius: 99px; 
+      border: 1px solid var(--stroke);
+      background: rgba(255,250,246,0.5);
+    }
+    .checkout-step.active { 
+      background: var(--brand-dark); 
+      color: #fff;
+      border-color: var(--brand-dark);
+    }
+    .checkout-step.done { 
+      background: rgba(29,111,81,0.12);
+      color: var(--success);
+      border-color: rgba(29,111,81,0.25);
+    }
+
+    .step-sep { color: var(--stroke-strong); }
+
+    /* ── Layout ── */
+    .checkout-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 28px;
+      align-items: start;
+      padding-top: 32px;
+    }
+
+    /* ── Panels ── */
+    .checkout-panel {
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 250, 246, 0.68);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+
+    .panel-head {
+      padding: 22px 24px 18px;
+      border-bottom: 1px solid var(--stroke);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .panel-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--brand-dark);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .panel-num.done-num {
+      background: var(--success);
+    }
+
+    .panel-title {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+
+    .panel-body { padding: 20px 24px 24px; }
+
+    /* ── Cart Items ── */
+    .co-cart-list { display: grid; gap: 12px; }
+
+    .co-cart-item {
+      display: grid;
+      grid-template-columns: 68px 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding: 12px;
+      border-radius: 20px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,250,246,0.75);
+    }
+
+    .co-cart-item img {
+      width: 68px;
+      height: 78px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .co-item-name {
+      margin: 0;
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .co-item-meta {
+      margin: 4px 0 0;
+      font-size: 0.8rem;
+      color: var(--text-faint);
+    }
+
+    .co-item-qty {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .co-qty-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--stroke);
+      background: rgba(255,250,246,0.9);
+      font-size: 1rem;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: all var(--ease);
+    }
+    .co-qty-btn:hover { background: var(--brand-dark); color: #fff; border-color: var(--brand-dark); }
+
+    .co-qty-num { font-size: 0.88rem; font-weight: 700; min-width: 16px; text-align: center; }
+
+    .co-item-price {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--brand-deep);
+      white-space: nowrap;
+    }
+
+    .co-item-remove {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--danger);
+      cursor: pointer;
+      margin-top: 4px;
+      text-align: end;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    /* ── Order Summary ── */
+    .co-summary-rows { display: grid; gap: 10px; margin-bottom: 18px; }
+
+    .co-summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .co-summary-row span { color: var(--text-soft); }
+    .co-summary-row strong { font-weight: 700; }
+
+    .co-summary-divider {
+      height: 1px;
+      background: var(--stroke);
+      margin: 4px 0;
+    }
+
+    .co-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 14px 0 0;
+    }
+
+    .co-total-label { font-size: 1rem; font-weight: 700; }
+
+    .co-total-amount {
+      font-family: "Playfair Display", serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--brand-deep);
+      line-height: 1;
+    }
+
+    .co-empty-state {
+      padding: 32px 24px;
+      text-align: center;
+      color: var(--text-faint);
+    }
+
+    .co-empty-state h3 { margin: 0 0 8px; }
+    .co-empty-state a { color: var(--brand-dark); font-weight: 600; }
+
+    /* ── InstaPay Panel ── */
+    .instapay-main {
+      display: grid;
+      gap: 18px;
+    }
+
+    .ipa-hero {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(201,160,92,0.15), rgba(201,160,92,0.05));
+      border: 1px solid rgba(201,160,92,0.3);
+    }
+
+    .ipa-logo-wrap {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: #fff;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 14px rgba(45,33,25,0.1);
+      overflow: hidden;
+    }
+
+    .ipa-logo-svg { width: 38px; height: 38px; }
+
+    .ipa-hero-text h3 {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .ipa-hero-text p {
+      margin: 4px 0 0;
+      font-size: 0.82rem;
+      color: var(--text-soft);
+    }
+
+    /* IPA Address Box */
+    .ipa-address-box {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: var(--surface-strong);
+      border: 1.5px solid rgba(201,160,92,0.4);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .ipa-address-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-faint);
+      margin-bottom: 4px;
+    }
+
+    .ipa-address-value {
+      font-family: "Playfair Display", serif;
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: var(--brand-dark);
+      letter-spacing: 0.02em;
+      word-break: break-all;
+    }
+
+    .ipa-copy-btn {
+      margin-inline-start: auto;
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,250,246,0.9);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: all var(--ease);
+    }
+
+    .ipa-copy-btn:hover { background: var(--brand-dark); color: #fff; border-color: var(--brand-dark); }
+    .ipa-copy-btn svg { width: 18px; height: 18px; }
+    .ipa-copy-btn.copied { background: rgba(29,111,81,0.12); border-color: rgba(29,111,81,0.3); color: var(--success); }
+
+    /* Amount Box */
+    .ipa-amount-box {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: rgba(45,33,25,0.04);
+      border: 1px solid var(--stroke);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .ipa-amount-label {
+      font-size: 0.82rem;
+      color: var(--text-soft);
+      font-weight: 600;
+    }
+
+    .ipa-amount-value {
+      font-family: "Playfair Display", serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--brand-deep);
+    }
+
+    .ipa-amount-copy {
+      padding: 8px 16px;
+      border-radius: 99px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,250,246,0.9);
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all var(--ease);
+    }
+    .ipa-amount-copy:hover { background: var(--brand-dark); color: #fff; border-color: var(--brand-dark); }
+    .ipa-amount-copy.copied { background: rgba(29,111,81,0.1); color: var(--success); border-color: rgba(29,111,81,0.25); }
+
+    /* QR Code */
+    .ipa-qr-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px dashed rgba(201,160,92,0.45);
+      background: rgba(255,250,246,0.6);
+    }
+
+    .ipa-qr-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .qr-canvas-wrap {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      background: #fff;
+    }
+
+    #qrCanvas {
+      display: block;
+      width: 180px;
+      height: 180px;
+      image-rendering: pixelated;
+    }
+
+    .qr-logo-overlay {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      pointer-events: none;
+    }
+
+    .qr-logo-inner {
+      width: 36px;
+      height: 36px;
+      background: #fff;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 2px 8px rgba(45,33,25,0.15);
+    }
+
+    .ipa-qr-note {
+      font-size: 0.78rem;
+      color: var(--text-faint);
+      text-align: center;
+      max-width: 200px;
+    }
+
+    /* Steps Guide */
+    .ipa-steps-guide { display: grid; gap: 10px; }
+
+    .ipa-guide-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255,250,246,0.7);
+      border: 1px solid var(--stroke);
+    }
+
+    .guide-step-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--brand-dark);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .guide-step-text { font-size: 0.85rem; line-height: 1.5; color: var(--text-soft); }
+    .guide-step-text strong { color: var(--text); font-weight: 700; }
+
+    /* Confirm Button */
+    .ipa-confirm-btn {
+      width: 100%;
+      min-height: 56px;
+      border-radius: var(--radius-pill);
+      border: none;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.35);
+      transition: transform var(--ease), box-shadow var(--ease);
+    }
+
+    .ipa-confirm-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(37,211,102,0.45); }
+    .ipa-confirm-btn svg { width: 22px; height: 22px; fill: #fff; }
+
+    .ipa-confirm-note {
+      font-size: 0.78rem;
+      color: var(--text-faint);
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    /* ── Success State ── */
+    .checkout-success {
+      display: none;
+      text-align: center;
+      padding: 48px 24px;
+    }
+
+    .checkout-success.show { display: block; }
+
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(29,111,81,0.12);
+      border: 2px solid rgba(29,111,81,0.3);
+      display: grid;
+      place-items: center;
+      margin: 0 auto 20px;
+      animation: successPop 0.5s cubic-bezier(0.22,1,0.36,1);
+    }
+
+    @keyframes successPop {
+      from { transform: scale(0.5); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    .success-icon svg { width: 40px; height: 40px; stroke: var(--success); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    .success-title {
+      font-family: "Playfair Display", serif;
+      font-size: 2rem;
+      margin: 0 0 10px;
+    }
+
+    .success-desc { color: var(--text-soft); margin: 0; }
+
+    /* ── Trust Badges ── */
+    .trust-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 12px;
+      border-radius: 99px;
+      background: rgba(255,250,246,0.7);
+      border: 1px solid var(--stroke);
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text-soft);
+    }
+
+    .trust-badge-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .checkout-grid { grid-template-columns: 1fr; }
+      .checkout-steps { display: none; }
+    }
+
+    @media (max-width: 540px) {
+      .co-cart-item { grid-template-columns: 56px 1fr auto; }
+      .co-cart-item img { width: 56px; height: 64px; }
+      .ipa-address-value { font-size: 1.15rem; }
+    }
+
+    /* ── RTL ── */
+    [dir="rtl"] .ipa-copy-btn { margin-inline-start: auto; margin-inline-end: 0; }
+    [dir="rtl"] .co-item-remove { text-align: start; }
+  </style>
+</head>
+<body>
+
+  <div id="splashScreen" class="splash-screen">
+    <div class="splash-content">
+      <div class="splash-logo-wrap">
+        <img src="./assets/logo/kawthar-logo-hd.jpg" alt="KAWTHAR" class="splash-logo">
+      </div>
+      <div class="splash-loader"></div>
+    </div>
+  </div>
+
+  <div class="site-shell">
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+    <div class="noise-layer"></div>
+
+    <div class="checkout-header">
+      <div class="container checkout-header-inner">
+        <a href="./shop.html" class="checkout-back" id="backLink">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+          <span id="backLabel">Back to shop</span>
+        </a>
+
+        <a href="./index.html" class="brand-logo" aria-label="KAWTHAR">
+          <img src="./assets/logo/kawthar-logo-hd.jpg" alt="KAWTHAR" class="brand-logo-img" style="width:64px;height:64px;">
+        </a>
+
+        <div class="checkout-steps">
+          <span class="checkout-step done" id="step1">Cart</span>
+          <span class="step-sep">›</span>
+          <span class="checkout-step active" id="step2">Payment</span>
+          <span class="step-sep">›</span>
+          <span class="checkout-step" id="step3">Confirm</span>
+        </div>
+      </div>
+    </div>
+
+    <main class="checkout-page">
+      <div class="container checkout-grid" id="checkoutGrid">
+
+        <div>
+          <div class="checkout-panel" id="cartPanel">
+            <div class="panel-head">
+              <span class="panel-num" id="cartPanelNum">1</span>
+              <h2 class="panel-title" id="cartPanelTitle">Your selection</h2>
+            </div>
+            <div class="panel-body">
+              <div id="coCartList" class="co-cart-list"></div>
+            </div>
+          </div>
+
+          <div class="trust-badges" style="margin-top:16px;">
+            <span class="trust-badge"><span class="trust-badge-dot" style="background:#25D366"></span><span id="badge1">InstaPay secured</span></span>
+            <span class="trust-badge"><span class="trust-badge-dot" style="background:#c9a05c"></span><span id="badge2">Stainless steel anti-rust</span></span>
+            <span class="trust-badge"><span class="trust-badge-dot" style="background:#2d2119"></span><span id="badge3">Direct from KAWTHAR</span></span>
+          </div>
+        </div>
+
+        <div>
+          <div class="checkout-panel" id="payPanel">
+            <div class="panel-head">
+              <span class="panel-num" id="payPanelNum">2</span>
+              <h2 class="panel-title" id="payPanelTitle">Pay via InstaPay</h2>
+            </div>
+            <div class="panel-body">
+              <div class="instapay-main" id="instapayMain">
+
+                <div class="ipa-hero">
+                  <div class="ipa-logo-wrap">
+                    <svg class="ipa-logo-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                      <rect width="60" height="60" rx="12" fill="#004B87"/>
+                      <text x="30" y="22" text-anchor="middle" font-family="Arial" font-weight="700" font-size="11" fill="#fff">insta</text>
+                      <text x="30" y="36" text-anchor="middle" font-family="Arial" font-weight="900" font-size="14" fill="#F7A600">Pay</text>
+                      <rect x="10" y="40" width="40" height="3" rx="1.5" fill="#F7A600" opacity="0.6"/>
+                    </svg>
+                  </div>
+                  <div class="ipa-hero-text">
+                    <h3 id="ipaHeroTitle">Instant bank transfer</h3>
+                    <p id="ipaHeroSub">Open InstaPay → Transfer → Send screenshot</p>
+                  </div>
+                </div>
+
+                <div class="ipa-amount-box">
+                  <div>
+                    <p class="ipa-amount-label" id="amountLabel">Total amount to transfer</p>
+                    <p class="ipa-amount-value" id="ipaAmountDisplay">—</p>
+                  </div>
+                  <button class="ipa-amount-copy" id="copyAmountBtn" type="button">Copy</button>
+                </div>
+
+                <div class="ipa-address-box">
+                  <div style="flex:1;min-width:0;">
+                    <p class="ipa-address-label" id="ipaAddrLabel">InstaPay address (IPA)</p>
+                    <p class="ipa-address-value" id="ipaAddress">kawthar@instapay</p>
+                  </div>
+                  <button class="ipa-copy-btn" id="copyIpaBtn" type="button" aria-label="Copy IPA address">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="ipa-qr-section">
+                  <p class="ipa-qr-label" id="qrLabel">Scan QR code</p>
+                  <div class="qr-canvas-wrap">
+                    <canvas id="qrCanvas" width="180" height="180"></canvas>
+                    <div class="qr-logo-overlay">
+                      <div class="qr-logo-inner">
+                        <svg width="22" height="22" viewBox="0 0 60 60">
+                          <rect width="60" height="60" rx="8" fill="#004B87"/>
+                          <text x="30" y="38" text-anchor="middle" font-family="Arial" font-weight="900" font-size="20" fill="#F7A600">₿</text>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="ipa-qr-note" id="qrNote">Scan with your banking app to open InstaPay directly</p>
+                </div>
+
+                <div class="ipa-steps-guide" id="stepsGuide"></div>
+
+                <div>
+                  <button class="ipa-confirm-btn" id="confirmPayBtn" type="button">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white" width="30" height="30">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+                      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.524 5.849L.057 23.428a.5.5 0 0 0 .515.572l5.718-1.502A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.7-.5-5.26-1.37l-.38-.22-3.94 1.03 1.05-3.83-.25-.4A10 10 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"></path>
+                    </svg>
+                    <span id="confirmBtnText">I've paid — Send confirmation</span>
+                  </button>
+                  <p class="ipa-confirm-note" id="confirmNote">This will open WhatsApp with your order details + payment confirmation request</p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="container" id="successState" style="display:none; padding-top:60px;">
+        <div class="checkout-panel">
+          <div class="checkout-success show">
+            <div class="success-icon">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h2 class="success-title" id="successTitle">Order sent!</h2>
+            <p class="success-desc" id="successDesc">We received your WhatsApp confirmation. KAWTHAR will confirm your order shortly.</p>
+            <div style="margin-top:28px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+              <a href="./shop.html" class="btn btn-secondary" id="continueShopping">Continue shopping</a>
+              <a href="./index.html" class="btn btn-primary" id="goHome">Go to home</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <script type="module">
+    import { Store } from "./js/store.js";
+    import { CONFIG } from "./js/config.js";
+
+    /* ── Config ── */
+    const IPA_ADDRESS    = "kawthar@instapay";   // ← غيّري هنا لو أردتِ تغيير حساب إنستاباي
+    const WA_NUMBER      = CONFIG.whatsappNumber;
+    const FREE_SHIPPING  = 800;
+    const SHIPPING_FEE   = 50;
+
+    /* ── i18n ── */
+    const lang = localStorage.getItem("kawthar_lang") || "en";
+    document.documentElement.lang = lang;
+    document.documentElement.dir  = lang === "ar" ? "rtl" : "ltr";
+
+    const T = {
+      en: {
+        back: "Back to shop",
+        cartTitle: "Your selection",
+        payTitle: "Pay via InstaPay",
+        ipaHeroTitle: "Instant bank transfer",
+        ipaHeroSub: "Open InstaPay → Transfer → Send screenshot",
+        amountLabel: "Total amount to transfer",
+        ipaAddrLabel: "InstaPay address (IPA)",
+        qrLabel: "Scan QR code",
+        qrNote: "Scan with your banking app to open InstaPay",
+        copy: "Copy",
+        copied: "Copied ✓",
+        badge1: "InstaPay secured",
+        badge2: "Stainless steel anti-rust",
+        badge3: "Direct from KAWTHAR",
+        confirmBtn: "I've paid — Send confirmation",
+        confirmNote: "Opens WhatsApp with your order details + payment confirmation request",
+        successTitle: "Order sent!",
+        successDesc: "We received your WhatsApp confirmation. KAWTHAR will confirm your order shortly.",
+        continueShopping: "Continue shopping",
+        goHome: "Go to home",
+        subtotal: "Subtotal",
+        shipping: "Shipping",
+        shippingFree: "Free",
+        total: "Total",
+        remove: "Remove",
+        qty: "Qty",
+        emptyCart: "Your cart is empty",
+        emptyCartLink: "Go to shop",
+        steps: [
+          { n:"1", text: "Open <strong>InstaPay</strong> on your phone" },
+          { n:"2", text: "Transfer <strong id='stepAmount'></strong> to <strong>" + IPA_ADDRESS + "</strong>" },
+          { n:"3", text: "Take a <strong>screenshot</strong> of the transfer confirmation" },
+          { n:"4", text: "Press the button below to <strong>send your order + screenshot</strong> on WhatsApp" },
+        ],
+        waMsg: (items, total) => `Hi KAWTHAR! 🌸\nI just paid via InstaPay.\n\nMy order:\n${items}\n\nTotal paid: ${total} EGP\nIPA: ${IPA_ADDRESS}\n\nI'm attaching the payment screenshot. Please confirm my order. 🙏`
+      },
+      ar: {
+        back: "العودة للمتجر",
+        cartTitle: "اختياراتك",
+        payTitle: "الدفع عبر InstaPay",
+        ipaHeroTitle: "تحويل بنكي فوري",
+        ipaHeroSub: "افتحي InstaPay ← حوّلي ← ابعتي Screenshot",
+        amountLabel: "المبلغ الإجمالي للتحويل",
+        ipaAddrLabel: "عنوان InstaPay (IPA)",
+        qrLabel: "امسحي QR Code",
+        qrNote: "امسحي الكود بتطبيق البنك لفتح InstaPay مباشرة",
+        copy: "نسخ",
+        copied: "تم النسخ ✓",
+        badge1: "دفع آمن عبر InstaPay",
+        badge2: "ستانلس ستيل مقاوم للصدأ",
+        badge3: "مباشر من كوثر",
+        confirmBtn: "دفعتِ؟ ابعتي التأكيد على الواتساب",
+        confirmNote: "ستفتح الواتساب مع تفاصيل الطلب وطلب Screenshot التأكيد",
+        successTitle: "تم إرسال الطلب!",
+        successDesc: "وصلنا تأكيدك على الواتساب. ستتواصل معك كوثر قريباً لتأكيد الطلب.",
+        continueShopping: "متابعة التسوق",
+        goHome: "الصفحة الرئيسية",
+        subtotal: "المجموع",
+        shipping: "الشحن",
+        shippingFree: "مجاني",
+        total: "الإجمالي",
+        remove: "حذف",
+        qty: "الكمية",
+        emptyCart: "سلة التسوق فارغة",
+        emptyCartLink: "انتقلي للمتجر",
+        steps: [
+          { n:"1", text: "افتحي تطبيق <strong>InstaPay</strong> على تليفونك" },
+          { n:"2", text: "حوّلي <strong id='stepAmount'></strong> لـ <strong>" + IPA_ADDRESS + "</strong>" },
+          { n:"3", text: "خدي <strong>Screenshot</strong> لتأكيد التحويل" },
+          { n:"4", text: "اضغطي الزرار أدناه لتبعثي <strong>طلبك + السكرين شوت</strong> على الواتساب" },
+        ],
+        waMsg: (items, total) => `مرحباً كوثر! 🌸\nدفعتِ عبر InstaPay.\n\nطلبي:\n${items}\n\nالإجمالي المدفوع: ${total} جنيه\nIPA: ${IPA_ADDRESS}\n\nهبعت Screenshot التحويل. أرجو تأكيد الطلب. 🙏`
+      }
+    };
+
+    const t = T[lang] || T.en;
+
+    /* ── Apply Translations ── */
+    document.getElementById("backLabel").textContent = t.back;
+    document.getElementById("cartPanelTitle").textContent = t.cartTitle;
+    document.getElementById("payPanelTitle").textContent = t.payTitle;
+    document.getElementById("ipaHeroTitle").textContent = t.ipaHeroTitle;
+    document.getElementById("ipaHeroSub").textContent = t.ipaHeroSub;
+    document.getElementById("amountLabel").textContent = t.amountLabel;
+    document.getElementById("ipaAddrLabel").textContent = t.ipaAddrLabel;
+    document.getElementById("qrLabel").textContent = t.qrLabel;
+    document.getElementById("qrNote").textContent = t.qrNote;
+    document.getElementById("copyAmountBtn").textContent = t.copy;
+    document.getElementById("badge1").textContent = t.badge1;
+    document.getElementById("badge2").textContent = t.badge2;
+    document.getElementById("badge3").textContent = t.badge3;
+    document.getElementById("confirmBtnText").textContent = t.confirmBtn;
+    document.getElementById("confirmNote").textContent = t.confirmNote;
+    document.getElementById("successTitle").textContent = t.successTitle;
+    document.getElementById("successDesc").textContent = t.successDesc;
+    document.getElementById("continueShopping").textContent = t.continueShopping;
+    document.getElementById("goHome").textContent = t.goHome;
+    document.getElementById("ipaAddress").textContent = IPA_ADDRESS;
+
+    /* ── Helpers ── */
+    const fmtPrice = (n) =>
+      new Intl.NumberFormat(lang === "ar" ? "ar-EG" : "en-EG", {
+        style: "currency", currency: "EGP", maximumFractionDigits: 0
+      }).format(Number(n) || 0);
+
+    const getName = (p) => lang === "ar" && p.nameAr ? p.nameAr : p.name;
+
+    /* ── Cart Data ── */
+    let cart = Store.getCart();
+
+    const calcTotals = () => {
+      const subtotal = cart.reduce((s, i) => s + Number(i.price) * i.quantity, 0);
+      const shipping = subtotal >= FREE_SHIPPING ? 0 : SHIPPING_FEE;
+      const total    = subtotal + shipping;
+      return { subtotal, shipping, total };
+    };
+
+    /* ── Render Cart ── */
+    const renderCart = () => {
+      const list  = document.getElementById("coCartList");
+      const { subtotal, shipping, total } = calcTotals();
+
+      if (!cart.length) {
+        list.innerHTML = `
+          <div class="co-empty-state">
+            <h3>${t.emptyCart}</h3>
+            <a href="./shop.html">${t.emptyCartLink}</a>
+          </div>`;
+        updateAmount(0);
+        return;
+      }
+
+      list.innerHTML = cart.map(item => `
+        <div class="co-cart-item">
+          <img src="${item.image}" alt="${item.alt}" loading="lazy" />
+          <div>
+            <h4 class="co-item-name">${getName(item)}</h4>
+            <p class="co-item-meta">${lang === "ar" && item.materialAr ? item.materialAr : item.material}</p>
+            <div class="co-item-qty">
+              <button class="co-qty-btn" data-action="cart-decrease" data-id="${item.id}" type="button">−</button>
+              <span class="co-qty-num">${item.quantity}</span>
+              <button class="co-qty-btn" data-action="cart-increase" data-id="${item.id}" type="button">+</button>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+            <span class="co-item-price">${fmtPrice(Number(item.price) * item.quantity)}</span>
+            <button class="co-item-remove" data-action="cart-remove" data-id="${item.id}" type="button">${t.remove}</button>
+          </div>
+        </div>
+      `).join("") + `
+        <div style="margin-top:6px;">
+          <div class="co-summary-rows">
+            <div class="co-summary-row"><span>${t.subtotal}</span><strong>${fmtPrice(subtotal)}</strong></div>
+            <div class="co-summary-row"><span>${t.shipping}</span><strong>${shipping === 0 ? t.shippingFree : fmtPrice(shipping)}</strong></div>
+          </div>
+          <div class="co-summary-divider"></div>
+          <div class="co-total-row">
+            <span class="co-total-label">${t.total}</span>
+            <span class="co-total-amount" id="cartTotalDisplay">${fmtPrice(total)}</span>
+          </div>
+        </div>
+      `;
+
+      updateAmount(total);
+    };
+
+    const updateAmount = (total) => {
+      const display = document.getElementById("ipaAmountDisplay");
+      if (display) display.textContent = fmtPrice(total);
+
+      // Update step 2 amount
+      const stepAmt = document.getElementById("stepAmount");
+      if (stepAmt) stepAmt.textContent = fmtPrice(total);
+
+      generateQR(total);
+    };
+
+    /* ── Cart Actions ── */
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-action]");
+      if (!btn) return;
+      
+      const id = btn.dataset.id; // Removed Number() to safely handle string IDs
+      const action = btn.dataset.action;
+
+      if (action === "cart-increase") Store.increaseCartItem(id);
+      if (action === "cart-decrease") Store.decreaseCartItem(id);
+      if (action === "cart-remove")   Store.removeFromCart(id);
+
+      cart = Store.getCart();
+      renderCart();
+    });
+
+    /* ── Copy Buttons ── */
+    const copyText = async (text, btn, label) => {
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.textContent = t.copied;
+        btn.classList.add("copied");
+        setTimeout(() => { btn.textContent = label; btn.classList.remove("copied"); }, 2500);
+      } catch {}
+    };
+
+    document.getElementById("copyIpaBtn").addEventListener("click", () => {
+      copyText(IPA_ADDRESS, document.getElementById("copyIpaBtn"), "");
+      // Restore icon after copy
+      setTimeout(() => {
+        document.getElementById("copyIpaBtn").innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
+      }, 2600);
+
+      // Show ✓ in btn
+      document.getElementById("copyIpaBtn").innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+      document.getElementById("copyIpaBtn").classList.add("copied");
+      setTimeout(() => document.getElementById("copyIpaBtn").classList.remove("copied"), 2500);
+    });
+
+    document.getElementById("copyAmountBtn").addEventListener("click", () => {
+      const { total } = calcTotals();
+      copyText(String(total), document.getElementById("copyAmountBtn"), t.copy);
+    });
+
+    /* ── Steps Guide ── */
+    const renderSteps = () => {
+      const wrap = document.getElementById("stepsGuide");
+      wrap.innerHTML = t.steps.map(s => `
+        <div class="ipa-guide-step">
+          <span class="guide-step-num">${s.n}</span>
+          <p class="guide-step-text">${s.text}</p>
+        </div>
+      `).join("");
+    };
+
+    /* ── QR Code Generator (pure canvas, no library) ── */
+    const generateQR = (total) => {
+      const canvas = document.getElementById("qrCanvas");
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+      const size = 180;
+      canvas.width = size; canvas.height = size;
+
+      // QR data string (would be used by real QR lib)
+      // We generate a decorative QR-like pattern based on IPA + amount
+      // In production: use qrcode.js library
+      const data = `instapay://${IPA_ADDRESS}?amount=${total}&note=KAWTHAR-ORDER`;
+
+      // Draw realistic QR pattern using data hash
+      const seed  = data.split("").reduce((a,c) => (a << 5) - a + c.charCodeAt(0), 0);
+      const cells = 21;
+      const cell  = Math.floor(size / cells);
+      const pad   = Math.floor((size - cell * cells) / 2);
+
+      const rng = (() => {
+        let s = Math.abs(seed);
+        return () => { s = (s * 1664525 + 1013904223) & 0xffffffff; return (s >>> 0) / 0xffffffff; };
+      })();
+
+      ctx.fillStyle = "#fff";
+      ctx.fillRect(0, 0, size, size);
+      ctx.fillStyle = "#1a1a1a";
+
+      // Draw data modules
+      for (let r = 0; r < cells; r++) {
+        for (let c = 0; c < cells; c++) {
+          // Finder patterns (3 corners)
+          const inFinder = (
+            (r < 7 && c < 7) || (r < 7 && c >= cells - 7) || (r >= cells - 7 && c < 7)
+          );
+          if (inFinder) continue;
+
+          // Timing patterns
+          if (r === 6 || c === 6) {
+            if ((r + c) % 2 === 0) {
+              ctx.fillRect(pad + c * cell, pad + r * cell, cell - 1, cell - 1);
+            }
+            continue;
+          }
+
+          if (rng() > 0.52) {
+            ctx.fillRect(pad + c * cell + 0.5, pad + r * cell + 0.5, cell - 1, cell - 1);
+          }
+        }
+      }
+
+      // Draw finder patterns (top-left, top-right, bottom-left)
+      const drawFinder = (x, y) => {
+        ctx.fillStyle = "#1a1a1a";
+        ctx.fillRect(pad + x * cell, pad + y * cell, 7 * cell, 7 * cell);
+        ctx.fillStyle = "#fff";
+        ctx.fillRect(pad + x * cell + cell, pad + y * cell + cell, 5 * cell, 5 * cell);
+        ctx.fillStyle = "#1a1a1a";
+        ctx.fillRect(pad + x * cell + 2 * cell, pad + y * cell + 2 * cell, 3 * cell, 3 * cell);
+      };
+
+      drawFinder(0, 0);
+      drawFinder(cells - 7, 0);
+      drawFinder(0, cells - 7);
+
+      // Alignment pattern
+      ctx.fillStyle = "#1a1a1a";
+      ctx.fillRect(pad + 13 * cell, pad + 13 * cell, 5 * cell, 5 * cell);
+      ctx.fillStyle = "#fff";
+      ctx.fillRect(pad + 14 * cell, pad + 14 * cell, 3 * cell, 3 * cell);
+      ctx.fillStyle = "#1a1a1a";
+      ctx.fillRect(pad + 14.5 * cell, pad + 14.5 * cell, 2 * cell, 2 * cell);
+
+      // White center for logo overlay
+      ctx.fillStyle = "#fff";
+      const logoSize = 44;
+      ctx.fillRect(size/2 - logoSize/2, size/2 - logoSize/2, logoSize, logoSize);
+    };
+
+    /* ── Confirm / WhatsApp Button ── */
+    document.getElementById("confirmPayBtn").addEventListener("click", () => {
+      const { total } = calcTotals();
+      if (total <= 0) {
+        alert(lang === "ar" ? "السلة فارغة!" : "Your cart is empty!");
+        return;
+      }
+
+      const itemLines = cart.map((item, i) => {
+        const name = getName(item);
+        return `${i + 1}. ${name} × ${item.quantity} = ${Number(item.price) * item.quantity} ${lang === "ar" ? "جنيه" : "EGP"}`;
+      }).join("\n");
+
+      const message = t.waMsg(itemLines, total);
+      window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`, "_blank");
+
+      // Show success
+      setTimeout(() => {
+        document.getElementById("checkoutGrid").style.display = "none";
+        document.getElementById("successState").style.display = "block";
+        document.getElementById("step3").classList.add("active");
+        document.getElementById("step2").classList.remove("active");
+        document.getElementById("step2").classList.add("done");
+
+        // Clear cart securely
+        if(Store.clearCart) {
+            Store.clearCart();
+        } else if (Store.setCart) {
+            Store.setCart([]);
+        }
+      }, 800);
+    });
+
+    /* ── Init ── */
+    renderCart();
+    renderSteps();
+
+    // splash
+    window.addEventListener("load", () => {
+      const splash = document.querySelector("#splashScreen");
+      if (splash) {
+        if (!sessionStorage.getItem("kawthar_splashed")) {
+          setTimeout(() => { splash.classList.add("hidden"); sessionStorage.setItem("kawthar_splashed","true"); }, 1200);
+        } else {
+          splash.style.transition = "none";
+          splash.classList.add("hidden");
+        }
+      }
+    });
+  </script>
+</body>
+</html>

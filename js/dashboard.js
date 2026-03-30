@@ -3,6 +3,9 @@ import { pipeline, env } from "https://cdn.jsdelivr.net/npm/@xenova/transformers
 
 env.allowLocalModels = false;
 
+// متغير لمعرفة ما إذا كنا في وضع التعديل أم لا
+let editingProductId = null;
+
 const slugify = (text) => String(text).trim().toLowerCase().replace(/[^a-z0-9\s-]/g, "").replace(/\s+/g, "-").replace(/-+/g, "-");
 const formatPrice = (price) => new Intl.NumberFormat("en-EG", { style: "currency", currency: "EGP", maximumFractionDigits: 0 }).format(Number(price) || 0);
 
@@ -23,8 +26,9 @@ const renderProductsList = (products) => {
         <div class="dashboard-meta">
           <span>${product.category}</span><span>${formatPrice(product.price)}</span>
         </div>
-        <div class="dashboard-mini-actions">
-          <button class="btn btn-secondary" type="button" data-dashboard-remove="${product.id}">Remove</button>
+        <div class="dashboard-mini-actions" style="display: flex; gap: 8px; margin-top: 8px;">
+          <button class="btn btn-secondary" type="button" data-dashboard-edit="${product.id}">Edit</button>
+          <button class="btn btn-secondary" type="button" data-dashboard-remove="${product.id}" style="background: #dc3545; color: white; border: none;">Remove</button>
         </div>
       </div>
     </article>
@@ -152,12 +156,17 @@ const initBackupSystem = () => {
 
 const initForm = () => {
   const form = document.querySelector("#dashboardForm");
+  const submitBtn = form?.querySelector('button[type="submit"]');
+  const statusLabel = document.querySelector("#aiStatus");
+
   if (!form) return;
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-    const products = getProducts();
-    const newProduct = {
-      id: Date.now(),
+    let products = getProducts();
+
+    // تجهيز بيانات المنتج من الحقول
+    const productData = {
+      id: editingProductId ? editingProductId : Date.now(),
       name: document.querySelector("#productName").value.trim(),
       nameAr: document.querySelector("#productNameAr").value.trim(),
       slug: document.querySelector("#productSlug").value.trim() || slugify(document.querySelector("#productName").value.trim()),
@@ -172,21 +181,82 @@ const initForm = () => {
       description: document.querySelector("#productDescription").value.trim(),
       descriptionAr: document.querySelector("#productDescriptionAr").value.trim()
     };
-    products.unshift(newProduct);
+
+    if (editingProductId) {
+      // تحديث منتج موجود
+      products = products.map(p => p.id === editingProductId ? productData : p);
+      statusLabel.textContent = "✅ Product Updated Successfully!";
+      
+      // إعادة الزر لشكله الطبيعي
+      editingProductId = null;
+      submitBtn.textContent = "Add product to Store";
+      submitBtn.style.background = "";
+      submitBtn.style.borderColor = "";
+      submitBtn.style.color = "";
+    } else {
+      // إضافة منتج جديد
+      products.unshift(productData);
+      statusLabel.textContent = "✅ Product Added Successfully!";
+    }
+
     saveProducts(products);
     renderProductsList(getProducts());
     form.reset();
-    document.querySelector("#aiStatus").textContent = "✅ Product Added!";
   });
 };
 
-const initRemoveActions = () => {
+const initListActions = () => {
   document.addEventListener("click", (event) => {
-    const btn = event.target.closest("[data-dashboard-remove]");
-    if (!btn) return;
-    const id = Number(btn.dataset.dashboardRemove);
-    saveProducts(getProducts().filter((item) => item.id !== id));
-    renderProductsList(getProducts());
+    // استهداف زر الحذف
+    const removeBtn = event.target.closest("[data-dashboard-remove]");
+    if (removeBtn) {
+      const id = Number(removeBtn.dataset.dashboardRemove);
+      if(confirm("Are you sure you want to remove this product?")) {
+         saveProducts(getProducts().filter((item) => item.id !== id));
+         renderProductsList(getProducts());
+      }
+      return;
+    }
+
+    // استهداف زر التعديل
+    const editBtn = event.target.closest("[data-dashboard-edit]");
+    if (editBtn) {
+      const id = Number(editBtn.dataset.dashboardEdit);
+      const product = getProducts().find(p => p.id === id);
+      if (!product) return;
+
+      // تعبئة البيانات في الفورم
+      document.querySelector("#productImage").value = product.image || "";
+      document.querySelector("#productCategory").value = product.category || "necklace";
+      document.querySelector("#productName").value = product.name || "";
+      document.querySelector("#productNameAr").value = product.nameAr || "";
+      document.querySelector("#productPrice").value = product.price || "";
+      document.querySelector("#productDescription").value = product.description || "";
+      document.querySelector("#productDescriptionAr").value = product.descriptionAr || "";
+      document.querySelector("#productSlug").value = product.slug || "";
+      document.querySelector("#productBadge").value = product.badge || "";
+      document.querySelector("#productBadgeAr").value = product.badgeAr || "";
+      document.querySelector("#productMaterial").value = product.material || "";
+      document.querySelector("#productMaterialAr").value = product.materialAr || "";
+      document.querySelector("#productAlt").value = product.alt || "";
+
+      // تفعيل وضع التعديل وحفظ الـ ID
+      editingProductId = id;
+
+      // تغيير شكل واسم زر الإضافة
+      const submitBtn = document.querySelector("#dashboardForm button[type='submit']");
+      if(submitBtn) {
+        submitBtn.textContent = "Update Product (تحديث)";
+        submitBtn.style.background = "#1D6F51"; // لون أخضر مميز للتحديث
+        submitBtn.style.borderColor = "#1D6F51";
+        submitBtn.style.color = "#fff";
+      }
+
+      document.querySelector("#aiStatus").textContent = "✏️ Editing Mode Active";
+
+      // الصعود بسلاسة لأعلى الصفحة
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   });
 };
 
@@ -202,7 +272,7 @@ const initReset = () => {
 const init = () => {
   renderProductsList(getProducts());
   initForm();
-  initRemoveActions();
+  initListActions(); // تم دمج التعديل والحذف هنا
   initReset();
   initProAI();
   initBackupSystem();
