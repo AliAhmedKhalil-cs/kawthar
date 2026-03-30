@@ -1,9 +1,8 @@
-import { getProducts, saveProducts, resetProducts } from "./data.js";
+import { getProducts, saveProductToDB, removeProductFromDB, saveProducts, resetProducts } from "./data.js";
 import { pipeline, env } from "https://cdn.jsdelivr.net/npm/@xenova/transformers@2.16.1";
 
 env.allowLocalModels = false;
 
-// متغير لمعرفة ما إذا كنا في وضع التعديل أم لا
 let editingProductId = null;
 
 const slugify = (text) => String(text).trim().toLowerCase().replace(/[^a-z0-9\s-]/g, "").replace(/\s+/g, "-").replace(/-+/g, "-");
@@ -36,13 +35,13 @@ const renderProductsList = (products) => {
 };
 
 const smartTemplates = {
-  necklace: { name: "Elegant Signature Necklace", nameAr: "سلسلة الأناقة المميزة", desc: "A premium stainless steel anti-rust necklace designed for elegant daily styling. Features a refined polished finish.", descAr: "سلسلة فاخرة من الستانلس ستيل المقاوم للصدأ، مصممة لإطلالة يومية أنيقة بلمسة لامعة تخطف الأنظار.", price: 450 },
-  bracelet: { name: "Luxury Chain Bracelet", nameAr: "أسورة السلسلة الفاخرة", desc: "A coordinated premium bracelet ideal for gifting and easy luxury styling. Made to resist rust and fading.", descAr: "أسورة فاخرة متناسقة، مثالية كهدية ويسهل تنسيقها. مصنوعة بجودة عالية لتقاوم الصدأ وتدوم طويلاً.", price: 380 },
-  ring: { name: "Royal Statement Ring", nameAr: "الخاتم الملكي البارز", desc: "An eye-catching ring with a bold feminine aesthetic. Crafted from durable stainless steel anti-rust.", descAr: "خاتم يخطف الأنظار بتصميم أنثوي جريء. مصنوع من الستانلس ستيل المتين المقاوم للصدأ ليرافقك كل يوم.", price: 320 },
-  earring: { name: "Classic Luminous Earring", nameAr: "حلق اللمعان الكلاسيكي", desc: "Lightweight and elegant earrings that add a soft luxury feel to your face.", descAr: "حلق خفيف الوزن وأنيق، يضفي لمسة من الفخامة النعومة على إطلالتك.", price: 290 },
-  anklet: { name: "Delicate Summer Anklet", nameAr: "خلخال الصيف الرقيق", desc: "A subtle and beautiful anklet piece, perfect for a polished feminine style.", descAr: "خلخال رقيق وجميل، يكمل أناقتك الأنثوية بلمسة صيفية ساحرة.", price: 250 },
-  handmade_bag: { name: "Artisan Hand-Stitched Bag", nameAr: "حقيبة يدوية الصنع (هاند ميد)", desc: "A unique, limited edition handmade bag crafted with love and premium materials. Each piece is a unique work of art.", descAr: "حقيبة يدوية فريدة من نوعها، مصنوعة بحب وبأجود المواد. كل قطعة تعتبر لوحة فنية خاصة بصاحبتها.", price: 1250 },
-  set: { name: "Complete Luxury Set", nameAr: "طقم الفخامة المتكامل", desc: "A curated collection of matching pieces for a complete and highly polished look.", descAr: "مجموعة متناسقة من القطع الفاخرة لإطلالة متكاملة وغاية في الأناقة.", price: 850 }
+  necklace: { name: "Elegant Signature Necklace", nameAr: "سلسلة الأناقة المميزة", desc: "A premium stainless steel anti-rust necklace designed for elegant daily styling.", descAr: "سلسلة فاخرة من الستانلس ستيل المقاوم للصدأ.", price: 450 },
+  bracelet: { name: "Luxury Chain Bracelet", nameAr: "أسورة السلسلة الفاخرة", desc: "A coordinated premium bracelet ideal for gifting.", descAr: "أسورة فاخرة متناسقة، مثالية كهدية.", price: 380 },
+  ring: { name: "Royal Statement Ring", nameAr: "الخاتم الملكي البارز", desc: "An eye-catching ring with a bold feminine aesthetic.", descAr: "خاتم يخطف الأنظار بتصميم أنثوي جريء.", price: 320 },
+  earring: { name: "Classic Luminous Earring", nameAr: "حلق اللمعان الكلاسيكي", desc: "Lightweight and elegant earrings.", descAr: "حلق خفيف الوزن وأنيق.", price: 290 },
+  anklet: { name: "Delicate Summer Anklet", nameAr: "خلخال الصيف الرقيق", desc: "A subtle and beautiful anklet piece.", descAr: "خلخال رقيق وجميل.", price: 250 },
+  handmade_bag: { name: "Artisan Hand-Stitched Bag", nameAr: "حقيبة يدوية الصنع (هاند ميد)", desc: "A unique, limited edition handmade bag.", descAr: "حقيبة يدوية فريدة من نوعها.", price: 1250 },
+  set: { name: "Complete Luxury Set", nameAr: "طقم الفخامة المتكامل", desc: "A curated collection of matching pieces.", descAr: "مجموعة متناسقة من القطع الفاخرة.", price: 850 }
 };
 
 const fillDataFields = (category) => {
@@ -78,7 +77,6 @@ const initProAI = async () => {
   btn.addEventListener("click", async () => {
     const imgPath = document.querySelector("#productImage").value.trim();
     if (!imgPath) { alert("Please enter the image path first!"); return; }
-
     btn.innerHTML = "🔍 Analyzing...";
     status.textContent = "🧠 AI is looking at the image...";
 
@@ -100,7 +98,7 @@ const initProAI = async () => {
       btn.innerHTML = "✨ AI Magic Fill";
     } catch (err) {
       btn.innerHTML = "✨ AI Magic Fill";
-      status.textContent = "❌ Analysis Failed! Check image path.";
+      status.textContent = "❌ Analysis Failed!";
     }
   });
 
@@ -110,61 +108,18 @@ const initProAI = async () => {
   });
 };
 
-const initBackupSystem = () => {
-  const exportBtn = document.querySelector("#exportProductsBtn");
-  const importBtn = document.querySelector("#importProductsBtn");
-  const fileInput = document.querySelector("#importFileHidden");
-
-  if (!exportBtn || !importBtn || !fileInput) return;
-
-  exportBtn.addEventListener("click", () => {
-    const products = getProducts();
-    if (!products.length) { alert("No products to export!"); return; }
-    const dataStr = JSON.stringify(products, null, 2);
-    const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
-    const fileName = `kawthar_backup_${new Date().toISOString().slice(0, 10)}.json`;
-    const link = document.createElement('a');
-    link.setAttribute('href', dataUri);
-    link.setAttribute('download', fileName);
-    link.click();
-    alert("📥 Backup exported successfully!");
-  });
-
-  importBtn.addEventListener("click", () => fileInput.click());
-  fileInput.addEventListener("change", (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      try {
-        const imported = JSON.parse(event.target.result);
-        if (Array.isArray(imported)) {
-          if (confirm(`Import ${imported.length} products? This will merge with existing ones.`)) {
-            const current = getProducts();
-            const merged = [...imported, ...current.filter(c => !imported.find(i => i.id === c.id))];
-            saveProducts(merged);
-            renderProductsList(getProducts());
-            alert("🚀 Backup restored!");
-          }
-        }
-      } catch (err) { alert("❌ Invalid backup file."); }
-    };
-    reader.readAsText(file);
-    e.target.value = "";
-  });
-};
-
 const initForm = () => {
   const form = document.querySelector("#dashboardForm");
   const submitBtn = form?.querySelector('button[type="submit"]');
   const statusLabel = document.querySelector("#aiStatus");
 
   if (!form) return;
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    let products = getProducts();
+    
+    submitBtn.disabled = true;
+    submitBtn.textContent = "⏳ Saving to Cloud...";
 
-    // تجهيز بيانات المنتج من الحقول
     const productData = {
       id: editingProductId ? editingProductId : Date.now(),
       name: document.querySelector("#productName").value.trim(),
@@ -182,50 +137,44 @@ const initForm = () => {
       descriptionAr: document.querySelector("#productDescriptionAr").value.trim()
     };
 
+    await saveProductToDB(productData);
+
     if (editingProductId) {
-      // تحديث منتج موجود
-      products = products.map(p => p.id === editingProductId ? productData : p);
-      statusLabel.textContent = "✅ Product Updated Successfully!";
-      
-      // إعادة الزر لشكله الطبيعي
+      statusLabel.textContent = "✅ Product Updated Globally!";
       editingProductId = null;
-      submitBtn.textContent = "Add product to Store";
       submitBtn.style.background = "";
       submitBtn.style.borderColor = "";
       submitBtn.style.color = "";
     } else {
-      // إضافة منتج جديد
-      products.unshift(productData);
-      statusLabel.textContent = "✅ Product Added Successfully!";
+      statusLabel.textContent = "✅ Product Added Globally!";
     }
 
-    saveProducts(products);
-    renderProductsList(getProducts());
+    submitBtn.textContent = "Add product to Store";
+    submitBtn.disabled = false;
     form.reset();
+    renderProductsList(getProducts());
   });
 };
 
 const initListActions = () => {
-  document.addEventListener("click", (event) => {
-    // استهداف زر الحذف
+  document.addEventListener("click", async (event) => {
     const removeBtn = event.target.closest("[data-dashboard-remove]");
     if (removeBtn) {
       const id = Number(removeBtn.dataset.dashboardRemove);
-      if(confirm("Are you sure you want to remove this product?")) {
-         saveProducts(getProducts().filter((item) => item.id !== id));
+      if(confirm("Are you sure you want to remove this product from the Cloud?")) {
+         removeBtn.textContent = "⏳...";
+         await removeProductFromDB(id);
          renderProductsList(getProducts());
       }
       return;
     }
 
-    // استهداف زر التعديل
     const editBtn = event.target.closest("[data-dashboard-edit]");
     if (editBtn) {
       const id = Number(editBtn.dataset.dashboardEdit);
       const product = getProducts().find(p => p.id === id);
       if (!product) return;
 
-      // تعبئة البيانات في الفورم
       document.querySelector("#productImage").value = product.image || "";
       document.querySelector("#productCategory").value = product.category || "necklace";
       document.querySelector("#productName").value = product.name || "";
@@ -240,31 +189,66 @@ const initListActions = () => {
       document.querySelector("#productMaterialAr").value = product.materialAr || "";
       document.querySelector("#productAlt").value = product.alt || "";
 
-      // تفعيل وضع التعديل وحفظ الـ ID
       editingProductId = id;
 
-      // تغيير شكل واسم زر الإضافة
       const submitBtn = document.querySelector("#dashboardForm button[type='submit']");
       if(submitBtn) {
         submitBtn.textContent = "Update Product (تحديث)";
-        submitBtn.style.background = "#1D6F51"; // لون أخضر مميز للتحديث
+        submitBtn.style.background = "#1D6F51"; 
         submitBtn.style.borderColor = "#1D6F51";
         submitBtn.style.color = "#fff";
       }
 
       document.querySelector("#aiStatus").textContent = "✏️ Editing Mode Active";
-
-      // الصعود بسلاسة لأعلى الصفحة
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   });
 };
 
+const initBackupSystem = () => {
+  const exportBtn = document.querySelector("#exportProductsBtn");
+  const importBtn = document.querySelector("#importProductsBtn");
+  const fileInput = document.querySelector("#importFileHidden");
+
+  exportBtn?.addEventListener("click", () => {
+    const products = getProducts();
+    if (!products.length) { alert("No products to export!"); return; }
+    const dataStr = JSON.stringify(products, null, 2);
+    const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+    const link = document.createElement('a');
+    link.setAttribute('href', dataUri);
+    link.setAttribute('download', `kawthar_backup_${new Date().toISOString().slice(0, 10)}.json`);
+    link.click();
+  });
+
+  importBtn?.addEventListener("click", () => fileInput.click());
+  fileInput?.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = async (event) => {
+      try {
+        const imported = JSON.parse(event.target.result);
+        if (confirm(`Import ${imported.length} products to Cloud?`)) {
+            document.querySelector("#aiStatus").textContent = "⏳ Uploading to Firebase...";
+            await saveProducts(imported);
+            renderProductsList(getProducts());
+            document.querySelector("#aiStatus").textContent = "🚀 Backup restored & uploaded!";
+        }
+      } catch (err) { alert("❌ Invalid backup file."); }
+    };
+    reader.readAsText(file);
+    e.target.value = "";
+  });
+};
+
 const initReset = () => {
-  document.querySelector("#resetProductsBtn")?.addEventListener("click", () => {
-    if (confirm("Are you sure? This will delete all local products!")) {
-      resetProducts();
+  document.querySelector("#resetProductsBtn")?.addEventListener("click", async () => {
+    if (confirm("Are you sure? This will delete ALL products from Firebase!")) {
+      document.querySelector("#aiStatus").textContent = "⏳ Deleting from Cloud...";
+      await resetProducts();
       renderProductsList(getProducts());
+      document.querySelector("#aiStatus").textContent = "🗑️ Cloud Cleared!";
     }
   });
 };
@@ -272,26 +256,25 @@ const initReset = () => {
 const init = () => {
   renderProductsList(getProducts());
   initForm();
-  initListActions(); // تم دمج التعديل والحذف هنا
+  initListActions();
   initReset();
   initProAI();
   initBackupSystem();
-};
 
-document.addEventListener("DOMContentLoaded", init);
-
-// إصلاح شاشة التحميل
-window.addEventListener("load", () => {
+  // الحل هنا: إخفاء شاشة التحميل بمجرد ما الداتا توصل، سواء الصفحة حملت أو لسه!
   const splash = document.querySelector("#splashScreen");
   if (splash) {
-    if (!sessionStorage.getItem("kawthar_splashed")) {
-      setTimeout(() => {
-        splash.classList.add("hidden");
-        sessionStorage.setItem("kawthar_splashed", "true");
-      }, 1500); 
-    } else {
-      splash.style.transition = "none";
-      splash.classList.add("hidden");
-    }
+    setTimeout(() => {
+      splash.style.transition = "opacity 0.5s ease";
+      splash.style.opacity = "0";
+      setTimeout(() => splash.classList.add("hidden"), 500);
+    }, 300);
   }
-});
+};
+
+// تشغيل الكود فوراً لو الصفحة كانت خلصت تحميل بسبب تأخير فايربيز
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init(); 
+}

@@ -1,150 +1,83 @@
-import { CONFIG } from "./config.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, collection, getDocs, doc, setDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-const defaultProducts = [
-  {
-    id: 1,
-    name: "Golden Wing Pendant",
-    nameAr: "قلادة الجناح الذهبي",
-    slug: "golden-wing-pendant",
-    category: "necklace",
-    material: "Stainless Steel Anti Rust",
-    materialAr: "ستانلس ستيل مقاوم للصدأ",
-    badge: "Best Seller",
-    badgeAr: "الأكثر مبيعاً",
-    price: 450,
-    image: "./assets/products/1.jpg",
-    alt: "Golden wing pendant necklace",
-    description: "A standout statement necklace with a refined polished finish for modern luxury styling.",
-    descriptionAr: "قلادة بارزة بتصميم عصري ولمسة لامعة فاخرة تبرز أناقتك."
-  },
-  {
-    id: 2,
-    name: "Horus Eye Necklace",
-    nameAr: "قلادة عين حورس",
-    slug: "horus-eye-necklace",
-    category: "necklace",
-    material: "Stainless Steel Anti Rust",
-    materialAr: "ستانلس ستيل مقاوم للصدأ",
-    badge: "Popular",
-    badgeAr: "شائع",
-    price: 380,
-    image: "./assets/products/2.jpg",
-    alt: "Horus eye necklace",
-    description: "An Egyptian-inspired necklace designed to feel elegant, symbolic, and easy to pair.",
-    descriptionAr: "قلادة مستوحاة من التراث المصري، بتصميم رمزي أنيق يسهل تنسيقه."
-  },
-  {
-    id: 3,
-    name: "Pharaoh Portrait Pendant",
-    nameAr: "قلادة وجه الفرعون",
-    slug: "pharaoh-portrait-pendant",
-    category: "necklace",
-    material: "Stainless Steel Anti Rust",
-    materialAr: "ستانلس ستيل مقاوم للصدأ",
-    badge: "New",
-    badgeAr: "جديد",
-    price: 520,
-    image: "./assets/products/3.jpg",
-    alt: "Pharaoh pendant necklace",
-    description: "A premium pendant piece with a richer visual story and polished metallic character.",
-    descriptionAr: "قلادة فاخرة تروي قصة بصرية غنية بطابع معدني مصقول."
-  },
-  {
-    id: 4,
-    name: "Luxury Bracelet Set",
-    nameAr: "طقم أساور فاخر",
-    slug: "luxury-bracelet-set",
-    category: "set",
-    material: "Stainless Steel Anti Rust",
-    materialAr: "ستانلس ستيل مقاوم للصدأ",
-    badge: "Set",
-    badgeAr: "طقم",
-    price: 850,
-    image: "./assets/products/4.jpg",
-    alt: "Luxury bracelet set",
-    description: "A curated collection of matching bracelets for a complete and highly polished look.",
-    descriptionAr: "مجموعة متناسقة من الأساور لإطلالة متكاملة وغاية في الأناقة."
-  },
-  {
-    id: 5,
-    name: "Elegant Dual Bracelet",
-    nameAr: "أسورة مزدوجة أنيقة",
-    slug: "elegant-dual-bracelet",
-    category: "bracelet",
-    material: "Stainless Steel Anti Rust",
-    materialAr: "ستانلس ستيل مقاوم للصدأ",
-    badge: "Trending",
-    badgeAr: "رائج",
-    price: 410,
-    image: "./assets/products/5.jpg",
-    alt: "Elegant dual bracelet",
-    description: "A beautiful layered bracelet that adds volume and feminine charm to any outfit.",
-    descriptionAr: "أسورة جميلة بطبقات تضفي سحراً أنثوياً مميزاً على أي إطلالة."
-  },
-  {
-    id: 6,
-    name: "Leaf Bracelet",
-    nameAr: "أسورة ورقة الشجر",
-    slug: "leaf-bracelet",
-    category: "bracelet",
-    material: "Stainless Steel Anti Rust",
-    materialAr: "ستانلس ستيل مقاوم للصدأ",
-    badge: "Signature",
-    badgeAr: "مميز",
-    price: 360,
-    image: "./assets/products/6.jpg",
-    alt: "Leaf bracelet",
-    description: "A lightweight bracelet silhouette with premium shine and soft luxury feel.",
-    descriptionAr: "أسورة خفيفة الوزن بلمعان فاخر وإحساس بالنعومة والرقي."
-  },
-  {
-    id: 7,
-    name: "Royal Stone Piece",
-    nameAr: "قطعة الحجر الملكي",
-    slug: "royal-stone-piece",
-    category: "necklace",
-    material: "Stainless Steel Anti Rust",
-    materialAr: "ستانلس ستيل مقاوم للصدأ",
-    badge: "Limited",
-    badgeAr: "إصدار محدود",
-    price: 600,
-    image: "./assets/products/7.jpg",
-    alt: "Royal stone piece",
-    description: "A more artistic premium design for standout styling and gift-worthy presentation.",
-    descriptionAr: "تصميم فني فاخر لإطلالة بارزة، مثالية كهدية قيمة."
-  },
-  {
-    id: 8,
-    name: "Luxury Chain Bracelet",
-    nameAr: "أسورة السلسلة الفاخرة",
-    slug: "luxury-chain-bracelet",
-    category: "bracelet",
-    material: "Stainless Steel Anti Rust",
-    materialAr: "ستانلس ستيل مقاوم للصدأ",
-    badge: "Giftable",
-    badgeAr: "هدية مثالية",
-    price: 390,
-    image: "./assets/products/8.jpg",
-    alt: "Luxury chain bracelet",
-    description: "A coordinated premium piece ideal for gifting, layering, and easy luxury styling.",
-    descriptionAr: "قطعة فاخرة متناسقة، مثالية كهدية ويسهل تنسيقها مع قطع أخرى."
-  }
-];
+// بيانات الاتصال بقاعدة بياناتك (اللي أنت جبتها من Firebase)
+const firebaseConfig = {
+  apiKey: "AIzaSyAXqgvTkVgBGIkcedFMJswRgeBL6Vw54iM",
+  authDomain: "project-4641926168641456672.firebaseapp.com",
+  projectId: "project-4641926168641456672",
+  storageBucket: "project-4641926168641456672.firebasestorage.app",
+  messagingSenderId: "937208011566",
+  appId: "1:937208011566:web:8b02c681f1c7b433d0f8bf",
+  measurementId: "G-K5516T3FEV"
+};
 
+// تهيئة فايربيز
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// ذاكرة مؤقتة عشان الموقع يفضل سريع جداً
+let productsCache = [];
+
+// السحر هنا: الموقع هيستنى لحد ما يحمل المنتجات من النت قبل ما يعرض أي حاجة
+try {
+    const querySnapshot = await getDocs(collection(db, "products"));
+    const tempProducts = [];
+    querySnapshot.forEach((document) => {
+        tempProducts.push({ id: Number(document.id), ...document.data() });
+    });
+    // ترتيب المنتجات (الأحدث أولاً)
+    productsCache = tempProducts.sort((a, b) => b.id - a.id);
+} catch (error) {
+    console.error("Error loading from Firebase:", error);
+}
+
+// 1. جلب المنتجات (دي اللي كل الموقع بيستخدمها)
 export const getProducts = () => {
-  try {
-    const local = JSON.parse(localStorage.getItem(CONFIG.storageKeys.localProducts));
-    if (Array.isArray(local) && local.length) return local;
-  } catch (error) {
-    console.error("Failed to read local products:", error);
-  }
-  return defaultProducts;
+    return productsCache;
 };
 
-export const saveProducts = (products) => {
-  localStorage.setItem(CONFIG.storageKeys.localProducts, JSON.stringify(products));
+// 2. إضافة أو تحديث منتج واحد في قاعدة البيانات
+export const saveProductToDB = async (product) => {
+    try {
+        await setDoc(doc(db, "products", String(product.id)), product);
+        
+        // تحديث الذاكرة المؤقتة عشان التعديل يظهر فوراً قدامك
+        const index = productsCache.findIndex(p => p.id === product.id);
+        if (index !== -1) {
+            productsCache[index] = product;
+        } else {
+            productsCache.unshift(product);
+        }
+    } catch(error) {
+        console.error("Error saving product:", error);
+        alert("خطأ في الحفظ في قاعدة البيانات!");
+    }
 };
 
-export const resetProducts = () => {
-  localStorage.removeItem(CONFIG.storageKeys.localProducts);
+// 3. حذف منتج من قاعدة البيانات
+export const removeProductFromDB = async (id) => {
+    try {
+        await deleteDoc(doc(db, "products", String(id)));
+        productsCache = productsCache.filter(p => p.id !== id);
+    } catch(error) {
+        console.error("Error removing product:", error);
+        alert("خطأ في الحذف من قاعدة البيانات!");
+    }
+};
+
+// 4. استرجاع النسخة الاحتياطية (Import Backup)
+export const saveProducts = async (newProductsArray) => {
+    productsCache = newProductsArray;
+    for (const p of newProductsArray) {
+        await setDoc(doc(db, "products", String(p.id)), p);
+    }
+};
+
+// 5. تفريغ المتجر بالكامل (Reset)
+export const resetProducts = async () => {
+    for (const p of productsCache) {
+        await deleteDoc(doc(db, "products", String(p.id)));
+    }
+    productsCache = [];
 };
