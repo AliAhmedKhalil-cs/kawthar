@@ -1,4 +1,4 @@
-import { getProducts } from "./data.js";
+import { getProducts, waitForProducts } from "./data.js";
 import { Store } from "./store.js";
 import { UI } from "./ui.js";
 import {

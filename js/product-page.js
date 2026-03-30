@@ -1,5 +1,5 @@
 import { CONFIG } from "./config.js";
-import { getProducts } from "./data.js";
+import { getProducts, waitForProducts } from "./data.js";
 import { Store } from "./store.js";
 import { UI } from "./ui.js";
 import {
@@ -496,7 +496,10 @@ const init = () => {
   }, 300);
 };
 
-document.addEventListener("DOMContentLoaded", init);
+document.addEventListener("DOMContentLoaded", async () => {
+  await waitForProducts();
+  init();
+});
 
 // إصلاح شاشة التحميل
 window.addEventListener("load", () => {

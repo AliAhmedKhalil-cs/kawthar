@@ -587,7 +587,7 @@
   <div id="splashScreen" class="splash-screen">
     <div class="splash-content">
       <div class="splash-logo-wrap">
-        <img src="./assets/logo/kawthar-logo-hd.jpg" alt="KAWTHAR" class="splash-logo">
+        <img src="./assets/logo/kawthar-logo-hd.svg" alt="KAWTHAR" class="splash-logo">
       </div>
       <div class="splash-loader"></div>
     </div>
@@ -608,7 +608,7 @@
         </a>
 
         <a href="./index.html" class="brand-logo" aria-label="KAWTHAR">
-          <img src="./assets/logo/kawthar-logo-hd.jpg" alt="KAWTHAR" class="brand-logo-img" style="width:64px;height:64px;">
+          <img src="./assets/logo/kawthar-logo-hd.svg" alt="KAWTHAR" class="brand-logo-img" style="width:64px;height:64px;">
         </a>
 
         <div class="checkout-steps">
@@ -745,6 +745,7 @@
   <script type="module">
     import { Store } from "./js/store.js";
     import { CONFIG } from "./js/config.js";
+    import { waitForProducts, getProducts } from "./js/data.js";
 
     /* ── Config ── */
     const IPA_ADDRESS    = "kawthar@instapay";   // ← غيّري هنا لو أردتِ تغيير حساب إنستاباي
@@ -1104,6 +1105,7 @@
     });
 
     /* ── Init ── */
+    await waitForProducts();
     renderCart();
     renderSteps();
 
