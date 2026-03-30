@@ -41,7 +41,7 @@
   box-shadow: var(--shadow-sm);
 }
 
-.icon-circle jpg {
+.icon-circle svg {
   width: 20px;
   height: 20px;
   fill: currentColor;
@@ -532,7 +532,7 @@
   position: relative;
 }
 
-.search-input-wrap jpg {
+.search-input-wrap svg {
   position: absolute;
   left: 16px;
   top: 50%;
@@ -672,7 +672,7 @@
 
 /* =========================================================================
    Logo — الحل الكامل للوجو
-   اللوجو jpg الجديد يحتوي على دايرته الذهبية بداخله،
+   اللوجو SVG الجديد يحتوي على دايرته الذهبية بداخله،
    لذا نزيل كل border وbackground من هنا ونسمح له يظهر كامل.
    ========================================================================= */
 .brand-logo {
@@ -689,7 +689,7 @@
   width: 92px;
   height: 92px;
   object-fit: contain;
-  /* إزالة border و background لأن اللوجو jpg نفسه يحتوي على الدايرة الذهبية */
+  /* إزالة border و background لأن اللوجو SVG نفسه يحتوي على الدايرة الذهبية */
   border-radius: 0;
   padding: 0;
   background: transparent;
@@ -733,7 +733,7 @@
   width: 160px;
   height: 160px;
   object-fit: contain;
-  /* نفس المبدأ — اللوجو jpg يحتوي على دايرته بداخله */
+  /* نفس المبدأ — اللوجو SVG يحتوي على دايرته بداخله */
   border-radius: 0;
   padding: 0;
   background: transparent;
@@ -807,7 +807,7 @@
   transform: translateX(0);
 }
 
-[dir="rtl"] .search-input-wrap jpg {
+[dir="rtl"] .search-input-wrap svg {
   left: auto;
   right: 16px;
 }
@@ -1197,7 +1197,7 @@
   animation: none;
 }
 
-.wa-float jpg { width: 30px; height: 30px; fill: #fff; }
+.wa-float svg { width: 30px; height: 30px; fill: #fff; }
 
 .wa-float-tooltip {
   position: absolute;
@@ -1658,3 +1658,4 @@
   border-color: rgba(29,111,81,0.3);
   color: var(--success);
 }
+
