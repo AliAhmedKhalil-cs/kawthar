@@ -604,20 +604,32 @@ const init = () => {
   if (featEyebrow) initCountdownTimer(featEyebrow.parentElement, 47);
 };
 
-document.addEventListener("DOMContentLoaded", init);
-
-// إصلاح شاشة التحميل (لتظهر مرة واحدة في الجلسة)
-window.addEventListener("load", () => {
+// دالة إخفاء شاشة التحميل (Splash Screen)
+const hideSplash = () => {
   const splash = document.querySelector("#splashScreen");
   if (splash) {
     if (!sessionStorage.getItem("kawthar_splashed")) {
       setTimeout(() => {
-        splash.classList.add("hidden");
+        splash.style.transition = "opacity 0.5s ease";
+        splash.style.opacity = "0";
+        setTimeout(() => splash.classList.add("hidden"), 500);
         sessionStorage.setItem("kawthar_splashed", "true");
-      }, 1500); 
+      }, 500); 
     } else {
       splash.style.transition = "none";
       splash.classList.add("hidden");
     }
   }
-});
+};
+
+// تشغيل الموقع فوراً بمجرد وصول بيانات فايربيز (حتى لو الصفحة خلصت تحميل)
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => {
+    init();
+    hideSplash();
+  });
+} else {
+  // لو فايربيز أخرنا والصفحة حملت، شغل الكود واخفي اللوجو فوراً
+  init();
+  hideSplash();
+}
