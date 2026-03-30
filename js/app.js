@@ -605,6 +605,7 @@ const init = () => {
 };
 
 // دالة إخفاء شاشة التحميل (Splash Screen)
+// دالة إخفاء شاشة التحميل (Splash Screen)
 const hideSplash = () => {
   const splash = document.querySelector("#splashScreen");
   if (splash) {
@@ -622,14 +623,15 @@ const hideSplash = () => {
   }
 };
 
-// تشغيل الموقع فوراً بمجرد وصول بيانات فايربيز (حتى لو الصفحة خلصت تحميل)
+// السحر هنا: الدالة بقت async عشان تقدر تستنى البيانات
+const startApp = async () => {
+  await waitForProducts(); // الموقع هيقف هنا ثانية لحد ما فايربيز يبعت المنتجات ⏳
+  init(); // بعد ما المنتجات توصل، هيبدأ يرسم الموقع
+  hideSplash(); // ويخفي اللوجو
+};
+
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", () => {
-    init();
-    hideSplash();
-  });
+  document.addEventListener("DOMContentLoaded", startApp);
 } else {
-  // لو فايربيز أخرنا والصفحة حملت، شغل الكود واخفي اللوجو فوراً
-  init();
-  hideSplash();
+  startApp();
 }

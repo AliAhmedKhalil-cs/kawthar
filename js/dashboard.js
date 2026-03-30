@@ -1,4 +1,4 @@
-import { getProducts, saveProductToDB, removeProductFromDB, saveProducts, resetProducts } from "./data.js";
+import { getProducts, waitForProducts, saveProductToDB, removeProductFromDB, saveProducts, resetProducts } from "./data.js";
 import { pipeline, env } from "https://cdn.jsdelivr.net/npm/@xenova/transformers@2.16.1";
 
 env.allowLocalModels = false;
@@ -253,7 +253,10 @@ const initReset = () => {
   });
 };
 
-const init = () => {
+// تم تعديل الدالة هنا لتصبح async وتنتظر البيانات
+const init = async () => {
+  await waitForProducts(); // السحر هنا: الانتظار حتى تصل المنتجات من فايربيز
+  
   renderProductsList(getProducts());
   initForm();
   initListActions();
@@ -261,7 +264,7 @@ const init = () => {
   initProAI();
   initBackupSystem();
 
-  // الحل هنا: إخفاء شاشة التحميل بمجرد ما الداتا توصل، سواء الصفحة حملت أو لسه!
+  // إخفاء شاشة التحميل بمجرد ما الداتا توصل، سواء الصفحة حملت أو لسه!
   const splash = document.querySelector("#splashScreen");
   if (splash) {
     setTimeout(() => {
@@ -272,7 +275,7 @@ const init = () => {
   }
 };
 
-// تشغيل الكود فوراً لو الصفحة كانت خلصت تحميل بسبب تأخير فايربيز
+// تشغيل الكود فوراً لو الصفحة كانت خلصت تحميل
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", init);
 } else {
