@@ -8,12 +8,12 @@
   "theme_color": "#b9a38f",
   "icons": [
     {
-      "src": "./assets/logo/icon-192.png",
+      "src": "./assets/logo/kawthar-logo-hd.webp",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "./assets/logo/icon-512.png",
+      "src": "./assets/logo/kawthar-logo-hd.webp",
       "sizes": "512x512",
       "type": "image/png"
     }
