@@ -938,48 +938,62 @@
       generateQR(total);
     };
 
-    /* ── Cart Actions ── */
-    document.addEventListener("click", (e) => {
-      const btn = e.target.closest("[data-action]");
-      if (!btn) return;
-      
-      const id = btn.dataset.id; // Removed Number() to safely handle string IDs
-      const action = btn.dataset.action;
-
-      if (action === "cart-increase") Store.increaseCartItem(id);
-      if (action === "cart-decrease") Store.decreaseCartItem(id);
-      if (action === "cart-remove")   Store.removeFromCart(id);
-
-      cart = Store.getCart();
-      renderCart();
-    });
-
-    /* ── Copy Buttons ── */
-    const copyText = async (text, btn, label) => {
-      try {
-        await navigator.clipboard.writeText(text);
-        btn.textContent = t.copied;
-        btn.classList.add("copied");
-        setTimeout(() => { btn.textContent = label; btn.classList.remove("copied"); }, 2500);
-      } catch {}
-    };
-
-    document.getElementById("copyIpaBtn").addEventListener("click", () => {
-      copyText(IPA_ADDRESS, document.getElementById("copyIpaBtn"), "");
-      // Restore icon after copy
-      setTimeout(() => {
-        document.getElementById("copyIpaBtn").innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
-      }, 2600);
-
-      // Show ✓ in btn
-      document.getElementById("copyIpaBtn").innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
-      document.getElementById("copyIpaBtn").classList.add("copied");
-      setTimeout(() => document.getElementById("copyIpaBtn").classList.remove("copied"), 2500);
-    });
-
-    document.getElementById("copyAmountBtn").addEventListener("click", () => {
+    /* ── Confirm / WhatsApp Button ── */
+    document.getElementById("confirmPayBtn").addEventListener("click", async () => {
       const { total } = calcTotals();
-      copyText(String(total), document.getElementById("copyAmountBtn"), t.copy);
+      if (total <= 0) {
+        alert(lang === "ar" ? "السلة فارغة!" : "Your cart is empty!");
+        return;
+      }
+
+      // 1. تجهيز بيانات الطلب للحفظ في فايربيز
+      const orderItems = cart.map(item => ({
+        id: item.id,
+        name: getName(item),
+        price: item.price,
+        quantity: item.quantity
+      }));
+
+      const orderData = {
+        items: orderItems,
+        totalAmount: total,
+        status: "New",
+        paymentMethod: "InstaPay"
+      };
+
+      // 2. تغيير شكل الزرار وقت التحميل
+      const btn = document.getElementById("confirmPayBtn");
+      const originalContent = btn.innerHTML;
+      btn.innerHTML = "⏳ Saving Order securely...";
+      btn.disabled = true;
+
+      // 3. استدعاء دالة الحفظ من data.js
+      const { saveOrderToDB } = await import('./js/data.js');
+      await saveOrderToDB(orderData);
+
+      // 4. فتح الواتساب بعد الحفظ بنجاح
+      const itemLines = cart.map((item, i) => {
+        const name = getName(item);
+        return `${i + 1}. ${name} × ${item.quantity} = ${Number(item.price) * item.quantity} ${lang === "ar" ? "جنيه" : "EGP"}`;
+      }).join("\n");
+
+      const message = t.waMsg(itemLines, total);
+      window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`, "_blank");
+
+      // 5. إظهار رسالة النجاح وتفريغ السلة
+      setTimeout(() => {
+        document.getElementById("checkoutGrid").style.display = "none";
+        document.getElementById("successState").style.display = "block";
+        document.getElementById("step3").classList.add("active");
+        document.getElementById("step2").classList.remove("active");
+        document.getElementById("step2").classList.add("done");
+
+        if(Store.clearCart) {
+            Store.clearCart();
+        } else if (Store.setCart) {
+            Store.setCart([]);
+        }
+      }, 500);
     });
 
     /* ── Steps Guide ── */

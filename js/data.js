@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore, collection, getDocs, doc, setDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { getFirestore, collection, getDocs, doc, setDoc, deleteDoc, addDoc, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAXqgvTkVgBGIkcedFMJswRgeBL6Vw54iM",
@@ -77,4 +77,34 @@ export const resetProducts = async () => {
     await deleteDoc(doc(db, "products", String(p.id)));
   }
   productsCache = [];
+};
+
+// ==========================================
+// قسم إدارة الطلبات (Orders Management)
+// ==========================================
+
+// حفظ الطلب الجديد في قاعدة البيانات
+export const saveOrderToDB = async (orderData) => {
+  try {
+    const docRef = await addDoc(collection(db, "orders"), {
+      ...orderData,
+      createdAt: serverTimestamp()
+    });
+    return docRef.id;
+  } catch (err) {
+    console.error("Order save error:", err);
+    return null;
+  }
+};
+
+// جلب كل الطلبات لعرضها في لوحة التحكم
+export const getOrdersFromDB = async () => {
+  try {
+    const q = query(collection(db, "orders"), orderBy("createdAt", "desc"));
+    const snapshot = await getDocs(q);
+    return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  } catch (err) {
+    console.error("Load orders error:", err);
+    return [];
+  }
 };
