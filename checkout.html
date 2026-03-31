@@ -587,7 +587,7 @@
   <div id="splashScreen" class="splash-screen">
     <div class="splash-content">
       <div class="splash-logo-wrap">
-        <img src="./assets/logo/kawthar-logo-hd.svg" alt="KAWTHAR" class="splash-logo">
+        <img src="./assets/logo/kawthar-logo-hd.jpg" alt="KAWTHAR" class="splash-logo">
       </div>
       <div class="splash-loader"></div>
     </div>
@@ -608,7 +608,7 @@
         </a>
 
         <a href="./index.html" class="brand-logo" aria-label="KAWTHAR">
-          <img src="./assets/logo/kawthar-logo-hd.svg" alt="KAWTHAR" class="brand-logo-img" style="width:64px;height:64px;">
+          <img src="./assets/logo/kawthar-logo-hd.jpg" alt="KAWTHAR" class="brand-logo-img" style="width:64px;height:64px; border-radius: 0;">
         </a>
 
         <div class="checkout-steps">
@@ -1071,6 +1071,24 @@
       ctx.fillRect(size/2 - logoSize/2, size/2 - logoSize/2, logoSize, logoSize);
     };
 
+    // دالة إخفاء شاشة التحميل (Splash Screen)
+    const hideSplash = () => {
+      const splash = document.querySelector("#splashScreen");
+      if (splash) {
+        if (!sessionStorage.getItem("kawthar_splashed")) {
+          setTimeout(() => {
+            splash.style.transition = "opacity 0.5s ease";
+            splash.style.opacity = "0";
+            setTimeout(() => splash.classList.add("hidden"), 500);
+            sessionStorage.setItem("kawthar_splashed", "true");
+          }, 500); 
+        } else {
+          splash.style.transition = "none";
+          splash.classList.add("hidden");
+        }
+      }
+    };
+
     /* ── Confirm / WhatsApp Button ── */
     document.getElementById("confirmPayBtn").addEventListener("click", () => {
       const { total } = calcTotals();
@@ -1105,22 +1123,18 @@
     });
 
     /* ── Init ── */
-    await waitForProducts();
-    renderCart();
-    renderSteps();
+    const startApp = async () => {
+      await waitForProducts();
+      renderCart();
+      renderSteps();
+      hideSplash();
+    };
 
-    // splash
-    window.addEventListener("load", () => {
-      const splash = document.querySelector("#splashScreen");
-      if (splash) {
-        if (!sessionStorage.getItem("kawthar_splashed")) {
-          setTimeout(() => { splash.classList.add("hidden"); sessionStorage.setItem("kawthar_splashed","true"); }, 1200);
-        } else {
-          splash.style.transition = "none";
-          splash.classList.add("hidden");
-        }
-      }
-    });
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", startApp);
+    } else {
+      startApp();
+    }
   </script>
 </body>
 </html>
