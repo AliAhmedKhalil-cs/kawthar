@@ -183,7 +183,7 @@ export const UI = {
               <p class="product-meta"><strong>${pPrice}</strong></p>
 
               <div class="product-actions">
-                <a class="btn btn-secondary" href="./product.html?id=${product.id}">
+                <a class="btn btn-secondary" href="./product.html?id=${product.id}" aria-label="${t("view_product")} - ${pName}">
                   ${t("view_product")}
                 </a>
 

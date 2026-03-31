@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#b9a38f" />
   <title>Checkout | KAWTHAR</title>
 
@@ -896,7 +896,7 @@
         <div class="co-cart-item">
           <img src="${item.image}" alt="${item.alt}" loading="lazy" />
           <div>
-            <h4 class="co-item-name">${getName(item)}</h4>
+            <h3 class="co-item-name">${getName(item)}</h3>
             <p class="co-item-meta">${lang === "ar" && item.materialAr ? item.materialAr : item.material}</p>
             <div class="co-item-qty">
               <button class="co-qty-btn" data-action="cart-decrease" data-id="${item.id}" type="button">−</button>
