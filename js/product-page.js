@@ -516,3 +516,45 @@ window.addEventListener("load", () => {
     }
   }
 });
+
+/* =========================================================================
+   PWA Setup & Custom Install Button
+   ========================================================================= */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW registration failed:', err));
+  });
+}
+
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  // منع المتصفح من إظهار الرسالة الافتراضية
+  e.preventDefault();
+  deferredPrompt = e;
+
+  // إنشاء زرار التثبيت داخل القائمة الجانبية لو مش موجود
+  if (!document.getElementById('installPwaBtn')) {
+    const navs = document.querySelectorAll('.drawer-nav');
+    navs.forEach(nav => {
+      const btn = document.createElement('button');
+      btn.id = 'installPwaBtn';
+      btn.className = 'drawer-nav-link';
+      btn.style.cssText = 'color: var(--brand-deep); text-align: start; background: rgba(201, 160, 92, 0.15); border: 1px solid rgba(201, 160, 92, 0.3); border-radius: 16px; width: 100%; cursor: pointer; font-weight: 700; margin-top: 20px; padding: 14px 16px; display: flex; align-items: center; gap: 10px;';
+      
+      const lang = document.documentElement.lang || 'en';
+      btn.innerHTML = lang === 'ar' ? '📱 تثبيت التطبيق كـ برنامج' : '📱 Install App on Device';
+
+      btn.addEventListener('click', async () => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          const { outcome } = await deferredPrompt.userChoice;
+          if (outcome === 'accepted') {
+            document.querySelectorAll('#installPwaBtn').forEach(b => b.style.display = 'none');
+          }
+          deferredPrompt = null;
+        }
+      });
+      nav.appendChild(btn);
+    });
+  }
+});
