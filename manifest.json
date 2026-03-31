@@ -1,0 +1,21 @@
+{
+  "name": "KAWTHAR Luxury",
+  "short_name": "KAWTHAR",
+  "description": "Premium stainless steel accessories and handmade artisan bags.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#d4c4b5",
+  "theme_color": "#b9a38f",
+  "icons": [
+    {
+      "src": "./assets/logo/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/logo/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
