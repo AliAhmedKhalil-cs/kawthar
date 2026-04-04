@@ -25,7 +25,8 @@ const dictionary = {
     items: "Items",
     browse_piece: "View product",
     cart_message_intro: "Hi KAWTHAR, I want to check these items:",
-    egp: "EGP"
+    egp: "EGP",
+    try_on: "✨ Try it on"
   },
   ar: {
     no_products: "لا توجد منتجات",
@@ -46,7 +47,8 @@ const dictionary = {
     items: "عدد القطع",
     browse_piece: "عرض المنتج",
     cart_message_intro: "مرحباً كوثر، أرغب في الاستفسار عن هذه المنتجات:",
-    egp: "ج.م"
+    egp: "ج.م",
+    try_on: "✨ جربي القطعة"
   }
 };
 
@@ -159,6 +161,7 @@ export const UI = {
         const pMat = getProductMaterial(product);
         const pBadge = getProductBadge(product);
         const pPrice = formatPrice(product.price);
+        const isRing = product.category === 'ring'; // التحقق إذا كان خاتماً
 
         return `
           <article class="product-card">
@@ -196,6 +199,12 @@ export const UI = {
                   ${t("add_to_cart")}
                 </button>
               </div>
+              
+              ${isRing ? `
+                <button class="btn btn-ar-try" type="button" onclick="window.openARTryOn('${product.image}')">
+                  ${t("try_on")}
+                </button>
+              ` : ''}
             </div>
           </article>
         `;
@@ -358,14 +367,12 @@ export const UI = {
     if (!btn) return;
 
     if (!cart.length) {
-      // حالة السلة فارغة: إعادة الزر للوضع الافتراضي
       btn.href = `https://wa.me/${CONFIG.whatsappNumber}`;
       btn.textContent = getLang() === "ar" ? "تواصل عبر الواتساب" : "Chat on WhatsApp";
-      btn.style.background = ""; // تفريغ الستايل ليعود للشكل الأصلي للواتساب
+      btn.style.background = ""; 
       return;
     }
 
-    // حالة السلة ممتلئة: التوجيه لصفحة الدفع بدلاً من الواتساب
     btn.href = "./checkout.html";
     btn.textContent = getLang() === "ar" ? "ادفعي عبر InstaPay ←" : "Pay via InstaPay ←";
     btn.style.background = "linear-gradient(135deg, #2d2119, #5e4a3d)";
