@@ -1,7 +1,6 @@
 import { getProducts, waitForProducts } from "./data.js";
 import { Store } from "./store.js";
 import { UI } from "./ui.js";
-import { initARTryOn } from "./ar-tryon.js"; // <--- إضافة استدعاء AR
 import {
   initWABubble,
   initSocialProof,
@@ -129,11 +128,7 @@ const translations = {
 
     search_title: "Search",
     search_heading: "Find your next piece",
-    search_placeholder: "Search...",
-
-    ar_title: "✨ Try it on now",
-    ar_desc: "Point your camera to your hand (back or palm)",
-    ar_loading: "Starting AI camera..."
+    search_placeholder: "Search..."
   },
   ar: {
     lang_btn: "EN",
@@ -241,11 +236,7 @@ const translations = {
 
     search_title: "البحث",
     search_heading: "ابحثي عن قطعتك القادمة",
-    search_placeholder: "ابحثي هنا...",
-
-    ar_title: "✨ جربي القطعة الآن",
-    ar_desc: "وجهي كاميرا هاتفك نحو يدك (الظهر أو الكف)",
-    ar_loading: "جاري تشغيل الكاميرا والذكاء الاصطناعي..."
+    search_placeholder: "ابحثي هنا..."
   }
 };
 
@@ -595,8 +586,6 @@ const init = () => {
   initPriceFilter();
   initGiftMode();
   rerender();
-
-  initARTryOn(); // <---- تفعيل الـ AR هنا
 
   initWABubble();
   initSocialProof();

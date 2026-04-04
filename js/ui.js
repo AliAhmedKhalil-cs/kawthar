@@ -25,8 +25,7 @@ const dictionary = {
     items: "Items",
     browse_piece: "View product",
     cart_message_intro: "Hi KAWTHAR, I want to check these items:",
-    egp: "EGP",
-    try_on: "✨ Try it on"
+    egp: "EGP"
   },
   ar: {
     no_products: "لا توجد منتجات",
@@ -47,8 +46,7 @@ const dictionary = {
     items: "عدد القطع",
     browse_piece: "عرض المنتج",
     cart_message_intro: "مرحباً كوثر، أرغب في الاستفسار عن هذه المنتجات:",
-    egp: "ج.م",
-    try_on: "✨ جربي القطعة"
+    egp: "ج.م"
   }
 };
 
@@ -161,7 +159,6 @@ export const UI = {
         const pMat = getProductMaterial(product);
         const pBadge = getProductBadge(product);
         const pPrice = formatPrice(product.price);
-        const isRing = product.category === 'ring'; // التحقق إذا كان خاتماً
 
         return `
           <article class="product-card">
@@ -199,12 +196,6 @@ export const UI = {
                   ${t("add_to_cart")}
                 </button>
               </div>
-              
-              ${isRing ? `
-                <button class="btn btn-ar-try" type="button" onclick="window.openARTryOn('${product.image}')">
-                  ${t("try_on")}
-                </button>
-              ` : ''}
             </div>
           </article>
         `;
