@@ -353,7 +353,7 @@ export const UI = {
       .join("");
   },
 
-  updateCheckoutLink(cart) {
+ updateCheckoutLink(cart) {
     const btn = qs("#checkoutWhatsAppBtn");
     if (!btn) return;
 
@@ -365,7 +365,7 @@ export const UI = {
     }
 
     btn.href = "./checkout.html";
-    btn.textContent = getLang() === "ar" ? "ادفعي عبر InstaPay ←" : "Pay via InstaPay ←";
+    // 🔥 التعديل هنا: دمج المحافظ الإلكترونية بشكل احترافي
+    btn.textContent = getLang() === "ar" ? "ادفعي عبر فودافون كاش / InstaPay ←" : "Pay via Vodafone Cash / InstaPay ←";
     btn.style.background = "linear-gradient(135deg, #2d2119, #5e4a3d)";
-  }
-};
+  }}
