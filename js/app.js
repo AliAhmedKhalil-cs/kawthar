@@ -1,6 +1,7 @@
 import { getProducts, waitForProducts } from "./data.js";
 import { Store } from "./store.js";
 import { UI } from "./ui.js";
+import { initARTryOn } from "./ar-tryon.js"; // <--- إضافة استدعاء AR
 import {
   initWABubble,
   initSocialProof,
@@ -128,7 +129,11 @@ const translations = {
 
     search_title: "Search",
     search_heading: "Find your next piece",
-    search_placeholder: "Search..."
+    search_placeholder: "Search...",
+
+    ar_title: "✨ Try it on now",
+    ar_desc: "Point your camera to your hand (back or palm)",
+    ar_loading: "Starting AI camera..."
   },
   ar: {
     lang_btn: "EN",
@@ -236,7 +241,11 @@ const translations = {
 
     search_title: "البحث",
     search_heading: "ابحثي عن قطعتك القادمة",
-    search_placeholder: "ابحثي هنا..."
+    search_placeholder: "ابحثي هنا...",
+
+    ar_title: "✨ جربي القطعة الآن",
+    ar_desc: "وجهي كاميرا هاتفك نحو يدك (الظهر أو الكف)",
+    ar_loading: "جاري تشغيل الكاميرا والذكاء الاصطناعي..."
   }
 };
 
@@ -317,7 +326,6 @@ const applyFilters = () => {
     list = list.filter((product) => matchesSearch(product, state.searchQuery));
   }
 
-  // فلتر السعر
   if (state.maxPrice !== Infinity) {
     list = list.filter((product) => Number(product.price) <= state.maxPrice);
   }
@@ -374,7 +382,6 @@ const rerender = () => {
   setActiveFilterPills();
   applyTranslations();
 
-  // Re-inject Quick View buttons after grid re-render
   setTimeout(injectQuickViewButtons, 50);
   setTimeout(initMagneticCards, 60);
 };
@@ -431,7 +438,6 @@ const initFilters = () => {
     });
   });
 
-  // تم تفعيل رابط הפوتر (Handmade Bags)
   document.querySelectorAll("[data-filter-trigger]").forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
@@ -556,7 +562,6 @@ const initGiftMode = () => {
     if (e.target === overlay) closeModal();
   });
 
-  // Gift option selection
   overlay.querySelectorAll(".gift-option").forEach((opt) => {
     opt.addEventListener("click", () => {
       overlay.querySelectorAll(".gift-option").forEach((o) => o.classList.remove("selected"));
@@ -564,7 +569,6 @@ const initGiftMode = () => {
     });
   });
 
-  // WhatsApp gift message
   overlay.querySelector("#giftSendWhatsApp")?.addEventListener("click", () => {
     const selected = overlay.querySelector(".gift-option.selected");
     const lang = document.documentElement.lang || "en";
@@ -592,19 +596,18 @@ const init = () => {
   initGiftMode();
   rerender();
 
-  // Advanced Features
+  initARTryOn(); // <---- تفعيل الـ AR هنا
+
   initWABubble();
   initSocialProof();
   initHeartBurst();
   initQuickView();
   initRecentlyViewedBar();
 
-  // Countdown on featured section eyebrow (optional)
   const featEyebrow = document.querySelector(".featured-section .eyebrow");
   if (featEyebrow) initCountdownTimer(featEyebrow.parentElement, 47);
 };
 
-// دالة إخفاء شاشة التحميل (Splash Screen)
 const hideSplash = () => {
   const splash = document.querySelector("#splashScreen");
   if (splash) {
@@ -622,11 +625,10 @@ const hideSplash = () => {
   }
 };
 
-// السحر هنا: الدالة بقت async عشان تقدر تستنى البيانات
 const startApp = async () => {
-  await waitForProducts(); // الموقع هيقف هنا ثانية لحد ما فايربيز يبعت المنتجات ⏳
-  init(); // بعد ما المنتجات توصل، هيبدأ يرسم الموقع
-  hideSplash(); // ويخفي اللوجو
+  await waitForProducts(); 
+  init(); 
+  hideSplash(); 
 };
 
 if (document.readyState === "loading") {
@@ -635,9 +637,6 @@ if (document.readyState === "loading") {
   startApp();
 }
 
-/* =========================================================================
-   PWA Setup & Custom Install Button
-   ========================================================================= */
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW registration failed:', err));
@@ -646,11 +645,9 @@ if ('serviceWorker' in navigator) {
 
 let deferredPrompt;
 window.addEventListener('beforeinstallprompt', (e) => {
-  // منع المتصفح من إظهار الرسالة الافتراضية
   e.preventDefault();
   deferredPrompt = e;
 
-  // إنشاء زرار التثبيت داخل القائمة الجانبية لو مش موجود
   if (!document.getElementById('installPwaBtn')) {
     const navs = document.querySelectorAll('.drawer-nav');
     navs.forEach(nav => {
