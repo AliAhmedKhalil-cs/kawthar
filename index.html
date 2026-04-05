@@ -10,6 +10,8 @@
   <meta name="author" content="Ali Ahmed Khalil" />
   <meta name="theme-color" content="#b9a38f" />
 
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+
   <meta property="og:title" content="KAWTHAR | إكسسوارات نسائية فاخرة" />
   <meta property="og:description" content="تألقي مع مجموعة كوثر الفريدة من الإكسسوارات المقاومة للصدأ والشنط المصنوعة يدوياً." />
   <meta property="og:image" content="./assets/logo/kawthar-logo-hd.webp" />
@@ -30,12 +32,17 @@
   <link rel="stylesheet" href="./css/components.css" />
   <link rel="stylesheet" href="./css/pages.css" />
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K5516T3FEV"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-K5516T3FEV');
+    setTimeout(function(){
+      var script = document.createElement('script');
+      script.src = "https://www.googletagmanager.com/gtag/js?id=G-K5516T3FEV";
+      script.async = true;
+      document.head.appendChild(script);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-K5516T3FEV');
+    }, 3500);
   </script>
 </head>
 <body>
@@ -43,7 +50,7 @@
   <div id="splashScreen" class="splash-screen">
     <div class="splash-content">
       <div class="splash-logo-wrap">
-        <img src="./assets/logo/kawthar-logo-hd.webp" alt="KAWTHAR" class="splash-logo">
+        <img src="./assets/logo/kawthar-logo-hd.webp" alt="KAWTHAR" class="splash-logo" fetchpriority="high" decoding="async">
       </div>
       <div class="splash-loader"></div>
     </div>
@@ -94,6 +101,191 @@
         </div>
       </div>
     </header>
+
+    <main>
+      <section id="home" class="hero-section">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="hero-kicker reveal" data-i18n="hero_kicker">KAWTHAR COLLECTION</span>
+            <h1 class="reveal delay-1">
+              <span data-i18n="hero_title_main">Define your elegance with </span>
+              <span data-i18n="hero_title_sub">our feminine luxury touch</span>
+            </h1>
+            <p class="reveal delay-2" data-i18n="hero_desc">
+              Premium stainless steel accessories and handmade artisan bags designed for your unique style.
+            </p>
+            <div class="hero-actions reveal delay-3">
+              <a href="#featured" class="btn btn-primary" data-i18n="btn_shop">Shop collection</a>
+              <a href="./shop.html" class="btn btn-secondary" data-i18n="btn_view">View full shop</a>
+            </div>
+            <div class="hero-metrics reveal delay-4">
+              <div class="metric-card">
+                <strong data-i18n="metric_1_title">Luxury Feel</strong>
+                <span data-i18n="metric_1_desc">Soft feminine premium identity</span>
+              </div>
+              <div class="metric-card">
+                <strong data-i18n="metric_2_title">Anti Rust</strong>
+                <span data-i18n="metric_2_desc">Made from stainless steel</span>
+              </div>
+              <div class="metric-card">
+                <strong data-i18n="metric_3_title">Fast Inquiry</strong>
+                <span data-i18n="metric_3_desc">Order directly on WhatsApp</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual reveal delay-2">
+            <div class="hero-stack">
+              <article class="hero-card hero-card-main">
+                <img src="./assets/products/1.webp" alt="خاتم ملكي ستانلس ستيل من كوثر" fetchpriority="high">
+              </article>
+              <article class="hero-card hero-card-floating top">
+                <img src="./assets/products/2.webp" alt="سلسلة فاخرة مقاومة للصدأ">
+              </article>
+              <article class="hero-card hero-card-floating bottom">
+                <img src="./assets/products/3.webp" alt="إكسسوارات نسائية راقية">
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="trust-section">
+        <div class="container trust-grid">
+          <article class="trust-card reveal">
+            <span class="trust-icon">✦</span>
+            <h3 data-i18n="trust_1_title">Luxury presentation</h3>
+            <p data-i18n="trust_1_desc">Elegant visuals and premium product storytelling for stronger conversion.</p>
+          </article>
+
+          <article class="trust-card reveal delay-1">
+            <span class="trust-icon">✦</span>
+            <h3 data-i18n="trust_2_title">Stainless steel</h3>
+            <p data-i18n="trust_2_desc">Selected pieces made from stainless steel anti-rust material.</p>
+          </article>
+
+          <article class="trust-card reveal delay-2">
+            <span class="trust-icon">✦</span>
+            <h3 data-i18n="trust_new_title">Handmade Art</h3>
+            <p data-i18n="trust_new_desc">Limited edition artisan bags crafted with premium care.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="collections" class="collections-section">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow" data-i18n="coll_eyebrow">Collections</p>
+            <h2 data-i18n="coll_title">Curated for a polished feminine style</h2>
+          </div>
+
+          <div class="collections-grid">
+            <article class="collection-tile large reveal">
+              <img src="./assets/products/4.webp" alt="شنط هاند ميد مميزة كوثر" loading="lazy">
+              <div class="collection-content">
+                <span data-i18n="coll_bags_tag">Handmade Bags</span>
+                <h3 data-i18n="coll_bags_title">Artisan Crafts</h3>
+                <button class="text-action" data-filter-btn="handmade_bag" type="button" data-i18n="btn_explore">Explore</button>
+              </div>
+            </article>
+
+            <article class="collection-tile reveal delay-1">
+              <img src="./assets/products/5.webp" alt="خواتم ملكية فاخرة" loading="lazy">
+              <div class="collection-content">
+                <span data-i18n="coll_rings_tag">Signature Line</span>
+                <h3 data-i18n="coll_rings_title">Royal Selection</h3>
+                <button class="text-action" data-filter-btn="ring" type="button" data-i18n="btn_explore">Explore</button>
+              </div>
+            </article>
+
+            <article class="collection-tile reveal delay-2">
+              <img src="./assets/products/6.webp" alt="أساور ستانلس ستيل راقية" loading="lazy">
+              <div class="collection-content">
+                <span data-i18n="coll_3_tag">Daily luxury</span>
+                <h3 data-i18n="coll_3_title">Bracelets</h3>
+                <button class="text-action" data-filter-btn="bracelet" type="button" data-i18n="btn_explore">Explore</button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="featured" class="featured-section">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow" data-i18n="feat_eyebrow">Featured</p>
+            <h2 data-i18n="feat_title">Most requested pieces from KAWTHAR</h2>
+          </div>
+
+          <div class="store-toolbar reveal delay-1">
+            <div class="toolbar-left">
+              <button class="filter-pill active" data-filter="all" type="button" data-i18n="filter_all">All</button>
+              <button class="filter-pill" data-filter="necklace" type="button" data-i18n="filter_necklaces">Necklaces</button>
+              <button class="filter-pill" data-filter="ring" type="button" data-i18n="filter_rings">Rings</button>
+              <button class="filter-pill" data-filter="bracelet" type="button" data-i18n="filter_bracelets">Bracelets</button>
+              <button class="filter-pill" data-filter="handmade_bag" type="button" data-i18n="filter_bags">Bags</button>
+              <button class="filter-pill" data-filter="set" type="button" data-i18n="filter_sets">Sets</button>
+            </div>
+
+            <div class="toolbar-right">
+              <select id="sortSelect" class="select-input" aria-label="Sort products">
+                <option value="featured" data-i18n="sort_featured">Featured</option>
+                <option value="name-asc" data-i18n="sort_asc">Name A-Z</option>
+                <option value="name-desc" data-i18n="sort_desc">Name Z-A</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="productsGrid" class="products-grid"></div>
+        </div>
+      </section>
+
+      <section id="story" class="story-section">
+        <div class="container story-grid">
+          <div class="story-media reveal">
+            <img src="./assets/products/7.webp" alt="قصة علامة كوثر التجارية" loading="lazy">
+          </div>
+
+          <div class="story-copy reveal delay-1">
+            <p class="eyebrow" data-i18n="story_eyebrow">Our story</p>
+            <h2 data-i18n="story_title">Luxury, but with our own softer feminine signature</h2>
+            <p data-i18n="story_p1">
+              KAWTHAR is built around elegant pieces that feel refined, giftable, and visually premium from the first impression.
+            </p>
+            <p data-i18n="story_p2">
+              The store experience is designed to move the client naturally from attraction to interest to direct WhatsApp inquiry.
+            </p>
+
+            <div class="story-actions">
+              <a href="https://wa.me/201556694041?text=Hi%20KAWTHAR%2C%20I%20want%20to%20ask%20about%20a%20piece" class="btn btn-primary" target="_blank" rel="noreferrer" data-i18n="btn_ask_wa">
+                Ask on WhatsApp
+              </a>
+              <a href="https://www.instagram.com/kawtheraeg_/" class="btn btn-secondary" target="_blank" rel="noreferrer" data-i18n="btn_visit_ig">
+                Visit Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="container">
+          <div class="cta-box reveal">
+            <div>
+              <p class="eyebrow" data-i18n="cta_eyebrow">Direct conversion</p>
+              <h2 data-i18n="cta_title">Ready to ask about a piece or place your order?</h2>
+              <p data-i18n="cta_desc">
+                Tap WhatsApp and send the product name directly. The store is designed to make that step natural and easy.
+              </p>
+            </div>
+            <div class="cta-actions">
+              <a href="https://wa.me/201556694041" class="btn btn-primary" target="_blank" rel="noreferrer" data-i18n="btn_start_wa">Start WhatsApp inquiry</a>
+              <a href="https://www.instagram.com/kawtheraeg_/" class="btn btn-secondary" target="_blank" rel="noreferrer" data-i18n="btn_follow_ig">Follow Instagram</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <aside id="mobileMenu" class="drawer left-drawer" aria-hidden="true">
       <div class="drawer-header">
@@ -168,192 +360,6 @@
         </a>
       </div>
     </aside>
-
-    <main>
-      <section id="home" class="hero-section">
-        <div class="container hero-grid">
-          <div class="hero-copy">
-            <span class="hero-kicker reveal" data-i18n="hero_kicker">KAWTHAR COLLECTION</span>
-            <h1 class="reveal delay-1">
-              <span data-i18n="hero_title_main">Define your elegance with </span>
-              <span data-i18n="hero_title_sub">our feminine luxury touch</span>
-            </h1>
-            <p class="reveal delay-2" data-i18n="hero_desc">
-              Premium stainless steel accessories and handmade artisan bags designed for your unique style.
-            </p>
-            <div class="hero-actions reveal delay-3">
-              <a href="#featured" class="btn btn-primary" data-i18n="btn_shop">Shop collection</a>
-              <a href="./shop.html" class="btn btn-secondary" data-i18n="btn_view">View full shop</a>
-            </div>
-            <div class="hero-metrics reveal delay-4">
-              <div class="metric-card">
-                <strong data-i18n="metric_1_title">Luxury Feel</strong>
-                <span data-i18n="metric_1_desc">Soft feminine premium identity</span>
-              </div>
-              <div class="metric-card">
-                <strong data-i18n="metric_2_title">Anti Rust</strong>
-                <span data-i18n="metric_2_desc">Made from stainless steel</span>
-              </div>
-              <div class="metric-card">
-                <strong data-i18n="metric_3_title">Fast Inquiry</strong>
-                <span data-i18n="metric_3_desc">Order directly on WhatsApp</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="hero-visual reveal delay-2">
-            <div class="hero-stack">
-              <article class="hero-card hero-card-main">
-                <img src="./assets/products/1.webp" alt="خاتم ملكي ستانلس ستيل من كوثر">
-              </article>
-              <article class="hero-card hero-card-floating top">
-                <img src="./assets/products/2.webp" alt="سلسلة فاخرة مقاومة للصدأ">
-              </article>
-              <article class="hero-card hero-card-floating bottom">
-                <img src="./assets/products/3.webp" alt="إكسسوارات نسائية راقية">
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="trust-section">
-        <div class="container trust-grid">
-          <article class="trust-card reveal">
-            <span class="trust-icon">✦</span>
-            <h3 data-i18n="trust_1_title">Luxury presentation</h3>
-            <p data-i18n="trust_1_desc">Elegant visuals and premium product storytelling for stronger conversion.</p>
-          </article>
-
-          <article class="trust-card reveal delay-1">
-            <span class="trust-icon">✦</span>
-            <h3 data-i18n="trust_2_title">Stainless steel</h3>
-            <p data-i18n="trust_2_desc">Selected pieces made from stainless steel anti-rust material.</p>
-          </article>
-
-          <article class="trust-card reveal delay-2">
-            <span class="trust-icon">✦</span>
-            <h3 data-i18n="trust_new_title">Handmade Art</h3>
-            <p data-i18n="trust_new_desc">Limited edition artisan bags crafted with premium care.</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="collections" class="collections-section">
-        <div class="container">
-          <div class="section-head reveal">
-            <p class="eyebrow" data-i18n="coll_eyebrow">Collections</p>
-            <h2 data-i18n="coll_title">Curated for a polished feminine style</h2>
-          </div>
-
-          <div class="collections-grid">
-            <article class="collection-tile large reveal">
-              <img src="./assets/products/4.webp" alt="شنط هاند ميد مميزة كوثر">
-              <div class="collection-content">
-                <span data-i18n="coll_bags_tag">Handmade Bags</span>
-                <h3 data-i18n="coll_bags_title">Artisan Crafts</h3>
-                <button class="text-action" data-filter-btn="handmade_bag" type="button" data-i18n="btn_explore">Explore</button>
-              </div>
-            </article>
-
-            <article class="collection-tile reveal delay-1">
-              <img src="./assets/products/5.webp" alt="خواتم ملكية فاخرة">
-              <div class="collection-content">
-                <span data-i18n="coll_rings_tag">Signature Line</span>
-                <h3 data-i18n="coll_rings_title">Royal Selection</h3>
-                <button class="text-action" data-filter-btn="ring" type="button" data-i18n="btn_explore">Explore</button>
-              </div>
-            </article>
-
-            <article class="collection-tile reveal delay-2">
-              <img src="./assets/products/6.webp" alt="أساور ستانلس ستيل راقية">
-              <div class="collection-content">
-                <span data-i18n="coll_3_tag">Daily luxury</span>
-                <h3 data-i18n="coll_3_title">Bracelets</h3>
-                <button class="text-action" data-filter-btn="bracelet" type="button" data-i18n="btn_explore">Explore</button>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="featured" class="featured-section">
-        <div class="container">
-          <div class="section-head reveal">
-            <p class="eyebrow" data-i18n="feat_eyebrow">Featured</p>
-            <h2 data-i18n="feat_title">Most requested pieces from KAWTHAR</h2>
-          </div>
-
-          <div class="store-toolbar reveal delay-1">
-            <div class="toolbar-left">
-              <button class="filter-pill active" data-filter="all" type="button" data-i18n="filter_all">All</button>
-              <button class="filter-pill" data-filter="necklace" type="button" data-i18n="filter_necklaces">Necklaces</button>
-              <button class="filter-pill" data-filter="ring" type="button" data-i18n="filter_rings">Rings</button>
-              <button class="filter-pill" data-filter="bracelet" type="button" data-i18n="filter_bracelets">Bracelets</button>
-              <button class="filter-pill" data-filter="handmade_bag" type="button" data-i18n="filter_bags">Bags</button>
-              <button class="filter-pill" data-filter="set" type="button" data-i18n="filter_sets">Sets</button>
-            </div>
-
-            <div class="toolbar-right">
-              <select id="sortSelect" class="select-input" aria-label="Sort products">
-                <option value="featured" data-i18n="sort_featured">Featured</option>
-                <option value="name-asc" data-i18n="sort_asc">Name A-Z</option>
-                <option value="name-desc" data-i18n="sort_desc">Name Z-A</option>
-              </select>
-            </div>
-          </div>
-
-          <div id="productsGrid" class="products-grid"></div>
-        </div>
-      </section>
-
-      <section id="story" class="story-section">
-        <div class="container story-grid">
-          <div class="story-media reveal">
-            <img src="./assets/products/7.webp" alt="قصة علامة كوثر التجارية">
-          </div>
-
-          <div class="story-copy reveal delay-1">
-            <p class="eyebrow" data-i18n="story_eyebrow">Our story</p>
-            <h2 data-i18n="story_title">Luxury, but with our own softer feminine signature</h2>
-            <p data-i18n="story_p1">
-              KAWTHAR is built around elegant pieces that feel refined, giftable, and visually premium from the first impression.
-            </p>
-            <p data-i18n="story_p2">
-              The store experience is designed to move the client naturally from attraction to interest to direct WhatsApp inquiry.
-            </p>
-
-            <div class="story-actions">
-              <a href="https://wa.me/201556694041?text=Hi%20KAWTHAR%2C%20I%20want%20to%20ask%20about%20a%20piece" class="btn btn-primary" target="_blank" rel="noreferrer" data-i18n="btn_ask_wa">
-                Ask on WhatsApp
-              </a>
-              <a href="https://www.instagram.com/kawtheraeg_/" class="btn btn-secondary" target="_blank" rel="noreferrer" data-i18n="btn_visit_ig">
-                Visit Instagram
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="cta-section">
-        <div class="container">
-          <div class="cta-box reveal">
-            <div>
-              <p class="eyebrow" data-i18n="cta_eyebrow">Direct conversion</p>
-              <h2 data-i18n="cta_title">Ready to ask about a piece or place your order?</h2>
-              <p data-i18n="cta_desc">
-                Tap WhatsApp and send the product name directly. The store is designed to make that step natural and easy.
-              </p>
-            </div>
-            <div class="cta-actions">
-              <a href="https://wa.me/201556694041" class="btn btn-primary" target="_blank" rel="noreferrer" data-i18n="btn_start_wa">Start WhatsApp inquiry</a>
-              <a href="https://www.instagram.com/kawtheraeg_/" class="btn btn-secondary" target="_blank" rel="noreferrer" data-i18n="btn_follow_ig">Follow Instagram</a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
     <footer id="contact" class="main-footer">
       <div class="container footer-grid">
         <div>
