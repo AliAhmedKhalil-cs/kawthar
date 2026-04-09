@@ -570,7 +570,7 @@ const initGiftMode = () => {
       ? `مرحباً كوثر! أريد الطلب كهدية. نوع الهدية: "${selected.querySelector("strong")?.textContent}". أرجو مساعدتي في اختيار القطعة المناسبة.`
       : `مرحباً كوثر! أريد الطلب كهدية لشخص عزيز. أرجو مساعدتي في اختيار القطعة المثالية.`;
     const message = lang === "ar" ? msgAR : msgEN;
-    window.open(`https://wa.me/201556694041?text=${encodeURIComponent(message)}`, "_blank");
+    window.open(`https://wa.me/201034110499?text=${encodeURIComponent(message)}`, "_blank");
     closeModal();
   });
 };
