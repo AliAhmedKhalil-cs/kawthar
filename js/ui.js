@@ -1,4 +1,4 @@
-// ملف js/ui.js
+// js/ui.js
 import { CONFIG } from "./config.js";
 import { Store } from "./store.js";
 
@@ -78,9 +78,14 @@ export const UI = {
     const header = qs("#mainHeader");
     if (!header) return;
 
+    let isScrolled = false;
     const toggle = () => {
-      if (window.scrollY > 14) header.classList.add("scrolled");
-      else header.classList.remove("scrolled");
+      const shouldBeScrolled = window.scrollY > 14;
+      if (shouldBeScrolled !== isScrolled) {
+        isScrolled = shouldBeScrolled;
+        if (isScrolled) header.classList.add("scrolled");
+        else header.classList.remove("scrolled");
+      }
     };
 
     toggle();
@@ -153,56 +158,57 @@ export const UI = {
       return;
     }
 
-    grid.innerHTML = products
-      .map((product) => {
-        const isWishlisted = Store.isWishlisted(product.id);
-        const pName = getProductName(product);
-        const pMat = getProductMaterial(product);
-        const pBadge = getProductBadge(product);
-        const pPrice = formatPrice(product.price);
+    let html = "";
+    for (let i = 0; i < products.length; i++) {
+      const product = products[i];
+      const isWishlisted = Store.isWishlisted(product.id);
+      const pName = getProductName(product);
+      const pMat = getProductMaterial(product);
+      const pBadge = getProductBadge(product);
+      const pPrice = formatPrice(product.price);
 
-        return `
-          <article class="product-card" role="listitem">
-            <div class="product-thumb">
-              <img src="${product.image}" alt="${product.alt}" loading="lazy" />
-              ${pBadge ? `<span class="product-badge">${pBadge}</span>` : ""}
+      html += `
+        <article class="product-card" data-qv-init="1" data-magnetic="1">
+          <div class="product-thumb">
+            <img src="${product.image}" alt="${product.alt}" loading="lazy" width="300" height="375" />
+            ${pBadge ? `<span class="product-badge">${pBadge}</span>` : ""}
+
+            <button
+              class="product-fav ${isWishlisted ? "active" : ""}"
+              type="button"
+              data-action="wishlist-toggle"
+              data-id="${product.id}"
+              aria-label="${t("save_to_wishlist")}"
+            >
+              ♥
+            </button>
+          </div>
+
+          <div class="product-content">
+            <h3 class="product-title">${pName}</h3>
+            <p class="product-meta">${pMat}</p>
+            <p class="product-meta"><strong>${pPrice}</strong></p>
+
+            <div class="product-actions">
+              <a class="btn btn-secondary" href="./product.html?id=${product.id}" aria-label="${t("view_product")} - ${pName}">
+                ${t("view_product")}
+              </a>
 
               <button
-                class="product-fav ${isWishlisted ? "active" : ""}"
+                class="btn btn-primary"
                 type="button"
-                data-action="wishlist-toggle"
+                data-action="cart-add"
                 data-id="${product.id}"
-                aria-label="${t("save_to_wishlist")}"
+                aria-label="${t("add_to_cart")}"
               >
-                ♥
+                ${t("add_to_cart")}
               </button>
             </div>
-
-            <div class="product-content">
-              <h3 class="product-title">${pName}</h3>
-              <p class="product-meta">${pMat}</p>
-              <p class="product-meta"><strong>${pPrice}</strong></p>
-
-              <div class="product-actions">
-                <a class="btn btn-secondary" href="./product.html?id=${product.id}" aria-label="${t("view_product")} - ${pName}">
-                  ${t("view_product")}
-                </a>
-
-                <button
-                  class="btn btn-primary"
-                  type="button"
-                  data-action="cart-add"
-                  data-id="${product.id}"
-                  aria-label="${t("add_to_cart")}"
-                >
-                  ${t("add_to_cart")}
-                </button>
-              </div>
-            </div>
-          </article>
-        `;
-      })
-      .join("");
+          </div>
+        </article>
+      `;
+    }
+    grid.innerHTML = html;
   },
 
   renderSearchResults(products) {
@@ -218,36 +224,37 @@ export const UI = {
       return;
     }
 
-    box.innerHTML = products
-      .map((product) => {
-        const pName = getProductName(product);
-        const pMat = getProductMaterial(product);
-        const pPrice = formatPrice(product.price);
+    let html = "";
+    for (let i = 0; i < products.length; i++) {
+      const product = products[i];
+      const pName = getProductName(product);
+      const pMat = getProductMaterial(product);
+      const pPrice = formatPrice(product.price);
 
-        return `
-          <article class="search-result-card" role="listitem">
-            <img src="${product.image}" alt="${product.alt}" loading="lazy" />
-            <div>
-              <h3 class="line-title">${pName}</h3>
-              <p class="line-meta">${pMat}</p>
-              <p class="line-meta"><strong>${pPrice}</strong></p>
-            </div>
-            <div class="line-actions">
-              <button
-                class="line-icon-btn"
-                type="button"
-                data-action="cart-add"
-                data-id="${product.id}"
-                aria-label="${t("add_to_cart")}"
-              >
-                +
-              </button>
-              <a class="line-icon-btn" href="./product.html?id=${product.id}" aria-label="${t("browse_piece")}">↗</a>
-            </div>
-          </article>
-        `;
-      })
-      .join("");
+      html += `
+        <article class="search-result-card">
+          <img src="${product.image}" alt="${product.alt}" loading="lazy" width="82" height="92" />
+          <div>
+            <h3 class="line-title">${pName}</h3>
+            <p class="line-meta">${pMat}</p>
+            <p class="line-meta"><strong>${pPrice}</strong></p>
+          </div>
+          <div class="line-actions">
+            <button
+              class="line-icon-btn"
+              type="button"
+              data-action="cart-add"
+              data-id="${product.id}"
+              aria-label="${t("add_to_cart")}"
+            >
+              +
+            </button>
+            <a class="line-icon-btn" href="./product.html?id=${product.id}" aria-label="${t("browse_piece")}">↗</a>
+          </div>
+        </article>
+      `;
+    }
+    box.innerHTML = html;
   },
 
   renderCart() {
@@ -256,7 +263,13 @@ export const UI = {
     const itemsCount = qs("#cartItemsCount");
     const cart = Store.getCart();
 
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    let totalItems = 0;
+    let totalPrice = 0;
+
+    for (let i = 0; i < cart.length; i++) {
+      totalItems += cart[i].quantity;
+      totalPrice += (Number(cart[i].price) || 0) * cart[i].quantity;
+    }
 
     if (count) count.textContent = String(totalItems);
     if (itemsCount) itemsCount.textContent = String(totalItems);
@@ -273,37 +286,34 @@ export const UI = {
       return;
     }
 
-    const totalPrice = cart.reduce(
-      (sum, item) => sum + (Number(item.price) || 0) * item.quantity,
-      0
-    );
+    let html = "";
+    for (let i = 0; i < cart.length; i++) {
+      const product = cart[i];
+      const pName = getProductName(product);
+      const pMat = getProductMaterial(product);
+      const lineTotal = formatPrice((Number(product.price) || 0) * product.quantity);
+
+      html += `
+        <article class="cart-line">
+          <img src="${product.image}" alt="${product.alt}" loading="lazy" width="82" height="92" />
+          <div>
+            <h3 class="line-title">${pName}</h3>
+            <p class="line-meta">${pMat}</p>
+            <p class="line-meta"><strong>${formatPrice(product.price)}</strong> ${t("each")}</p>
+            <p class="line-meta">${t("qty")}: ${product.quantity}</p>
+            <p class="line-meta"><strong>${t("total")}:</strong> ${lineTotal}</p>
+          </div>
+          <div class="line-actions">
+            <button class="line-icon-btn" type="button" data-action="cart-decrease" data-id="${product.id}" aria-label="Decrease quantity">−</button>
+            <button class="line-icon-btn" type="button" data-action="cart-increase" data-id="${product.id}" aria-label="Increase quantity">+</button>
+            <button class="line-icon-btn" type="button" data-action="cart-remove" data-id="${product.id}" aria-label="Remove item">×</button>
+          </div>
+        </article>
+      `;
+    }
 
     box.innerHTML = `
-      ${cart
-        .map((product) => {
-          const pName = getProductName(product);
-          const pMat = getProductMaterial(product);
-          const lineTotal = formatPrice((Number(product.price) || 0) * product.quantity);
-
-          return `
-            <article class="cart-line" role="listitem">
-              <img src="${product.image}" alt="${product.alt}" loading="lazy" />
-              <div>
-                <h3 class="line-title">${pName}</h3>
-                <p class="line-meta">${pMat}</p>
-                <p class="line-meta"><strong>${formatPrice(product.price)}</strong> ${t("each")}</p>
-                <p class="line-meta">${t("qty")}: ${product.quantity}</p>
-                <p class="line-meta"><strong>${t("total")}:</strong> ${lineTotal}</p>
-              </div>
-              <div class="line-actions">
-                <button class="line-icon-btn" type="button" data-action="cart-decrease" data-id="${product.id}" aria-label="Decrease quantity">−</button>
-                <button class="line-icon-btn" type="button" data-action="cart-increase" data-id="${product.id}" aria-label="Increase quantity">+</button>
-                <button class="line-icon-btn" type="button" data-action="cart-remove" data-id="${product.id}" aria-label="Remove item">×</button>
-              </div>
-            </article>
-          `;
-        })
-        .join("")}
+      ${html}
       <div class="cart-summary" style="margin-top:16px;">
         <div class="cart-summary-row">
           <span>${t("total")}</span>
@@ -332,27 +342,28 @@ export const UI = {
       return;
     }
 
-    box.innerHTML = items
-      .map((product) => {
-        const pName = getProductName(product);
-        const pMat = getProductMaterial(product);
+    let html = "";
+    for (let i = 0; i < items.length; i++) {
+      const product = items[i];
+      const pName = getProductName(product);
+      const pMat = getProductMaterial(product);
 
-        return `
-          <article class="wishlist-line" role="listitem">
-            <img src="${product.image}" alt="${product.alt}" loading="lazy" />
-            <div>
-              <h3 class="line-title">${pName}</h3>
-              <p class="line-meta">${pMat}</p>
-              <p class="line-meta"><strong>${formatPrice(product.price)}</strong></p>
-            </div>
-            <div class="line-actions">
-              <button class="line-icon-btn" type="button" data-action="wishlist-remove" data-id="${product.id}" aria-label="Remove from wishlist">×</button>
-              <button class="line-icon-btn" type="button" data-action="cart-add" data-id="${product.id}" aria-label="Add to cart">+</button>
-            </div>
-          </article>
-        `;
-      })
-      .join("");
+      html += `
+        <article class="wishlist-line">
+          <img src="${product.image}" alt="${product.alt}" loading="lazy" width="82" height="92" />
+          <div>
+            <h3 class="line-title">${pName}</h3>
+            <p class="line-meta">${pMat}</p>
+            <p class="line-meta"><strong>${formatPrice(product.price)}</strong></p>
+          </div>
+          <div class="line-actions">
+            <button class="line-icon-btn" type="button" data-action="wishlist-remove" data-id="${product.id}" aria-label="Remove from wishlist">×</button>
+            <button class="line-icon-btn" type="button" data-action="cart-add" data-id="${product.id}" aria-label="Add to cart">+</button>
+          </div>
+        </article>
+      `;
+    }
+    box.innerHTML = html;
   },
 
   updateCheckoutLink(cart) {
