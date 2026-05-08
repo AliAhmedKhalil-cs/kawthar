@@ -1,271 +1,26 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>KAWTHAR | Kawthar Accessories</title>
-<meta name="description" content="كوثر - وجهتك الأولى للإكسسوارات النسائية الفاخرة من الستانلس ستيل المقاوم للصدأ وشنط الهاند ميد الراقية." />
-<meta name="keywords" content="إكسسوارات, ستانلس ستيل, خواتم, سلاسل, شنط هاند ميد, هدايا نسائية, إكسسوارات مصر, Kawthar Accessories" />
-<meta name="author" content="Ali Ahmed Khalil" />
-<meta name="theme-color" content="#b9a38f" />
-<meta http-equiv="X-Content-Type-Options" content="nosniff" />
-<meta property="og:title" content="KAWTHAR | Kawthar Accessories" />
-<meta property="og:description" content="Radiate elegance with Kawthar exclusive range of tarnish-free jewelry and artisanal handmade bags." />
-<meta property="og:image" content="https://kawthar.site/assets/logo/kawthar-logo-hd.webp" />
-<meta property="og:url" content="https://kawthar.site" />
-<meta property="og:type" content="website" />
-<meta name="google-site-verification" content="55rSDwBaFEP4ScFr2Mr9titkbkc_Hop1fgbGY0D0Ae8" />
-<!-- Preload critical assets -->
-<link rel="preload" href="./assets/logo/kawthar-logo-hd.webp" as="image" fetchpriority="high" />
-<link rel="preload" href="./assets/products/1.webp" as="image" fetchpriority="high" />
-<link rel="manifest" href="./manifest.json" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<!-- Font display=swap to prevent render blocking -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-<noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" /></noscript>
-<link rel="preload" as="style" href="./css/main.css?v=2.0" onload="this.rel='stylesheet'" />
-<link rel="stylesheet" href="./css/main.css?v=2.0" />
-<!-- Critical inline CSS to fix CLS and improve FCP -->
-<style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  :root{--gold:#b9a38f;--gold-dark:#8c7b6b;--white:#fff;--black:#1a1a1a;--gray:#f5f3f0;--radius:12px;--shadow:0 4px 24px rgba(0,0,0,.08)}
-  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-  body{font-family:'Inter',system-ui,sans-serif;color:var(--black);background:#faf9f7;overflow-x:hidden;direction:rtl}
-  img{max-width:100%;height:auto;display:block}
-  .splash-screen{position:fixed;inset:0;background:#faf9f7;display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .5s ease}
-  .splash-screen.hidden{opacity:0;pointer-events:none}
-  .splash-content{text-align:center}
-  .splash-logo{width:120px;height:120px;object-fit:contain;border-radius:50%}
-  .splash-loader{width:40px;height:3px;background:#eee;border-radius:3px;margin:16px auto 0;overflow:hidden;position:relative}
-  .splash-loader::after{content:'';position:absolute;inset:0;background:var(--gold);animation:load 1.5s ease infinite;transform-origin:left}
-  @keyframes load{0%{transform:scaleX(0)}50%{transform:scaleX(1)}100%{transform:scaleX(0)}}
-  .site-shell{min-height:100vh;position:relative}
-  .aurora{position:fixed;border-radius:50%;filter:blur(80px);opacity:.25;pointer-events:none;z-index:0}
-  .aurora-1{width:600px;height:600px;background:radial-gradient(circle,#b9a38f,transparent);top:-200px;right:-200px}
-  .aurora-2{width:500px;height:500px;background:radial-gradient(circle,#d4c4b5,transparent);bottom:-100px;left:-100px}
-  .noise-layer{position:fixed;inset:0;opacity:.03;pointer-events:none;z-index:1;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-  .announcement-bar{background:var(--black);color:var(--white);font-size:.75rem;letter-spacing:.12em;overflow:hidden;height:36px;display:flex;align-items:center;position:relative;z-index:10;will-change:transform}
-  .announcement-track{display:flex;gap:60px;white-space:nowrap;animation:marquee 22s linear infinite;padding:0 60px}
-  @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-  .main-header{position:sticky;top:0;z-index:100;background:rgba(250,249,247,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(185,163,143,.18);transition:box-shadow .3s}
-  .main-header.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.08)}
-  .container{width:100%;max-width:1200px;margin:0 auto;padding:0 20px}
-  .header-inner{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
-  .header-left{display:flex;align-items:center;gap:16px}
-  .desktop-nav{display:flex;gap:8px}
-  .nav-link{color:var(--black);text-decoration:none;font-size:.875rem;font-weight:500;padding:8px 14px;border-radius:8px;transition:background .2s,color .2s;position:relative}
-  .nav-link:hover,.nav-link.active{background:rgba(185,163,143,.12);color:var(--gold-dark)}
-  .brand-logo{display:flex;align-items:center;text-decoration:none}
-  .brand-logo-img{width:56px;height:56px;object-fit:contain;border-radius:50%}
-  .header-actions{display:flex;align-items:center;gap:8px}
-  .icon-circle{width:40px;height:40px;border-radius:50%;border:1.5px solid rgba(185,163,143,.35);background:rgba(250,249,247,.7);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;position:relative;transition:background .2s,border-color .2s,transform .15s;color:var(--black)}
-  .icon-circle:hover{background:var(--gold);border-color:var(--gold);color:var(--white);transform:scale(1.05)}
-  .badge{position:absolute;top:-4px;right:-4px;background:var(--gold-dark);color:var(--white);font-size:.6rem;font-weight:700;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center;line-height:1}
-  .badge-anchor{position:relative}
-  .icon-btn{background:none;border:none;cursor:pointer;padding:8px;display:flex;flex-direction:column;gap:5px}
-  .icon-btn span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px;transition:transform .3s,opacity .3s}
-  .mobile-only{display:none}
-  /* Hero */
-  .hero-section{padding:80px 0 60px;position:relative;z-index:2}
-  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-  .hero-kicker{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.2em;color:var(--gold-dark);text-transform:uppercase;margin-bottom:16px;background:rgba(185,163,143,.1);padding:6px 14px;border-radius:20px}
-  .hero-copy h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;line-height:1.2;color:var(--black);margin-bottom:20px}
-  .hero-copy p{font-size:1rem;color:#555;line-height:1.7;margin-bottom:28px;max-width:440px}
-  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:50px;font-size:.875rem;font-weight:600;text-decoration:none;cursor:pointer;border:2px solid transparent;transition:all .25s cubic-bezier(.4,0,.2,1);letter-spacing:.04em;white-space:nowrap}
-  .btn-primary{background:var(--black);color:var(--white);border-color:var(--black)}
-  .btn-primary:hover{background:var(--gold-dark);border-color:var(--gold-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(140,123,107,.35)}
-  .btn-secondary{background:transparent;color:var(--black);border-color:rgba(0,0,0,.2)}
-  .btn-secondary:hover{background:var(--black);color:var(--white);border-color:var(--black);transform:translateY(-2px)}
-  .btn-block{display:flex;width:100%;justify-content:center}
-  .hero-metrics{display:flex;gap:16px;flex-wrap:wrap}
-  .metric-card{flex:1;min-width:130px;padding:16px;background:rgba(255,255,255,.7);border-radius:12px;border:1px solid rgba(185,163,143,.2);backdrop-filter:blur(8px)}
-  .metric-card strong{display:block;font-size:.875rem;font-weight:700;color:var(--black);margin-bottom:4px}
-  .metric-card span{font-size:.75rem;color:#777}
-  /* Hero visual — explicit dimensions to prevent CLS */
-  .hero-visual{position:relative;z-index:2}
-  .hero-stack{position:relative;height:520px}
-  .hero-card{border-radius:20px;overflow:hidden;position:absolute;box-shadow:0 12px 40px rgba(0,0,0,.12)}
-  .hero-card img{width:100%;height:100%;object-fit:cover}
-  .hero-card-main{width:320px;height:440px;top:40px;right:0;z-index:2}
-  .hero-card-floating{width:200px;height:260px;z-index:3}
-  .hero-card-floating.top{top:0;right:300px}
-  .hero-card-floating.bottom{bottom:0;right:260px}
-  /* Sections */
-  .trust-section{padding:60px 0;position:relative;z-index:2}
-  .trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-  .trust-card{background:rgba(255,255,255,.8);border-radius:16px;padding:32px 24px;text-align:center;border:1px solid rgba(185,163,143,.15);backdrop-filter:blur(8px);transition:transform .3s,box-shadow .3s}
-  .trust-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(185,163,143,.2)}
-  .trust-icon{font-size:1.5rem;color:var(--gold);display:block;margin-bottom:12px}
-  .trust-card h3{font-family:'Playfair Display',Georgia,serif;font-size:1.1rem;margin-bottom:8px}
-  .trust-card p{font-size:.85rem;color:#666;line-height:1.6}
-  .collections-section,.featured-section,.story-section,.cta-section{padding:80px 0;position:relative;z-index:2}
-  .section-head{text-align:center;margin-bottom:48px}
-  .eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.2em;color:var(--gold-dark);text-transform:uppercase;margin-bottom:10px}
-  .section-head h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.6rem,3vw,2.4rem);color:var(--black)}
-  .collections-grid{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto;gap:20px}
-  .collection-tile{position:relative;border-radius:20px;overflow:hidden;cursor:pointer}
-  .collection-tile.large{grid-row:span 2;grid-column:1}
-  .collection-tile img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;min-height:200px}
-  .collection-tile:hover img{transform:scale(1.04)}
-  .collection-content{position:absolute;bottom:0;left:0;right:0;padding:24px;background:linear-gradient(transparent,rgba(0,0,0,.6));color:var(--white)}
-  .collection-content span{font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;opacity:.8;display:block;margin-bottom:4px}
-  .collection-content h3{font-family:'Playfair Display',Georgia,serif;font-size:1.3rem;margin-bottom:10px}
-  .text-action{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.4);color:var(--white);padding:8px 18px;border-radius:50px;font-size:.8rem;font-weight:600;cursor:pointer;transition:background .2s,transform .2s;backdrop-filter:blur(4px)}
-  .text-action:hover{background:rgba(255,255,255,.3);transform:translateY(-1px)}
-  /* Products grid */
-  .store-toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:32px}
-  .toolbar-left{display:flex;flex-wrap:wrap;gap:8px}
-  .filter-pill{padding:8px 18px;border-radius:50px;border:1.5px solid rgba(185,163,143,.3);background:transparent;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s;color:var(--black)}
-  .filter-pill:hover,.filter-pill.active{background:var(--black);color:var(--white);border-color:var(--black)}
-  .select-input{padding:8px 16px;border-radius:50px;border:1.5px solid rgba(185,163,143,.3);background:transparent;font-size:.8rem;cursor:pointer;outline:none;color:var(--black)}
-  .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px}
-  .product-card{background:var(--white);border-radius:16px;overflow:hidden;border:1px solid rgba(185,163,143,.1);transition:transform .3s,box-shadow .3s;cursor:pointer;position:relative}
-  .product-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.1)}
-  .product-img-wrap{aspect-ratio:3/4;overflow:hidden;background:#f5f3f0;position:relative}
-  .product-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
-  .product-card:hover .product-img-wrap img{transform:scale(1.05)}
-  .product-badge{position:absolute;top:12px;right:12px;background:var(--gold-dark);color:var(--white);font-size:.65rem;font-weight:700;padding:4px 10px;border-radius:20px;z-index:1}
-  .product-actions-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:10px;background:rgba(0,0,0,.35);opacity:0;transition:opacity .3s;z-index:2}
-  .product-card:hover .product-actions-overlay{opacity:1}
-  .product-action-btn{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.9);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:transform .2s,background .2s}
-  .product-action-btn:hover{transform:scale(1.1);background:var(--white)}
-  .product-info{padding:16px}
-  .product-info h3{font-size:.9rem;font-weight:600;color:var(--black);margin-bottom:6px;line-height:1.4}
-  .product-info .price{font-size:1rem;font-weight:700;color:var(--gold-dark)}
-  .product-info .price-old{font-size:.8rem;color:#aaa;text-decoration:line-through;margin-right:6px}
-  .product-footer{padding:0 16px 16px;display:flex;gap:8px}
-  .btn-wa{flex:1;background:#25d366;color:var(--white);border:none;border-radius:50px;padding:10px;font-size:.8rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .2s,transform .2s;text-decoration:none}
-  .btn-wa:hover{background:#1ebe59;transform:translateY(-1px)}
-  .btn-cart-add{width:40px;height:40px;border-radius:50%;background:var(--black);color:var(--white);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:background .2s,transform .2s;flex-shrink:0}
-  .btn-cart-add:hover{background:var(--gold-dark);transform:scale(1.05)}
-  /* Story */
-  .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-  .story-media{border-radius:20px;overflow:hidden}
-  .story-media img{width:100%;height:auto;object-fit:cover}
-  .story-copy .eyebrow{margin-bottom:10px}
-  .story-copy h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:20px}
-  .story-copy p{color:#555;line-height:1.7;margin-bottom:14px;font-size:.95rem}
-  .story-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
-  /* CTA */
-  .cta-box{background:var(--black);color:var(--white);border-radius:24px;padding:60px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
-  .cta-box .eyebrow{color:var(--gold)}
-  .cta-box h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.4rem,3vw,2rem);color:var(--white);margin:10px 0}
-  .cta-box p{font-size:.9rem;color rgba(255,255,255,.7);max-width:480px}
-  .cta-actions{display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0}
-  .cta-box .btn-primary{background:var(--gold);border-color:var(--gold);color:var(--white)}
-  .cta-box .btn-primary:hover{background:var(--gold-dark);border-color:var(--gold-dark)}
-  .cta-box .btn-secondary{color:var(--white);border-color:rgba(255,255,255,.3)}
-  .cta-box .btn-secondary:hover{background:var(--white);color:var(--black);border-color:var(--white)}
-  /* Drawers */
-  .site-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:199;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(2px)}
-  .site-overlay.active{opacity:1;pointer-events:all}
-  .drawer{position:fixed;z-index:200;background:#faf9f7;transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column}
-  .right-drawer{top:0;right:0;width:380px;height:100%;transform:translateX(110%)}
-  .left-drawer{top:0;left:0;width:320px;height:100%;transform:translateX(-110%)}
-  .top-drawer{top:0;left:0;right:0;height:auto;max-height:85vh;transform:translateY(-110%);border-radius:0 0 24px 24px}
-  .drawer.open{transform:none}
-  .drawer-header{display:flex;align-items:center;justify-content:space-between;padding:24px;border-bottom:1px solid rgba(185,163,143,.15)}
-  .drawer-title-wrap .eyebrow{margin-bottom:4px}
-  .drawer-title-wrap h2{font-family:'Playfair Display',Georgia,serif;font-size:1.3rem}
-  .icon-close{width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(185,163,143,.3);background:transparent;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:background .2s;color:var(--black)}
-  .icon-close:hover{background:var(--black);color:var(--white)}
-  .drawer-nav{padding:16px;display:flex;flex-direction:column;gap:4px}
-  .drawer-nav-link{padding:14px 16px;border-radius:10px;text-decoration:none;color:var(--black);font-weight:500;font-size:.95rem;transition:background .2s}
-  .drawer-nav-link:hover{background:rgba(185,163,143,.12);color:var(--gold-dark)}
-  .search-drawer-body{padding:20px}
-  .search-input-wrap{margin-bottom:16px}
-  .search-input-wrap input{width:100%;padding:12px 16px;border-radius:12px;border:1.5px solid rgba(185,163,143,.3);background:var(--white);font-size:.95rem;outline:none;transition:border-color .2s}
-  .search-input-wrap input:focus{border-color:var(--gold)}
-  .search-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
-  .chip{padding:6px 14px;border-radius:50px;border:1.5px solid rgba(185,163,143,.3);background:transparent;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s}
-  .chip:hover{background:var(--black);color:var(--white);border-color:var(--black)}
-  .search-results{display:flex;flex-direction:column;gap:12px;max-height:55vh;overflow-y:auto}
-  .drawer-scroll-body{flex:1;overflow-y:auto;padding:16px}
-  .drawer-footer{padding:16px;border-top:1px solid rgba(185,163,143,.15)}
-  .cart-summary{margin-bottom:12px}
-  .cart-summary-row{display:flex;justify-content:space-between;padding:8px 0;font-size:.9rem}
-  .wishlist-item,.cart-item{display:flex;gap:12px;padding:12px;background:var(--white);border-radius:12px;border:1px solid rgba(185,163,143,.12);margin-bottom:8px}
-  .wishlist-item img,.cart-item img{width:64px;height:64px;object-fit:cover;border-radius:8px;flex-shrink:0}
-  .item-details{flex:1;min-width:0}
-  .item-details h4{font-size:.85rem;font-weight:600;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .item-details .price{font-size:.8rem;color:var(--gold-dark);font-weight:700}
-  .item-remove{background:none;border:none;cursor:pointer;font-size:1rem;color:#bbb;transition:color .2s;padding:4px;align-self:flex-start}
-  .item-remove:hover{color:#e55}
-  .empty-state{text-align:center;padding:40px 20px;color:#aaa}
-  .empty-state p{font-size:.9rem;margin-top:8px}
-  /* Footer */
-  .main-footer{background:var(--black);color:rgba(255,255,255,.75);padding:60px 0 32px;position:relative;z-index:2}
-  .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px}
-  .footer-brand .brand-logo-img{width:48px;height:48px;border-radius:50%;margin-bottom:16px}
-  .footer-text{font-size:.85rem;line-height:1.7;color:rgba(255,255,255,.55);max-width:260px}
-  .main-footer h3{font-size:.875rem;font-weight:700;color:var(--white);margin-bottom:16px;letter-spacing:.08em}
-  .footer-list{list-style:none}
-  .footer-list li{margin-bottom:10px}
-  .footer-list a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.85rem;transition:color .2s}
-  .footer-list a:hover{color:var(--gold)}
-  .footer-list span{font-size:.85rem;color:rgba(255,255,255,.4)}
-  /* WhatsApp float */
-  .wa-float{position:fixed;bottom:28px;left:28px;width:58px;height:58px;border-radius:50%;background:#25d366;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:500;transition:transform .2s,box-shadow .2s}
-  .wa-float:hover{transform:scale(1.1);box-shadow:0 8px 30px rgba(37,211,102,.5)}
-  .wa-float-tooltip{position:absolute;bottom:68px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.8);color:var(--white);font-size:.7rem;padding:5px 10px;border-radius:6px;white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none}
-  .wa-float:hover .wa-float-tooltip{opacity:1}
-  /* Toast */
-  .sp-toast-wrap{position:fixed;bottom:100px;left:50%;transform:translateX(-50%);z-index:9999;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none}
-  .sp-toast{background:var(--black);color:var(--white);padding:12px 24px;border-radius:50px;font-size:.85rem;font-weight:500;animation:toastIn .3s ease,toastOut .3s ease 2.2s forwards;white-space:nowrap}
-  @keyframes toastIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-  @keyframes toastOut{from{opacity:1}to{opacity:0;pointer-events:none}}
-  /* Quick view overlay */
-  .quick-view-overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s}
-  .quick-view-overlay.active{opacity:1;pointer-events:all}
-  .quick-view-modal{background:#faf9f7;border-radius:24px;padding:32px;max-width:600px;width:90%;max-height:85vh;overflow-y:auto;display:flex;gap:28px;position:relative;flex-wrap:wrap}
-  .quick-view-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(185,163,143,.3);background:transparent;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:background .2s;color:var(--black)}
-  .quick-view-close:hover{background:var(--black);color:var(--white)}
-  .quick-view-img{width:220px;border-radius:16px;overflow:hidden;flex-shrink:0}
-  .quick-view-img img{width:100%;height:280px;object-fit:cover}
-  .quick-view-info{flex:1;min-width:180px}
-  .quick-view-info h2{font-family:'Playfair Display',Georgia,serif;font-size:1.3rem;margin-bottom:8px}
-  .quick-view-info .price{font-size:1.2rem;font-weight:700;color:var(--gold-dark);margin-bottom:16px}
-  .quick-view-info p{font-size:.85rem;color:#666;line-height:1.6;margin-bottom:20px}
-  .quick-view-actions{display:flex;gap:10px;flex-wrap:wrap}
-  /* Reveal animation */
-  .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
-  .reveal.visible{opacity:1;transform:none}
-  .delay-1{transition-delay:.1s}
-  .delay-2{transition-delay:.2s}
-  .delay-3{transition-delay:.3s}
-  .delay-4{transition-delay:.4s}
-  /* Responsive */
-  @media(max-width:1024px){
-    .hero-grid{gap:30px}
-    .hero-card-main{width:260px;height:360px}
-    .hero-card-floating{width:160px;height:200px}
-    .hero-stack{height:420px}
-    .collections-grid{grid-template-columns:1fr 1fr}
-    .collection-tile.large{grid-column:1 2;grid-row:1}
-  }
-  @media(max-width:768px){
-    .desktop-nav{display:none}
-    .mobile-only{display:flex}
-    .hero-grid{grid-template-columns:1fr}
-    .hero-visual{display:none}
-    .trust-grid{grid-template-columns:1fr}
-    .collections-grid{grid-template-columns:1fr}
-    .collection-tile.large{grid-column:auto;grid-row:auto}
-    .story-grid{grid-template-columns:1fr}
-    .footer-grid{grid-template-columns:1fr}
-    .cta-box{flex-direction:column;padding:36px 24px}
-    .right-drawer{width:100%}
-    .products-grid{grid-template-columns:repeat(2,1fr);gap:12px}
-    .hero-section{padding:40px 0 32px}
-  }
-  @media(max-width:480px){
-    .products-grid{grid-template-columns:1fr}
-    .hero-copy h1{font-size:1.8rem}
-    .metric-card{min-width:calc(50% - 8px)}
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KAWTHAR | Kawthar Accessories</title>
+  <meta name="description" content="كوثر - وجهتك الأولى للإكسسوارات النسائية الفاخرة من الستانلس ستيل المقاوم للصدأ وشنط الهاند ميد الراقية." />
+  <meta name="keywords" content="إكسسوارات, ستانلس ستيل, خواتم, سلاسل, شنط هاند ميد, هدايا نسائية, إكسسوارات مصر, Kawthar Accessories" />
+  <meta name="author" content="Ali Ahmed Khalil" />
+  <meta name="theme-color" content="#b9a38f" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta property="og:title" content="KAWTHAR | Kawthar Accessories" />
+  <meta property="og:description" content="Radiate elegance with Kawthar exclusive range of tarnish-free jewelry and artisanal handmade bags." />
+  <meta property="og:image" content="https://kawthar.site/assets/logo/kawthar-logo-hd.webp" />
+  <meta property="og:url" content="https://kawthar.site" />
+  <meta property="og:type" content="website" />
+  
+  <link rel="preload" href="./assets/logo/kawthar-logo-hd.webp" as="image" fetchpriority="high" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/main.css?v=2.0" />
 </head>
 <body>
 
@@ -283,12 +38,12 @@
 
   <div class="announcement-bar" role="marquee" aria-label="Announcements">
     <div class="announcement-track">
-      <span>KAWTHAR • Stainless Steel Anti Rust</span>
-      <span>Handmade Premium Bags</span>
-      <span>Direct inquiry via WhatsApp</span>
-      <span>KAWTHAR • Stainless Steel Anti Rust</span>
-      <span>Handmade Premium Bags</span>
-      <span>Direct inquiry via WhatsApp</span>
+      <span data-i18n="announce_1">KAWTHAR • Stainless Steel Anti Rust</span>
+      <span data-i18n="announce_2">Handmade Premium Bags</span>
+      <span data-i18n="announce_3">Direct inquiry via WhatsApp</span>
+      <span data-i18n="announce_1">KAWTHAR • Stainless Steel Anti Rust</span>
+      <span data-i18n="announce_2">Handmade Premium Bags</span>
+      <span data-i18n="announce_3">Direct inquiry via WhatsApp</span>
     </div>
   </div>
 
@@ -301,14 +56,14 @@
           <span></span><span></span><span></span>
         </button>
         <nav class="desktop-nav" role="navigation" aria-label="Main navigation">
-          <a href="#home" class="nav-link active">Home</a>
-          <a href="#collections" class="nav-link">Collections</a>
-          <a href="#featured" class="nav-link">Featured</a>
-          <a href="#story" class="nav-link">Story</a>
+          <a href="#home" class="nav-link active" data-i18n="nav_home">Home</a>
+          <a href="#collections" class="nav-link" data-i18n="nav_collections">Collections</a>
+          <a href="#featured" class="nav-link" data-i18n="nav_featured">Featured</a>
+          <a href="#story" class="nav-link" data-i18n="nav_story">Story</a>
         </nav>
       </div>
       <a href="./index.html" class="brand-logo" aria-label="KAWTHAR Home">
-        <img src="./assets/logo/kawthar-logo-hd.webp" width="56" height="56" alt="Kawthar Logo" class="brand-logo-img" fetchpriority="high" decoding="async">
+        <img src="./assets/logo/kawthar-logo-hd.webp" width="72" height="72" alt="Kawthar Logo" class="brand-logo-img" fetchpriority="high" decoding="async">
       </a>
       <div class="header-actions">
         <button class="icon-circle" id="searchOpenBtn" aria-label="بحث" type="button">🔍</button>
@@ -323,43 +78,43 @@
     <section id="home" class="hero-section" aria-labelledby="hero-heading">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <span class="hero-kicker reveal">KAWTHAR COLLECTION</span>
+          <span class="hero-kicker reveal" data-i18n="hero_kicker">KAWTHAR COLLECTION</span>
           <h1 id="hero-heading" class="reveal delay-1">
-            Define your elegance with<br>
-            <span>our feminine luxury touch</span>
+            <span data-i18n="hero_title_main">Define your elegance with</span><br>
+            <span data-i18n="hero_title_sub">our feminine luxury touch</span>
           </h1>
-          <p class="reveal delay-2">
+          <p class="reveal delay-2" data-i18n="hero_desc">
             Premium stainless steel accessories and handmade artisan bags designed for your unique style.
           </p>
           <div class="hero-actions reveal delay-3">
-            <a href="#featured" class="btn btn-primary">Shop Collection</a>
-            <a href="./shop.html" class="btn btn-secondary">View Full Shop</a>
+            <a href="#featured" class="btn btn-primary" data-i18n="btn_shop">Shop Collection</a>
+            <a href="./shop.html" class="btn btn-secondary" data-i18n="btn_view">View Full Shop</a>
           </div>
           <div class="hero-metrics reveal delay-4">
             <div class="metric-card">
-              <strong>Luxury Feel</strong>
-              <span>Soft feminine premium identity</span>
+              <strong data-i18n="metric_1_title">Luxury Feel</strong>
+              <span data-i18n="metric_1_desc">Soft feminine premium identity</span>
             </div>
             <div class="metric-card">
-              <strong>Anti Rust</strong>
-              <span>Made from stainless steel</span>
+              <strong data-i18n="metric_2_title">Anti Rust</strong>
+              <span data-i18n="metric_2_desc">Made from stainless steel</span>
             </div>
             <div class="metric-card">
-              <strong>Fast Inquiry</strong>
-              <span>Order directly on WhatsApp</span>
+              <strong data-i18n="metric_3_title">Fast Inquiry</strong>
+              <span data-i18n="metric_3_desc">Order directly on WhatsApp</span>
             </div>
           </div>
         </div>
         <div class="hero-visual reveal delay-2" aria-hidden="true">
           <div class="hero-stack">
             <article class="hero-card hero-card-main">
-              <img src="./assets/products/1.webp" alt="خاتم ملكي ستانلس ستيل من كوثر" width="320" height="440" fetchpriority="high" decoding="sync">
+              <img src="./assets/products/1.webp" alt="Kawthar Main Product" width="400" height="500" fetchpriority="high" decoding="sync">
             </article>
             <article class="hero-card hero-card-floating top">
-              <img src="./assets/products/2.webp" alt="سلسلة فاخرة مقاومة للصدأ" width="200" height="260" loading="lazy" decoding="async">
+              <img src="./assets/products/2.webp" alt="Kawthar Necklace" width="300" height="400" loading="lazy" decoding="async">
             </article>
             <article class="hero-card hero-card-floating bottom">
-              <img src="./assets/products/3.webp" alt="إكسسوارات راقية كوثر" width="200" height="260" loading="lazy" decoding="async">
+              <img src="./assets/products/3.webp" alt="Kawthar Bracelet" width="300" height="400" loading="lazy" decoding="async">
             </article>
           </div>
         </div>
@@ -367,22 +122,22 @@
     </section>
 
     <section class="trust-section" aria-labelledby="trust-heading">
-      <h2 id="trust-heading" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Our Values</h2>
+      <h2 id="trust-heading" class="sr-only">Our Values</h2>
       <div class="container trust-grid">
         <article class="trust-card reveal">
           <span class="trust-icon" aria-hidden="true">✦</span>
-          <h3>Luxury presentation</h3>
-          <p>Elegant visuals and premium product storytelling for stronger conversion.</p>
+          <h3 data-i18n="trust_1_title">Luxury presentation</h3>
+          <p data-i18n="trust_1_desc">Elegant visuals and premium product storytelling for stronger conversion.</p>
         </article>
         <article class="trust-card reveal delay-1">
           <span class="trust-icon" aria-hidden="true">✦</span>
-          <h3>Stainless steel</h3>
-          <p>Selected pieces made from stainless steel anti-rust material.</p>
+          <h3 data-i18n="trust_2_title">Stainless steel</h3>
+          <p data-i18n="trust_2_desc">Selected pieces made from stainless steel anti-rust material.</p>
         </article>
         <article class="trust-card reveal delay-2">
           <span class="trust-icon" aria-hidden="true">✦</span>
-          <h3>Handmade Art</h3>
-          <p>Limited edition artisan bags crafted with premium care.</p>
+          <h3 data-i18n="trust_new_title">Handmade Art</h3>
+          <p data-i18n="trust_new_desc">Limited edition artisan bags crafted with premium care.</p>
         </article>
       </div>
     </section>
@@ -390,32 +145,32 @@
     <section id="collections" class="collections-section" aria-labelledby="collections-heading">
       <div class="container">
         <div class="section-head reveal">
-          <p class="eyebrow">Collections</p>
-          <h2 id="collections-heading">Curated for a polished feminine style</h2>
+          <p class="eyebrow" data-i18n="coll_eyebrow">Collections</p>
+          <h2 id="collections-heading" data-i18n="coll_title">Curated for a polished feminine style</h2>
         </div>
         <div class="collections-grid">
           <article class="collection-tile large reveal">
             <img src="./assets/products/4.webp" alt="شنط هاند ميد مميزة كوثر" width="512" height="636" loading="lazy" decoding="async">
             <div class="collection-content">
-              <span>Handmade Bags</span>
-              <h3>Artisan Crafts</h3>
-              <button class="text-action" data-filter-btn="handmade_bag" type="button">Explore</button>
+              <span data-i18n="coll_bags_tag">Handmade Bags</span>
+              <h3 data-i18n="coll_bags_title">Artisan Crafts</h3>
+              <button class="text-action" data-filter-btn="handmade_bag" type="button" data-i18n="btn_explore">Explore</button>
             </div>
           </article>
           <article class="collection-tile reveal delay-1">
             <img src="./assets/products/5.webp" alt="خواتم ملكية فاخرة" width="300" height="400" loading="lazy" decoding="async">
             <div class="collection-content">
-              <span>Signature Line</span>
-              <h3>Royal Selection</h3>
-              <button class="text-action" data-filter-btn="ring" type="button">Explore</button>
+              <span data-i18n="coll_rings_tag">Signature Line</span>
+              <h3 data-i18n="coll_rings_title">Royal Selection</h3>
+              <button class="text-action" data-filter-btn="ring" type="button" data-i18n="btn_explore">Explore</button>
             </div>
           </article>
           <article class="collection-tile reveal delay-2">
             <img src="./assets/products/6.webp" alt="أساور ستانلس ستيل راقية" width="300" height="300" loading="lazy" decoding="async">
             <div class="collection-content">
-              <span>Daily luxury</span>
-              <h3>Bracelets</h3>
-              <button class="text-action" data-filter-btn="bracelet" type="button">Explore</button>
+              <span data-i18n="coll_3_tag">Daily luxury</span>
+              <h3 data-i18n="coll_3_title">Bracelets</h3>
+              <button class="text-action" data-filter-btn="bracelet" type="button" data-i18n="btn_explore">Explore</button>
             </div>
           </article>
         </div>
@@ -425,24 +180,26 @@
     <section id="featured" class="featured-section" aria-labelledby="featured-heading">
       <div class="container">
         <div class="section-head reveal">
-          <p class="eyebrow">Featured</p>
-          <h2 id="featured-heading">Most requested pieces from KAWTHAR</h2>
+          <p class="eyebrow" data-i18n="feat_eyebrow">Featured</p>
+          <h2 id="featured-heading" data-i18n="feat_title">Most requested pieces from KAWTHAR</h2>
         </div>
         <div class="store-toolbar reveal delay-1" role="toolbar" aria-label="Filter and sort products">
           <div class="toolbar-left" role="group" aria-label="Filter by category">
-            <button class="filter-pill active" data-filter="all" type="button" aria-pressed="true">All</button>
-            <button class="filter-pill" data-filter="necklace" type="button" aria-pressed="false">Necklaces</button>
-            <button class="filter-pill" data-filter="ring" type="button" aria-pressed="false">Rings</button>
-            <button class="filter-pill" data-filter="bracelet" type="button" aria-pressed="false">Bracelets</button>
-            <button class="filter-pill" data-filter="handmade_bag" type="button" aria-pressed="false">Bags</button>
-            <button class="filter-pill" data-filter="set" type="button" aria-pressed="false">Sets</button>
+            <button class="filter-pill active" data-filter="all" type="button" aria-pressed="true" data-i18n="filter_all">All</button>
+            <button class="filter-pill" data-filter="necklace" type="button" aria-pressed="false" data-i18n="filter_necklaces">Necklaces</button>
+            <button class="filter-pill" data-filter="ring" type="button" aria-pressed="false" data-i18n="filter_rings">Rings</button>
+            <button class="filter-pill" data-filter="bracelet" type="button" aria-pressed="false" data-i18n="filter_bracelets">Bracelets</button>
+            <button class="filter-pill" data-filter="handmade_bag" type="button" aria-pressed="false" data-i18n="filter_bags">Bags</button>
+            <button class="filter-pill" data-filter="set" type="button" aria-pressed="false" data-i18n="filter_sets">Sets</button>
           </div>
           <div class="toolbar-right">
             <label for="sortSelect" class="sr-only">Sort products</label>
             <select id="sortSelect" class="select-input">
-              <option value="featured">Featured</option>
-              <option value="name-asc">Name A-Z</option>
-              <option value="name-desc">Name Z-A</option>
+              <option value="featured" data-i18n="sort_featured">Featured</option>
+              <option value="name-asc" data-i18n="sort_asc">Name A-Z</option>
+              <option value="name-desc" data-i18n="sort_desc">Name Z-A</option>
+              <option value="price-asc" data-i18n="sort_price_asc">Price: Low to High</option>
+              <option value="price-desc" data-i18n="sort_price_desc">Price: High to Low</option>
             </select>
           </div>
         </div>
@@ -453,16 +210,16 @@
     <section id="story" class="story-section" aria-labelledby="story-heading">
       <div class="container story-grid">
         <div class="story-media reveal">
-          <img src="./assets/products/7.webp" alt="قصة علامة كوثر التجارية" width="400" height="500" loading="lazy" decoding="async" style="width:100%;height:auto">
+          <img src="./assets/products/7.webp" alt="قصة علامة كوثر التجارية" width="400" height="500" loading="lazy" decoding="async">
         </div>
         <div class="story-copy reveal delay-1">
-          <p class="eyebrow">Our story</p>
-          <h2 id="story-heading">Luxury, but with our own softer feminine signature</h2>
-          <p>KAWTHAR is built around elegant pieces that feel refined, giftable, and visually premium from the first impression.</p>
-          <p>The store experience is designed to move the client naturally from attraction to interest to direct WhatsApp inquiry.</p>
+          <p class="eyebrow" data-i18n="story_eyebrow">Our story</p>
+          <h2 id="story-heading" data-i18n="story_title">Luxury, but with our own softer feminine signature</h2>
+          <p data-i18n="story_p1">KAWTHAR is built around elegant pieces that feel refined, giftable, and visually premium from the first impression.</p>
+          <p data-i18n="story_p2">The store experience is designed to move the client naturally from attraction to interest to direct WhatsApp inquiry.</p>
           <div class="story-actions">
-            <a href="https://wa.me/201034110499?text=Hi%20KAWTHAR%2C%20I%20want%20to%20ask%20about%20a%20piece" class="btn btn-primary" target="_blank" rel="noreferrer noopener">Ask on WhatsApp</a>
-            <a href="https://www.instagram.com/kawtheraeg_/" class="btn btn-secondary" target="_blank" rel="noreferrer noopener">Visit Instagram</a>
+            <a href="https://wa.me/201034110499" class="btn btn-primary" target="_blank" rel="noreferrer noopener" data-i18n="btn_ask_wa">Ask on WhatsApp</a>
+            <a href="https://www.instagram.com/kawtheraeg_/" class="btn btn-secondary" target="_blank" rel="noreferrer noopener" data-i18n="btn_visit_ig">Visit Instagram</a>
           </div>
         </div>
       </div>
@@ -472,92 +229,88 @@
       <div class="container">
         <div class="cta-box reveal">
           <div>
-            <p class="eyebrow">Direct conversion</p>
-            <h2 id="cta-heading">Ready to ask about a piece or place your order?</h2>
-            <p>Tap WhatsApp and send the product name directly. The store is designed to make that step natural and easy.</p>
+            <p class="eyebrow" data-i18n="cta_eyebrow">Direct conversion</p>
+            <h2 id="cta-heading" data-i18n="cta_title">Ready to ask about a piece or place your order?</h2>
+            <p data-i18n="cta_desc">Tap WhatsApp and send the product name directly. The store is designed to make that step natural and easy.</p>
           </div>
           <div class="cta-actions">
-            <a href="https://wa.me/201034110499" class="btn btn-primary" target="_blank" rel="noreferrer noopener">Start WhatsApp inquiry</a>
-            <a href="https://www.instagram.com/kawtheraeg_/" class="btn btn-secondary" target="_blank" rel="noreferrer noopener">Follow Instagram</a>
+            <a href="https://wa.me/201034110499" class="btn btn-primary" target="_blank" rel="noreferrer noopener" data-i18n="btn_start_wa">Start WhatsApp inquiry</a>
+            <a href="https://www.instagram.com/kawtheraeg_/" class="btn btn-secondary" target="_blank" rel="noreferrer noopener" data-i18n="btn_follow_ig">Follow Instagram</a>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Mobile Menu Drawer -->
   <aside id="mobileMenu" class="drawer left-drawer" aria-hidden="true" aria-label="Mobile navigation">
     <div class="drawer-header">
       <div class="drawer-title-wrap">
-        <p class="eyebrow">Navigation</p>
+        <p class="eyebrow" data-i18n="nav_title">Navigation</p>
         <h2>KAWTHAR</h2>
       </div>
-      <button class="icon-close" id="mobileMenuCloseBtn" type="button" aria-label="إغلاق القائمة">×</button>
+      <button class="icon-close" id="mobileMenuCloseBtn" type="button" aria-label="Close menu">×</button>
     </div>
     <nav class="drawer-nav" role="navigation" aria-label="Mobile navigation">
-      <a href="#home" class="drawer-nav-link">Home</a>
-      <a href="./shop.html" class="drawer-nav-link">Shop</a>
-      <a href="#collections" class="drawer-nav-link">Collections</a>
-      <a href="#featured" class="drawer-nav-link">Featured</a>
-      <a href="#contact" class="drawer-nav-link">Contact</a>
+      <a href="#home" class="drawer-nav-link" data-i18n="nav_home">Home</a>
+      <a href="./shop.html" class="drawer-nav-link" data-i18n="nav_shop">Shop</a>
+      <a href="#collections" class="drawer-nav-link" data-i18n="nav_collections">Collections</a>
+      <a href="#featured" class="drawer-nav-link" data-i18n="nav_featured">Featured</a>
+      <a href="#contact" class="drawer-nav-link" data-i18n="contact_title">Contact</a>
     </nav>
   </aside>
 
-  <!-- Search Drawer -->
   <aside id="searchDrawer" class="drawer top-drawer" aria-hidden="true" aria-label="Search">
     <div class="drawer-header">
       <div class="drawer-title-wrap">
-        <p class="eyebrow">Search</p>
-        <h2>Find your next piece</h2>
+        <p class="eyebrow" data-i18n="search_title">Search</p>
+        <h2 data-i18n="search_heading">Find your next piece</h2>
       </div>
-      <button class="icon-close" id="searchCloseBtn" type="button" aria-label="إغلاق البحث">×</button>
+      <button class="icon-close" id="searchCloseBtn" type="button" aria-label="Close search">×</button>
     </div>
     <div class="search-drawer-body">
       <div class="search-input-wrap">
         <label for="searchInput" class="sr-only">Search products</label>
-        <input type="search" id="searchInput" placeholder="Search..." autocomplete="off" />
+        <input type="search" id="searchInput" data-i18n-placeholder="search_placeholder" placeholder="Search..." autocomplete="off" />
       </div>
       <div class="search-tags" role="group" aria-label="Search by category">
-        <button class="chip" data-search-tag="necklace" type="button">Necklaces</button>
-        <button class="chip" data-search-tag="ring" type="button">Rings</button>
-        <button class="chip" data-search-tag="bracelet" type="button">Bracelets</button>
-        <button class="chip" data-search-tag="handmade_bag" type="button">Handmade Bags</button>
-        <button class="chip" data-search-tag="set" type="button">Sets</button>
+        <button class="chip" data-search-tag="necklace" type="button" data-i18n="filter_necklaces">Necklaces</button>
+        <button class="chip" data-search-tag="ring" type="button" data-i18n="filter_rings">Rings</button>
+        <button class="chip" data-search-tag="bracelet" type="button" data-i18n="filter_bracelets">Bracelets</button>
+        <button class="chip" data-search-tag="handmade_bag" type="button" data-i18n="filter_bags">Handmade Bags</button>
+        <button class="chip" data-search-tag="set" type="button" data-i18n="filter_sets">Sets</button>
       </div>
       <div id="searchResults" class="search-results" role="list" aria-live="polite"></div>
     </div>
   </aside>
 
-  <!-- Wishlist Drawer -->
   <aside id="wishlistDrawer" class="drawer right-drawer" aria-hidden="true" aria-label="Wishlist">
     <div class="drawer-header">
       <div class="drawer-title-wrap">
-        <p class="eyebrow">Saved</p>
-        <h2>Your wishlist</h2>
+        <p class="eyebrow" data-i18n="saved_title">Saved</p>
+        <h2 data-i18n="saved_heading">Your wishlist</h2>
       </div>
-      <button class="icon-close" id="wishlistCloseBtn" type="button" aria-label="إغلاق المفضلة">×</button>
+      <button class="icon-close" id="wishlistCloseBtn" type="button" aria-label="Close wishlist">×</button>
     </div>
     <div id="wishlistItems" class="drawer-scroll-body" role="list"></div>
   </aside>
 
-  <!-- Cart Drawer -->
   <aside id="cartDrawer" class="drawer right-drawer" aria-hidden="true" aria-label="Shopping cart">
     <div class="drawer-header">
       <div class="drawer-title-wrap">
-        <p class="eyebrow">Cart</p>
-        <h2>Your selection</h2>
+        <p class="eyebrow" data-i18n="cart_title">Cart</p>
+        <h2 data-i18n="cart_heading">Your selection</h2>
       </div>
-      <button class="icon-close" id="cartCloseBtn" type="button" aria-label="إغلاق السلة">×</button>
+      <button class="icon-close" id="cartCloseBtn" type="button" aria-label="Close cart">×</button>
     </div>
     <div id="cartItems" class="drawer-scroll-body" role="list"></div>
     <div class="drawer-footer">
       <div class="cart-summary">
         <div class="cart-summary-row">
-          <span>Items</span>
+          <span data-i18n="items">Items</span>
           <strong id="cartItemsCount">0</strong>
         </div>
       </div>
-      <a id="checkoutWhatsAppBtn" class="btn btn-primary btn-block" href="https://wa.me/201034110499" target="_blank" rel="noreferrer noopener">Check on WhatsApp</a>
+      <a id="checkoutWhatsAppBtn" class="btn btn-primary btn-block" href="https://wa.me/201034110499" target="_blank" rel="noreferrer noopener" data-i18n="check_whatsapp">Check on WhatsApp</a>
     </div>
   </aside>
 
@@ -565,31 +318,30 @@
     <div class="container footer-grid">
       <div>
         <a href="./index.html" class="brand-logo footer-brand" aria-label="KAWTHAR Home">
-          <img src="./assets/logo/kawthar-logo-hd.webp" width="48" height="48" alt="Kawthar Logo" class="brand-logo-img" loading="lazy" decoding="async">
+          <img src="./assets/logo/kawthar-logo-hd.webp" width="72" height="72" alt="Kawthar Logo" class="brand-logo-img" loading="lazy" decoding="async">
         </a>
-        <p class="footer-text">A luxury-first storefront inspired by premium commerce experiences, rebuilt with KAWTHAR identity.</p>
+        <p class="footer-text" data-i18n="footer_desc">A luxury-first storefront inspired by premium commerce experiences, rebuilt with KAWTHAR identity.</p>
       </div>
       <div>
-        <h3>Shop</h3>
+        <h3 data-i18n="nav_shop">Shop</h3>
         <ul class="footer-list">
-          <li><a href="./shop.html">All products</a></li>
+          <li><a href="./shop.html" data-i18n="footer_all_products">All products</a></li>
         </ul>
       </div>
       <div>
-        <h3>Contact</h3>
+        <h3 data-i18n="contact_title">Contact</h3>
         <ul class="footer-list">
           <li><a href="https://wa.me/201034110499" target="_blank" rel="noreferrer noopener">WhatsApp</a></li>
           <li><a href="https://www.instagram.com/kawtheraeg_/" target="_blank" rel="noreferrer noopener">Instagram</a></li>
-          <li><span>Premium Stainless Steel &amp; Artisan Bags</span></li>
+          <li><span data-i18n="footer_material_new">Premium Stainless Steel &amp; Artisan Bags</span></li>
         </ul>
       </div>
     </div>
   </footer>
 </div>
 
-<!-- WhatsApp Float -->
 <button id="waFloatBtn" class="wa-float" aria-label="Chat with us on WhatsApp" type="button">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white" width="28" height="28" aria-hidden="true">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white" width="28" height="28" aria-hidden="true" style="position:relative; z-index:2;">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
     <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.524 5.849L.057 23.428a.5.5 0 0 0 .515.572l5.718-1.502A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.7-.5-5.26-1.37l-.38-.22-3.94 1.03 1.05-3.83-.25-.4A10 10 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
   </svg>
@@ -599,360 +351,11 @@
 <div id="spToastWrap" class="sp-toast-wrap" role="status" aria-live="polite"></div>
 <div id="quickViewOverlay" class="quick-view-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Product quick view"></div>
 
-<!-- Inline critical JS first, defer heavy app.js -->
 <script>
-  // Splash screen
-  window.addEventListener('load', function() {
-    var s = document.getElementById('splashScreen');
-    if (s) { setTimeout(function(){ s.classList.add('hidden'); setTimeout(function(){ s.remove(); }, 600); }, 600); }
-  });
-
-  // Header scroll effect
-  var hdr = document.getElementById('mainHeader');
-  window.addEventListener('scroll', function(){ hdr && hdr.classList.toggle('scrolled', window.scrollY > 20); }, { passive: true });
-
-  // Reveal on scroll
-  var revealObs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(function(el){ revealObs.observe(el); });
-
-  // Toast helper
-  function showToast(msg) {
-    var wrap = document.getElementById('spToastWrap');
-    if (!wrap) return;
-    var t = document.createElement('div');
-    t.className = 'sp-toast';
-    t.textContent = msg;
-    wrap.appendChild(t);
-    setTimeout(function(){ t.remove(); }, 2600);
-  }
-
-  // State
-  var cart = JSON.parse(localStorage.getItem('kw_cart') || '[]');
-  var wishlist = JSON.parse(localStorage.getItem('kw_wish') || '[]');
-
-  function saveCart(){ localStorage.setItem('kw_cart', JSON.stringify(cart)); }
-  function saveWish(){ localStorage.setItem('kw_wish', JSON.stringify(wishlist)); }
-
-  function updateCounts() {
-    var cc = document.getElementById('cartCount');
-    var wc = document.getElementById('wishlistCount');
-    if (cc) cc.textContent = cart.reduce(function(a,i){ return a+(i.qty||1); }, 0);
-    if (wc) wc.textContent = wishlist.length;
-  }
-  updateCounts();
-
-  // Drawer logic
-  var overlay = document.getElementById('siteOverlay');
-  var openDrawer = null;
-
-  function openD(id) {
-    var d = document.getElementById(id);
-    if (!d) return;
-    if (openDrawer && openDrawer !== d) closeAllDrawers();
-    d.classList.add('open');
-    d.setAttribute('aria-hidden','false');
-    overlay.classList.add('active');
-    overlay.setAttribute('aria-hidden','false');
-    openDrawer = d;
-    document.body.style.overflow = 'hidden';
-  }
-  function closeAllDrawers() {
-    document.querySelectorAll('.drawer.open').forEach(function(d){
-      d.classList.remove('open');
-      d.setAttribute('aria-hidden','true');
-    });
-    overlay.classList.remove('active');
-    overlay.setAttribute('aria-hidden','true');
-    openDrawer = null;
-    document.body.style.overflow = '';
-  }
-
-  overlay.addEventListener('click', closeAllDrawers);
-
-  document.getElementById('mobileMenuBtn').addEventListener('click', function(){ openD('mobileMenu'); });
-  document.getElementById('mobileMenuCloseBtn').addEventListener('click', closeAllDrawers);
-  document.getElementById('searchOpenBtn').addEventListener('click', function(){ openD('searchDrawer'); document.getElementById('searchInput').focus(); });
-  document.getElementById('searchCloseBtn').addEventListener('click', closeAllDrawers);
-  document.getElementById('wishlistOpenBtn').addEventListener('click', function(){ renderWishlist(); openD('wishlistDrawer'); });
-  document.getElementById('wishlistCloseBtn').addEventListener('click', closeAllDrawers);
-  document.getElementById('cartOpenBtn').addEventListener('click', function(){ renderCart(); openD('cartDrawer'); });
-  document.getElementById('cartCloseBtn').addEventListener('click', closeAllDrawers);
-
-  // Close drawers when nav links clicked
-  document.querySelectorAll('.drawer-nav-link').forEach(function(a){
-    a.addEventListener('click', closeAllDrawers);
-  });
-
-  // ESC key
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeAllDrawers(); });
-
-  // WhatsApp float
-  document.getElementById('waFloatBtn').addEventListener('click', function(){ window.open('https://wa.me/201034110499','_blank','noopener'); });
-
-  // Products data
-  var PRODUCTS = [
-    { id:1, name:'Royal Ring', nameAr:'خاتم ملكي', cat:'ring', img:'./assets/products/1.webp', badge:'New', desc:'Premium stainless steel anti-rust royal ring.' },
-    { id:2, name:'Luxury Chain', nameAr:'سلسلة فاخرة', cat:'necklace', img:'./assets/products/2.webp', badge:'', desc:'Elegant tarnish-free necklace chain.' },
-    { id:3, name:'Elegant Bracelet', nameAr:'سوار أنيق', cat:'bracelet', img:'./assets/products/3.webp', badge:'', desc:'Daily luxury stainless steel bracelet.' },
-    { id:4, name:'Handmade Bag', nameAr:'شنطة هاند ميد', cat:'handmade_bag', img:'./assets/products/4.webp', badge:'Limited', desc:'Artisan handcrafted premium bag.' },
-    { id:5, name:'Gold Ring', nameAr:'خاتم ذهبي', cat:'ring', img:'./assets/products/5.webp', badge:'', desc:'Signature gold-tone stainless steel ring.' },
-    { id:6, name:'Pearl Bracelet', nameAr:'سوار لؤلؤي', cat:'bracelet', img:'./assets/products/6.webp', badge:'', desc:'Soft feminine pearl-accented bracelet.' },
-    { id:7, name:'Classic Set', nameAr:'طقم كلاسيك', cat:'set', img:'./assets/products/7.webp', badge:'Set', desc:'Matching ring and necklace set.' },
-  ];
-
-  var currentFilter = 'all';
-  var currentSort = 'featured';
-  var currentLang = 'en';
-
-  function getWAMsg(p) {
-    return encodeURIComponent('Hi KAWTHAR, I want to ask about: ' + p.name);
-  }
-
-  function renderProducts() {
-    var grid = document.getElementById('productsGrid');
-    if (!grid) return;
-    var list = PRODUCTS.filter(function(p){ return currentFilter === 'all' || p.cat === currentFilter; });
-    if (currentSort === 'name-asc') list.sort(function(a,b){ return a.name.localeCompare(b.name); });
-    if (currentSort === 'name-desc') list.sort(function(a,b){ return b.name.localeCompare(a.name); });
-    if (!list.length) { grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#aaa;padding:40px">No products found.</p>'; return; }
-    grid.innerHTML = list.map(function(p) {
-      var inWish = wishlist.some(function(w){ return w.id===p.id; });
-      return '<article class="product-card" role="listitem" data-id="'+p.id+'">'
-        + (p.badge ? '<span class="product-badge">'+p.badge+'</span>' : '')
-        + '<div class="product-img-wrap">'
-        + '<img src="'+p.img+'" alt="'+(currentLang==='ar'?p.nameAr:p.name)+'" width="300" height="400" loading="lazy" decoding="async">'
-        + '<div class="product-actions-overlay" aria-hidden="true">'
-        + '<button class="product-action-btn qv-btn" data-id="'+p.id+'" type="button" title="Quick view" aria-label="Quick view '+p.name+'">👁</button>'
-        + '<button class="product-action-btn wish-btn" data-id="'+p.id+'" type="button" title="'+(inWish?'Remove from wishlist':'Add to wishlist')+'" aria-label="Wishlist '+p.name+'" style="color:'+(inWish?'#c0392b':'inherit')+'">'+(inWish?'♥':'♡')+'</button>'
-        + '</div>'
-        + '</div>'
-        + '<div class="product-info"><h3>'+(currentLang==='ar'?p.nameAr:p.name)+'</h3></div>'
-        + '<div class="product-footer">'
-        + '<a class="btn-wa" href="https://wa.me/201034110499?text='+getWAMsg(p)+'" target="_blank" rel="noreferrer noopener" aria-label="Ask about '+p.name+' on WhatsApp">'
-        + '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.524 5.849L.057 23.428a.5.5 0 0 0 .515.572l5.718-1.502A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.7-.5-5.26-1.37l-.38-.22-3.94 1.03 1.05-3.83-.25-.4A10 10 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>'
-        + 'Ask</a>'
-        + '<button class="btn-cart-add" data-id="'+p.id+'" type="button" aria-label="Add '+p.name+' to cart" title="Add to cart">+</button>'
-        + '</div>'
-        + '</article>';
-    }).join('');
-
-    // Events
-    grid.querySelectorAll('.wish-btn').forEach(function(btn){
-      btn.addEventListener('click', function(e){
-        e.stopPropagation();
-        var id = parseInt(this.dataset.id);
-        var idx = wishlist.findIndex(function(w){ return w.id===id; });
-        if (idx > -1) { wishlist.splice(idx,1); showToast('Removed from wishlist'); }
-        else { var p = PRODUCTS.find(function(x){ return x.id===id; }); if(p) wishlist.push(p); showToast('Added to wishlist ♥'); }
-        saveWish(); updateCounts(); renderProducts();
-      });
-    });
-    grid.querySelectorAll('.btn-cart-add').forEach(function(btn){
-      btn.addEventListener('click', function(e){
-        e.stopPropagation();
-        var id = parseInt(this.dataset.id);
-        var p = PRODUCTS.find(function(x){ return x.id===id; });
-        if (!p) return;
-        var ex = cart.find(function(c){ return c.id===id; });
-        if (ex) ex.qty = (ex.qty||1)+1; else cart.push(Object.assign({},p,{qty:1}));
-        saveCart(); updateCounts(); showToast('Added to cart 🛒');
-      });
-    });
-    grid.querySelectorAll('.qv-btn').forEach(function(btn){
-      btn.addEventListener('click', function(e){
-        e.stopPropagation();
-        var id = parseInt(this.dataset.id);
-        openQuickView(id);
-      });
-    });
-  }
-
-  // Filters
-  document.querySelectorAll('.filter-pill').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      currentFilter = this.dataset.filter;
-      document.querySelectorAll('.filter-pill').forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
-      this.classList.add('active'); this.setAttribute('aria-pressed','true');
-      renderProducts();
-    });
-  });
-
-  // Collection filter buttons
-  document.querySelectorAll('[data-filter-btn]').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      currentFilter = this.dataset.filterBtn;
-      document.querySelectorAll('.filter-pill').forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
-      var target = document.querySelector('[data-filter="'+currentFilter+'"]');
-      if (target) { target.classList.add('active'); target.setAttribute('aria-pressed','true'); }
-      document.getElementById('featured').scrollIntoView({ behavior:'smooth' });
-      renderProducts();
-    });
-  });
-
-  document.getElementById('sortSelect').addEventListener('change', function(){ currentSort = this.value; renderProducts(); });
-
-  // Quick view
-  function openQuickView(id) {
-    var p = PRODUCTS.find(function(x){ return x.id===id; });
-    if (!p) return;
-    var ov = document.getElementById('quickViewOverlay');
-    ov.innerHTML = '<div class="quick-view-modal" role="document">'
-      + '<button class="quick-view-close" type="button" aria-label="Close quick view" id="qvClose">×</button>'
-      + '<div class="quick-view-img"><img src="'+p.img+'" alt="'+p.name+'" width="220" height="280" loading="eager" decoding="async"></div>'
-      + '<div class="quick-view-info">'
-      + '<h2>'+p.name+'</h2>'
-      + (p.badge ? '<span class="product-badge" style="position:static;display:inline-block;margin-bottom:10px">'+p.badge+'</span>' : '')
-      + '<p>'+p.desc+'</p>'
-      + '<div class="quick-view-actions">'
-      + '<a class="btn btn-primary" href="https://wa.me/201034110499?text='+getWAMsg(p)+'" target="_blank" rel="noreferrer noopener">Ask on WhatsApp</a>'
-      + '<button class="btn btn-secondary add-cart-qv" data-id="'+id+'" type="button">Add to cart</button>'
-      + '</div></div></div>';
-    ov.classList.add('active');
-    ov.setAttribute('aria-hidden','false');
-    document.body.style.overflow = 'hidden';
-    document.getElementById('qvClose').addEventListener('click', closeQuickView);
-    ov.addEventListener('click', function(e){ if(e.target===ov) closeQuickView(); });
-    ov.querySelector('.add-cart-qv').addEventListener('click', function(){
-      var pid = parseInt(this.dataset.id);
-      var pr = PRODUCTS.find(function(x){ return x.id===pid; });
-      if (!pr) return;
-      var ex = cart.find(function(c){ return c.id===pid; });
-      if (ex) ex.qty=(ex.qty||1)+1; else cart.push(Object.assign({},pr,{qty:1}));
-      saveCart(); updateCounts(); showToast('Added to cart 🛒'); closeQuickView();
-    });
-  }
-  function closeQuickView(){
-    var ov = document.getElementById('quickViewOverlay');
-    ov.classList.remove('active');
-    ov.setAttribute('aria-hidden','true');
-    document.body.style.overflow = '';
-  }
-
-  // Render wishlist
-  function renderWishlist(){
-    var el = document.getElementById('wishlistItems');
-    if (!el) return;
-    if (!wishlist.length){ el.innerHTML='<div class="empty-state"><span style="font-size:2rem">♡</span><p>Your wishlist is empty</p></div>'; return; }
-    el.innerHTML = wishlist.map(function(p){
-      return '<div class="wishlist-item" role="listitem">'
-        +'<img src="'+p.img+'" alt="'+p.name+'" width="64" height="64" loading="lazy">'
-        +'<div class="item-details"><h4>'+p.name+'</h4>'
-        +'<a class="btn-wa" style="display:inline-flex;margin-top:8px;font-size:.75rem;padding:6px 12px;border-radius:20px;text-decoration:none" href="https://wa.me/201034110499?text='+getWAMsg(p)+'" target="_blank" rel="noreferrer noopener">Ask on WhatsApp</a>'
-        +'</div>'
-        +'<button class="item-remove" data-id="'+p.id+'" type="button" aria-label="Remove from wishlist">✕</button>'
-        +'</div>';
-    }).join('');
-    el.querySelectorAll('.item-remove').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        var id=parseInt(this.dataset.id);
-        wishlist=wishlist.filter(function(w){ return w.id!==id; });
-        saveWish(); updateCounts(); renderWishlist();
-      });
-    });
-  }
-
-  // Render cart
-  function renderCart(){
-    var el = document.getElementById('cartItems');
-    var cnt = document.getElementById('cartItemsCount');
-    if (!el) return;
-    var total = cart.reduce(function(a,i){ return a+(i.qty||1); }, 0);
-    if (cnt) cnt.textContent = total;
-    if (!cart.length){ el.innerHTML='<div class="empty-state"><span style="font-size:2rem">🛒</span><p>Your cart is empty</p></div>'; return; }
-    el.innerHTML = cart.map(function(p){
-      return '<div class="cart-item" role="listitem">'
-        +'<img src="'+p.img+'" alt="'+p.name+'" width="64" height="64" loading="lazy">'
-        +'<div class="item-details"><h4>'+p.name+'</h4><p class="price">Qty: '+(p.qty||1)+'</p></div>'
-        +'<button class="item-remove" data-id="'+p.id+'" type="button" aria-label="Remove from cart">✕</button>'
-        +'</div>';
-    }).join('');
-    // Update WhatsApp checkout link
-    var waBtn = document.getElementById('checkoutWhatsAppBtn');
-    if (waBtn) {
-      var msg = 'Hi KAWTHAR, I want to order: ' + cart.map(function(p){ return p.name+' x'+(p.qty||1); }).join(', ');
-      waBtn.href = 'https://wa.me/201034110499?text=' + encodeURIComponent(msg);
-    }
-    el.querySelectorAll('.item-remove').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        var id=parseInt(this.dataset.id);
-        cart=cart.filter(function(c){ return c.id!==id; });
-        saveCart(); updateCounts(); renderCart();
-      });
-    });
-  }
-
-  // Search
-  var searchInput = document.getElementById('searchInput');
-  if (searchInput) {
-    searchInput.addEventListener('input', function(){
-      var q = this.value.trim().toLowerCase();
-      var res = document.getElementById('searchResults');
-      if (!q){ res.innerHTML=''; return; }
-      var found = PRODUCTS.filter(function(p){ return p.name.toLowerCase().includes(q)||p.nameAr.includes(q)||p.cat.includes(q); });
-      if (!found.length){ res.innerHTML='<p style="color:#aaa;font-size:.85rem;padding:8px">No results found.</p>'; return; }
-      res.innerHTML = found.map(function(p){
-        return '<div class="wishlist-item" role="listitem" style="cursor:pointer" data-qv="'+p.id+'">'
-          +'<img src="'+p.img+'" alt="'+p.name+'" width="64" height="64" loading="lazy">'
-          +'<div class="item-details"><h4>'+p.name+'</h4><span style="font-size:.75rem;color:#888;text-transform:capitalize">'+p.cat.replace('_',' ')+'</span></div>'
-          +'</div>';
-      }).join('');
-      res.querySelectorAll('[data-qv]').forEach(function(el){
-        el.addEventListener('click', function(){ closeAllDrawers(); openQuickView(parseInt(this.dataset.qv)); });
-      });
-    });
-  }
-  document.querySelectorAll('.chip[data-search-tag]').forEach(function(c){
-    c.addEventListener('click', function(){
-      var q = this.dataset.searchTag;
-      if (searchInput) { searchInput.value=q; searchInput.dispatchEvent(new Event('input')); }
-    });
-  });
-
-  // Language toggle
-  var translations = {
-    ar: {
-      nav_home:'الرئيسية', nav_collections:'المجموعات', nav_featured:'المميزة', nav_story:'قصتنا', nav_shop:'المتجر',
-      hero_kicker:'مجموعة كوثر',
-      btn_shop:'تسوق المجموعة', btn_view:'عرض المتجر الكامل',
-      filter_all:'الكل', filter_necklaces:'قلادات', filter_rings:'خواتم', filter_bracelets:'أساور', filter_bags:'شنط', filter_sets:'طواقم',
-      search_title:'بحث', saved_title:'محفوظ', cart_title:'السلة',
-    }
-  };
-  document.getElementById('langToggleBtn').addEventListener('click', function(){
-    currentLang = currentLang === 'en' ? 'ar' : 'en';
-    this.textContent = currentLang === 'ar' ? 'EN' : 'ع';
-    document.documentElement.lang = currentLang;
-    document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-    renderProducts();
-  });
-
-  // Smooth scroll for nav links
-  document.querySelectorAll('a[href^="#"]').forEach(function(a){
-    a.addEventListener('click', function(e){
-      var target = document.querySelector(this.getAttribute('href'));
-      if (target){ e.preventDefault(); target.scrollIntoView({ behavior:'smooth' }); }
-    });
-  });
-
-  // Active nav on scroll
-  var sections = document.querySelectorAll('section[id]');
-  var navLinks = document.querySelectorAll('.nav-link');
-  var scrollObserver = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if (e.isIntersecting){
-        navLinks.forEach(function(l){ l.classList.remove('active'); });
-        var active = document.querySelector('.nav-link[href="#'+e.target.id+'"]');
-        if (active) active.classList.add('active');
-      }
-    });
-  }, { threshold: 0.4 });
-  sections.forEach(function(s){ scrollObserver.observe(s); });
-
-  // Lazy load app.js for extended functionality
-  renderProducts();
+  // إعداد اللغة المبدئية قبل تحميل السكربت الرئيسي
+  document.documentElement.lang = localStorage.getItem('kawthar_lang') || 'en';
+  document.documentElement.dir = document.documentElement.lang === 'ar' ? 'rtl' : 'ltr';
 </script>
-<script type="module" src="./js/app.js" defer></script>
+<script type="module" src="./js/app.js"></script>
 </body>
 </html>
