@@ -1,3 +1,4 @@
+// ملف js/ui.js
 import { CONFIG } from "./config.js";
 import { Store } from "./store.js";
 
@@ -161,10 +162,10 @@ export const UI = {
         const pPrice = formatPrice(product.price);
 
         return `
-          <article class="product-card">
+          <article class="product-card" role="listitem">
             <div class="product-thumb">
               <img src="${product.image}" alt="${product.alt}" loading="lazy" />
-              <span class="product-badge">${pBadge}</span>
+              ${pBadge ? `<span class="product-badge">${pBadge}</span>` : ""}
 
               <button
                 class="product-fav ${isWishlisted ? "active" : ""}"
@@ -192,6 +193,7 @@ export const UI = {
                   type="button"
                   data-action="cart-add"
                   data-id="${product.id}"
+                  aria-label="${t("add_to_cart")}"
                 >
                   ${t("add_to_cart")}
                 </button>
@@ -223,7 +225,7 @@ export const UI = {
         const pPrice = formatPrice(product.price);
 
         return `
-          <article class="search-result-card">
+          <article class="search-result-card" role="listitem">
             <img src="${product.image}" alt="${product.alt}" loading="lazy" />
             <div>
               <h3 class="line-title">${pName}</h3>
@@ -284,7 +286,7 @@ export const UI = {
           const lineTotal = formatPrice((Number(product.price) || 0) * product.quantity);
 
           return `
-            <article class="cart-line">
+            <article class="cart-line" role="listitem">
               <img src="${product.image}" alt="${product.alt}" loading="lazy" />
               <div>
                 <h3 class="line-title">${pName}</h3>
@@ -294,9 +296,9 @@ export const UI = {
                 <p class="line-meta"><strong>${t("total")}:</strong> ${lineTotal}</p>
               </div>
               <div class="line-actions">
-                <button class="line-icon-btn" type="button" data-action="cart-decrease" data-id="${product.id}">−</button>
-                <button class="line-icon-btn" type="button" data-action="cart-increase" data-id="${product.id}">+</button>
-                <button class="line-icon-btn" type="button" data-action="cart-remove" data-id="${product.id}">×</button>
+                <button class="line-icon-btn" type="button" data-action="cart-decrease" data-id="${product.id}" aria-label="Decrease quantity">−</button>
+                <button class="line-icon-btn" type="button" data-action="cart-increase" data-id="${product.id}" aria-label="Increase quantity">+</button>
+                <button class="line-icon-btn" type="button" data-action="cart-remove" data-id="${product.id}" aria-label="Remove item">×</button>
               </div>
             </article>
           `;
@@ -336,7 +338,7 @@ export const UI = {
         const pMat = getProductMaterial(product);
 
         return `
-          <article class="wishlist-line">
+          <article class="wishlist-line" role="listitem">
             <img src="${product.image}" alt="${product.alt}" loading="lazy" />
             <div>
               <h3 class="line-title">${pName}</h3>
@@ -344,8 +346,8 @@ export const UI = {
               <p class="line-meta"><strong>${formatPrice(product.price)}</strong></p>
             </div>
             <div class="line-actions">
-              <button class="line-icon-btn" type="button" data-action="wishlist-remove" data-id="${product.id}">×</button>
-              <button class="line-icon-btn" type="button" data-action="cart-add" data-id="${product.id}">+</button>
+              <button class="line-icon-btn" type="button" data-action="wishlist-remove" data-id="${product.id}" aria-label="Remove from wishlist">×</button>
+              <button class="line-icon-btn" type="button" data-action="cart-add" data-id="${product.id}" aria-label="Add to cart">+</button>
             </div>
           </article>
         `;
@@ -353,7 +355,7 @@ export const UI = {
       .join("");
   },
 
- updateCheckoutLink(cart) {
+  updateCheckoutLink(cart) {
     const btn = qs("#checkoutWhatsAppBtn");
     if (!btn) return;
 
@@ -365,7 +367,7 @@ export const UI = {
     }
 
     btn.href = "./checkout.html";
-    // 🔥 التعديل هنا: دمج المحافظ الإلكترونية بشكل احترافي
     btn.textContent = getLang() === "ar" ? "ادفعي عبر فودافون كاش / InstaPay ←" : "Pay via Vodafone Cash / InstaPay ←";
     btn.style.background = "linear-gradient(135deg, #2d2119, #5e4a3d)";
-  }}
+  }
+}
