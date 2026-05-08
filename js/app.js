@@ -501,6 +501,8 @@ const initPriceFilter = () => {
   if (!slider) return;
 
   const products = getProductsList();
+  if (!products.length) return; // الحماية في حال عدم توفر منتجات مبدئياً
+  
   const maxProductPrice = Math.max(...products.map((p) => Number(p.price) || 0));
   const roundedMax = Math.ceil(maxProductPrice / 100) * 100;
 
@@ -575,38 +577,16 @@ const initGiftMode = () => {
   });
 };
 
-const init = () => {
-  UI.initHeaderEffect();
-  UI.initRevealObserver();
-  initDrawerButtons();
-  initSearch();
-  initFilters();
-  initDelegatedActions();
-  initLanguage();
-  initPriceFilter();
-  initGiftMode();
-  rerender();
-
-  initWABubble();
-  initSocialProof();
-  initHeartBurst();
-  initQuickView();
-  initRecentlyViewedBar();
-
-  const featEyebrow = document.querySelector(".featured-section .eyebrow");
-  if (featEyebrow) initCountdownTimer(featEyebrow.parentElement, 47);
-};
-
 const hideSplash = () => {
   const splash = document.querySelector("#splashScreen");
   if (splash) {
     if (!sessionStorage.getItem("kawthar_splashed")) {
       setTimeout(() => {
-        splash.style.transition = "opacity 0.5s ease";
+        splash.style.transition = "opacity 0.4s ease";
         splash.style.opacity = "0";
-        setTimeout(() => splash.classList.add("hidden"), 500);
+        setTimeout(() => splash.classList.add("hidden"), 400);
         sessionStorage.setItem("kawthar_splashed", "true");
-      }, 500); 
+      }, 300); // جعلناه أسرع ليختفي فوراً
     } else {
       splash.style.transition = "none";
       splash.classList.add("hidden");
@@ -614,10 +594,42 @@ const hideSplash = () => {
   }
 };
 
+// 🌟 التعديل الجذري هنا لحل مشكلة اختفاء الفرونت إند ورفع أداء الموبايل
 const startApp = async () => {
-  await waitForProducts(); 
-  init(); 
-  hideSplash(); 
+  // 1. تشغيل واجهة الموقع فوراً (بدون انتظار الفايربيز) لحل مشكلة اختفاء التأثيرات
+  UI.initHeaderEffect();
+  UI.initRevealObserver(); 
+  initDrawerButtons();
+  initSearch();
+  initFilters();
+  initDelegatedActions();
+  initLanguage();
+  initGiftMode();
+  
+  // 2. إخفاء شاشة التحميل فوراً ليظهر الموقع للمستخدم ولأداة الفحص
+  hideSplash();
+
+  // 3. محاولة جلب المنتجات في الخلفية
+  try {
+    await waitForProducts(); 
+    initPriceFilter(); // تهيئة فلتر السعر بعد وصول المنتجات
+    rerender();        // رسم المنتجات في الصفحة
+    
+    // 4. تشغيل التأثيرات الثقيلة بعد اكتمال رسم الصفحة الأساسية
+    setTimeout(() => {
+      initWABubble();
+      initSocialProof();
+      initHeartBurst();
+      initQuickView();
+      initRecentlyViewedBar();
+      
+      const featEyebrow = document.querySelector(".featured-section .eyebrow");
+      if (featEyebrow) initCountdownTimer(featEyebrow.parentElement, 47);
+    }, 800);
+
+  } catch (error) {
+    console.error("Firebase load error:", error);
+  }
 };
 
 if (document.readyState === "loading") {
