@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+
 Sitemap: https://kawthar.site/sitemap.xml
