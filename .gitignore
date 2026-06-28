@@ -1,0 +1,9 @@
+node_modules/
+.env
+*.env
+payment-server/.env
+payment-server/node_modules/
+backups/
+*.tar.gz
+*.zip
+.DS_Store

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  />
+  <meta
+    name="description"
+    content="View product details and order directly via WhatsApp from KAWTHAR."
+  />
+  <meta name="theme-color" content="#b9a38f" />
+  <title>Product | KAWTHAR</title>
+  <link rel="manifest" href="./manifest.json" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="preload" as="style" href="./css/main.css?v=instapay-1782681376" />
+  <link rel="stylesheet" href="./css/main.css?v=instapay-1782681376" />
+  <link rel="stylesheet" href="./css/cinematic.css?v=instapay-1782681376" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K5516T3FEV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-K5516T3FEV');
+  </script>
+  <link rel="stylesheet" href="./css/zz-final-polish.css?v=instapay-1782681376" />
+  <link rel="stylesheet" href="./css/zz-footer-payment-fix.css?v=instapay-1782681376" />
+  <link rel="stylesheet" href="./css/zz-handover-final.css?v=instapay-1782681376" />
+  <link rel="stylesheet" href="./css/kawtharabdo-final-delivery.css?v=instapay-1782681376" />
+  <link rel="stylesheet" href="./css/kawtharabdo-product-final.css?v=instapay-1782681376" />
+  <link rel="stylesheet" href="./css/kawtharabdo-product-size-fix.css?v=instapay-1782681376" />
+  <script src="./js/kawtharabdo-cart-core.js?v=instapay-1782681376"></script>
+  <link rel="stylesheet" href="./css/kawthar-product-route-repair.css?v=product-route-repair-1782682852" />
+  <link rel="stylesheet" href="./css/kawthar-remove-obstructions.css?v=remove-obstructions-1782683211" />
+  <link rel="stylesheet" href="./css/kawthar-footer-final-clean.css?v=footer-final-clean-1782683438" />
+  <link rel="stylesheet" href="./css/kawthar-footer-brand-overlap-fix.css?v=footer-brand-overlap-1782683634" />
+  <link rel="stylesheet" href="./css/kawthar-product-footer-media-guard.css?v=pf-guard-1782683915" />
+  <link rel="stylesheet" href="./css/kawthar-product-image-full-fit.css?v=full-fit-1782684640" />
+</head>
+<body>
+
+  <div id="splashScreen" class="splash-screen">
+    <div class="splash-content">
+      <div class="splash-logo-wrap">
+        <img src="./assets/logo/kawthar-logo-hd.webp?v=logo-1782681526" alt="KAWTHAR" class="splash-logo">
+      </div>
+      <div class="splash-loader"></div>
+    </div>
+  </div>
+
+  <div class="site-shell">
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+    <div class="noise-layer"></div>
+
+    <div class="announcement-bar">
+      <div class="announcement-track">
+        <span>KAWTHAR • Stainless Steel Anti Rust</span>
+        <span>Luxury feminine styling</span>
+        <span>Direct inquiry via WhatsApp</span>
+        <span>KAWTHAR • Stainless Steel Anti Rust</span>
+        <span>Luxury feminine styling</span>
+        <span>Direct inquiry via WhatsApp</span>
+      </div>
+    </div>
+
+    <div id="siteOverlay" class="site-overlay" aria-hidden="true"></div>
+
+    <header id="mainHeader" class="main-header">
+      <div class="container header-inner">
+        <div class="header-left">
+          <button
+            class="icon-btn mobile-only"
+            id="mobileMenuBtn"
+            aria-label="Open menu"
+            type="button"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <nav class="desktop-nav">
+            <a href="./index.html" class="nav-link" data-i18n="nav_home">Home</a>
+            <a href="./shop.html" class="nav-link" data-i18n="nav_shop">Shop</a>
+            <a href="./index.html#story" class="nav-link" data-i18n="nav_story">Story</a>
+            <a href="./index.html#contact" class="nav-link" data-i18n="nav_contact">Contact</a>
+          </nav>
+        </div>
+
+        <a href="./index.html" class="brand-logo" aria-label="KAWTHAR Home">
+          <img src="./assets/logo/kawthar-logo-hd.webp?v=logo-1782681526" alt="Kawthar Luxury Logo" class="brand-logo-img">
+        </a>
+
+        <div class="header-actions">
+          <button class="icon-circle" id="searchOpenBtn" aria-label="Open search" type="button">🔍</button>
+          <button class="icon-circle" id="langToggleBtn" type="button" aria-label="Toggle Language">ع</button>
+          <button
+            class="icon-circle badge-anchor"
+            id="wishlistOpenBtn"
+            aria-label="Open wishlist"
+            type="button"
+          >
+            ♥
+            <span id="wishlistCount" class="badge">0</span>
+          </button>
+
+          <button
+            class="icon-circle badge-anchor"
+            id="cartOpenBtn"
+            aria-label="Open cart"
+            type="button"
+          >
+            🛒
+            <span id="cartCount" class="badge">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <aside id="mobileMenu" class="drawer left-drawer" aria-hidden="true">
+      <div class="drawer-header">
+        <div class="drawer-title-wrap">
+          <p class="eyebrow">Navigation</p>
+          <h2>Browse KAWTHAR</h2>
+        </div>
+        <button class="icon-close" id="mobileMenuCloseBtn" type="button" aria-label="Close menu">×</button>
+      </div>
+
+      <nav class="drawer-nav">
+        <a href="./index.html" class="drawer-nav-link" data-i18n="nav_home">Home</a>
+        <a href="./shop.html" class="drawer-nav-link" data-i18n="nav_shop">Shop</a>
+        <a href="./index.html#collections" class="drawer-nav-link">Collections</a>
+        <a href="./index.html#contact" class="drawer-nav-link" data-i18n="nav_contact">Contact</a>
+      </nav>
+    </aside>
+
+    <aside id="searchDrawer" class="drawer top-drawer" aria-hidden="true">
+      <div class="drawer-header">
+        <div class="drawer-title-wrap">
+          <p class="eyebrow" data-i18n="search_title">Search</p>
+          <h2 data-i18n="search_heading">Search products</h2>
+        </div>
+        <button class="icon-close" id="searchCloseBtn" type="button" aria-label="Close search">×</button>
+      </div>
+
+      <div class="search-drawer-body">
+        <div class="search-input-wrap">
+          <input
+            type="text"
+            id="searchInput"
+            data-i18n-placeholder="search_placeholder"
+            placeholder="Search pieces..."
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="search-tags">
+          <button class="chip" data-search-tag="necklace" type="button">Necklaces</button>
+          <button class="chip" data-search-tag="bracelet" type="button">Bracelets</button>
+          <button class="chip" data-search-tag="anklet" type="button">Anklets</button>
+          <button class="chip" data-search-tag="set" type="button">Sets</button>
+        </div>
+
+        <div id="searchResults" class="search-results"></div>
+      </div>
+    </aside>
+
+    <aside id="wishlistDrawer" class="drawer right-drawer" aria-hidden="true">
+      <div class="drawer-header">
+        <div class="drawer-title-wrap">
+          <p class="eyebrow" data-i18n="saved_title">Saved</p>
+          <h2 data-i18n="saved_heading">Your wishlist</h2>
+        </div>
+        <button class="icon-close" id="wishlistCloseBtn" type="button" aria-label="Close wishlist">×</button>
+      </div>
+
+      <div id="wishlistItems" class="drawer-scroll-body"></div>
+    </aside>
+
+    <aside id="cartDrawer" class="drawer right-drawer" aria-hidden="true">
+      <div class="drawer-header">
+        <div class="drawer-title-wrap">
+          <p class="eyebrow" data-i18n="cart_title">Cart</p>
+          <h2 data-i18n="cart_heading">Your selection</h2>
+        </div>
+        <button class="icon-close" id="cartCloseBtn" type="button" aria-label="Close cart">×</button>
+      </div>
+
+      <div id="cartItems" class="drawer-scroll-body"></div>
+
+      <div class="drawer-footer">
+        <div class="cart-summary">
+          <div class="cart-summary-row">
+            <span>Items</span>
+            <strong id="cartItemsCount">0</strong>
+          </div>
+        </div>
+
+        <a
+          id="checkoutWhatsAppBtn"
+          class="btn btn-primary btn-block"
+          href="https://wa.me/201034110499"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Check on WhatsApp
+        </a>
+      </div>
+    </aside>
+
+    <main>
+      <section class="product-page-section">
+        <div class="container">
+          <div id="productPageMount"></div>
+        </div>
+      </section>
+
+      <section class="featured-section related-products-section">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow" data-i18n="related_eyebrow">Related pieces</p>
+            <h2 data-i18n="related_title">You may also like these selections</h2>
+          </div>
+
+          <div id="relatedProductsGrid" class="products-grid"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="main-footer cin-footer" role="contentinfo">
+  <div class="container kaw-footer-grid">
+    <div class="kaw-footer-brand-block">
+      <a href="./index.html" class="kaw-footer-brand" aria-label="KAWTHAR Home">
+        <img src="./assets/logo/kawthar-logo-hd.webp?v=logo-1782681526" width="74" height="74" alt="Kawthar Logo" loading="lazy" decoding="async">
+        <span class="kaw-footer-brand-name">
+          <strong>KAWTHAR</strong>
+          <span>Accessories & Artisan Bags</span>
+        </span>
+      </a>
+      <p class="kaw-footer-text">A luxury-first storefront for premium stainless steel anti-rust accessories and handmade artisan bags.</p>
+      <div class="kaw-footer-note">Direct inquiry via WhatsApp. Online payment gateway is being prepared for card and wallet payments.</div>
+    </div>
+
+    <div class="kaw-footer-col">
+      <h3>Shop</h3>
+      <ul class="kaw-footer-list">
+        <li><a href="./shop.html">All products</a></li>
+        <li><a href="./index.html#collections">Collections</a></li>
+        <li><a href="./index.html#featured">Featured pieces</a></li>
+      </ul>
+    </div>
+
+    <div class="kaw-footer-col">
+      <h3>Order</h3>
+      <ul class="kaw-footer-list">
+        <li><a href="./checkout.html">Checkout</a></li>
+        <li><span>Card payment soon</span></li>
+        <li><span>Mobile wallet soon</span></li>
+      </ul>
+    </div>
+
+    <div class="kaw-footer-col">
+      <h3>Contact</h3>
+      <ul class="kaw-footer-list">
+        <li><a href="https://wa.me/201034110499" target="_blank" rel="noreferrer noopener">WhatsApp</a></li>
+        <li><a href="https://www.instagram.com/kawthareg_/" target="_blank" rel="noreferrer noopener">Instagram</a></li>
+        <li><span>Premium Stainless Steel & Artisan Bags</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container kaw-footer-bottom">
+    <span>© KAWTHAR Accessories</span>
+    <span class="kaw-footer-mini">
+      <span>Anti Rust</span>
+      <span>Waterproof</span>
+      <span>Premium Quality</span>
+    </span>
+  </div>
+</footer>
+  </div>
+
+  <script type="module" src="./js/product-page.js"></script>
+
+  <div id="stickyWaBar" class="sticky-wa-bar" aria-hidden="true">
+    <div class="sticky-wa-inner container">
+      <div class="sticky-wa-info">
+        <span class="sticky-wa-name" id="stickyWaName">—</span>
+        <span class="sticky-wa-price" id="stickyWaPrice">—</span>
+      </div>
+      <div class="sticky-wa-actions">
+        <button class="btn btn-secondary" type="button" id="stickyCartBtn">Add to cart</button>
+        <a class="btn btn-primary" id="stickyWaLink" href="https://wa.me/201034110499" target="_blank" rel="noreferrer">
+          Order on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+  <script src="./js/footer-overhaul.js?v=instapay-1782681376"></script>
+  <script src="./js/kawtharabdo-final-delivery.js?v=instapay-1782681376"></script>
+  <script src="./js/kawtharabdo-product-final.js?v=instapay-1782681376"></script>
+  <script src="./js/kawtharabdo-product-size-fix.js?v=instapay-1782681376"></script>
+  <script src="./js/kawthar-logo-fix.js?v=logo-1782681526"></script>
+  <script src="./js/kawthar-product-route-repair.js?v=product-route-repair-1782682852"></script>
+  <script src="./js/kawthar-remove-obstructions.js?v=remove-obstructions-1782683211"></script>
+  <script src="./js/kawthar-footer-final-clean.js?v=footer-final-clean-1782683438"></script>
+  <script src="./js/kawthar-product-footer-media-guard.js?v=pf-guard-1782683915"></script>
+  <script src="./js/kawthar-product-image-full-fit.js?v=full-fit-1782684640"></script>
+  <script src="./js/kawthar-remove-visible-n.js?v=remove-visible-n-1782685337"></script>
+</body>
+</html>

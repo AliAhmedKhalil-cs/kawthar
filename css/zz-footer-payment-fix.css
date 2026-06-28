@@ -1,0 +1,628 @@
+/* =========================================================
+   KAWTHAR FOOTER + PAYMENT POLISH
+   Keeps logo, colors, identity. Improves structure only.
+   ========================================================= */
+
+.main-footer,
+.cin-footer {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(201,160,92,0.14), transparent 32%),
+    linear-gradient(180deg, #f8f1ea 0%, #eadfD3 100%) !important;
+  color: #3f2d20 !important;
+  padding: 68px 0 38px !important;
+  border-top: 1px solid rgba(93, 67, 45, 0.12) !important;
+}
+
+.kaw-footer-grid {
+  display: grid !important;
+  grid-template-columns: 1.45fr 0.8fr 0.95fr 1fr !important;
+  gap: clamp(26px, 4vw, 56px) !important;
+  align-items: start !important;
+}
+
+.kaw-footer-brand-block {
+  max-width: 360px !important;
+}
+
+.kaw-footer-brand {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  margin-bottom: 18px !important;
+}
+
+.kaw-footer-brand img {
+  width: 74px !important;
+  height: 74px !important;
+  object-fit: contain !important;
+  opacity: 0.95 !important;
+}
+
+.kaw-footer-brand-name {
+  display: grid !important;
+  gap: 4px !important;
+}
+
+.kaw-footer-brand-name strong {
+  color: #2f2118 !important;
+  font-size: 1rem !important;
+  letter-spacing: 0.18em !important;
+}
+
+.kaw-footer-brand-name span {
+  color: #8b6847 !important;
+  font-size: 0.74rem !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+}
+
+.kaw-footer-text,
+.footer-text {
+  color: #5b4635 !important;
+  opacity: 1 !important;
+  font-size: 0.92rem !important;
+  line-height: 1.75 !important;
+  max-width: 38ch !important;
+  margin: 0 !important;
+}
+
+.kaw-footer-col h3,
+.main-footer h3,
+.cin-footer h3 {
+  color: #2f2118 !important;
+  font-size: 0.78rem !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  margin: 0 0 18px !important;
+  font-weight: 800 !important;
+}
+
+.kaw-footer-list,
+.footer-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: grid !important;
+  gap: 12px !important;
+}
+
+.kaw-footer-list a,
+.kaw-footer-list span,
+.footer-list a,
+.footer-list span {
+  color: #4b3829 !important;
+  opacity: 1 !important;
+  font-size: 0.92rem !important;
+  line-height: 1.45 !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+}
+
+.kaw-footer-list a:hover,
+.footer-list a:hover {
+  color: #9b6a2f !important;
+}
+
+.kaw-footer-note {
+  margin-top: 18px !important;
+  padding: 14px 16px !important;
+  border-radius: 18px !important;
+  border: 1px solid rgba(93, 67, 45, 0.12) !important;
+  background: rgba(255, 250, 246, 0.5) !important;
+  color: #5b4635 !important;
+  font-size: 0.82rem !important;
+  line-height: 1.6 !important;
+}
+
+.kaw-footer-bottom {
+  margin-top: 42px !important;
+  padding-top: 20px !important;
+  border-top: 1px solid rgba(93, 67, 45, 0.12) !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  gap: 18px !important;
+  flex-wrap: wrap !important;
+  color: #6f5a47 !important;
+  font-size: 0.78rem !important;
+}
+
+.kaw-footer-mini {
+  display: flex !important;
+  gap: 14px !important;
+  flex-wrap: wrap !important;
+}
+
+.kaw-footer-mini span {
+  color: #6f5a47 !important;
+}
+
+/* Compress the dark CTA so it does not feel like an empty huge band */
+.cin-cta {
+  padding: clamp(76px, 8vw, 104px) 0 clamp(82px, 9vw, 116px) !important;
+}
+
+/* Payment gateway UI inside checkout */
+.online-gateway-box {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding: 18px;
+  border-radius: 24px;
+  border: 1px solid rgba(201,160,92,0.34);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(201,160,92,0.18), transparent 34%),
+    rgba(255,250,246,0.72);
+  box-shadow: 0 16px 38px rgba(45,33,25,0.08);
+}
+
+.online-gateway-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.online-gateway-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  background: #2d2119;
+  color: #e8d5a3;
+  font-weight: 900;
+  box-shadow: 0 10px 26px rgba(45,33,25,0.16);
+}
+
+.online-gateway-head h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #2d2119;
+}
+
+.online-gateway-head p {
+  margin: 5px 0 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #6f5a47;
+}
+
+.gateway-methods {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+}
+
+.gateway-method {
+  padding: 10px 8px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.58);
+  border: 1px solid rgba(93,67,45,0.12);
+  color: #4b3829;
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.gateway-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.gateway-fields input {
+  width: 100%;
+  min-height: 44px;
+  border-radius: 16px;
+  border: 1px solid rgba(93,67,45,0.16);
+  background: rgba(255,255,255,0.72);
+  color: #2f2118;
+  padding: 0 13px;
+  outline: none;
+  font: inherit;
+  font-size: 0.84rem;
+}
+
+.gateway-fields input:focus {
+  border-color: rgba(155,106,47,0.55);
+  box-shadow: 0 0 0 4px rgba(201,160,92,0.14);
+}
+
+.gateway-btn {
+  width: 100%;
+  min-height: 50px;
+  border: 0;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #2d2119, #4b3324);
+  color: #fffaf6;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 14px 30px rgba(45,33,25,0.18);
+}
+
+.gateway-btn:hover {
+  transform: translateY(-1px);
+}
+
+.gateway-btn[disabled] {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.gateway-status {
+  display: none;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(201,160,92,0.13);
+  color: #4b3829;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.gateway-status.show {
+  display: block;
+}
+
+.gateway-note {
+  margin: 0;
+  color: #7a624e;
+  font-size: 0.76rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 920px) {
+  .kaw-footer-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .kaw-footer-brand-block {
+    grid-column: 1 / -1 !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .main-footer,
+  .cin-footer {
+    padding: 48px 0 30px !important;
+  }
+
+  .kaw-footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  .kaw-footer-brand img {
+    width: 64px !important;
+    height: 64px !important;
+  }
+
+  .kaw-footer-bottom {
+    margin-top: 30px !important;
+  }
+
+  .gateway-methods {
+    grid-template-columns: 1fr !important;
+  }
+
+  .gateway-fields {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* =========================================================
+   KAWTHAR MANUAL PAYMENT GATEWAY
+   InstaPay / Meeza checkout without Paymob.
+   Same visual identity.
+   ========================================================= */
+
+.manual-payment-gateway {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding: 18px;
+  border-radius: 26px;
+  border: 1px solid rgba(201,160,92,0.34);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(201,160,92,0.18), transparent 34%),
+    rgba(255,250,246,0.76);
+  box-shadow: 0 16px 38px rgba(45,33,25,0.08);
+}
+
+.manual-gateway-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.manual-gateway-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  background: #2d2119;
+  color: #e8d5a3;
+  font-weight: 900;
+  box-shadow: 0 10px 26px rgba(45,33,25,0.16);
+}
+
+.manual-gateway-head h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #2d2119;
+}
+
+.manual-gateway-head p {
+  margin: 5px 0 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #6f5a47;
+}
+
+.manual-total-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(45,33,25,0.06);
+  border: 1px solid rgba(93,67,45,0.10);
+}
+
+.manual-total-box span {
+  color: #6f5a47;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.manual-total-box strong {
+  color: #2d2119;
+  font-size: 1.05rem;
+}
+
+.manual-methods {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+}
+
+.manual-methods label {
+  cursor: pointer;
+}
+
+.manual-methods input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.manual-methods span {
+  display: grid;
+  place-items: center;
+  min-height: 42px;
+  padding: 10px 8px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.58);
+  border: 1px solid rgba(93,67,45,0.12);
+  color: #4b3829;
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-align: center;
+}
+
+.manual-methods input:checked + span {
+  background: #2d2119;
+  color: #fffaf6;
+  border-color: #2d2119;
+  box-shadow: 0 12px 26px rgba(45,33,25,0.14);
+}
+
+.manual-pay-details {
+  display: grid;
+  gap: 9px;
+}
+
+.manual-pay-row {
+  display: grid;
+  grid-template-columns: 110px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 11px 12px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.60);
+  border: 1px solid rgba(93,67,45,0.10);
+}
+
+.manual-pay-row span {
+  color: #7a624e;
+  font-size: 0.74rem;
+  font-weight: 800;
+}
+
+.manual-pay-row strong {
+  color: #2d2119;
+  font-size: 0.82rem;
+  word-break: break-word;
+}
+
+.manual-pay-row button {
+  border: 0;
+  border-radius: 12px;
+  padding: 8px 10px;
+  background: rgba(201,160,92,0.18);
+  color: #4b3829;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.manual-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.manual-fields input {
+  width: 100%;
+  min-height: 44px;
+  border-radius: 16px;
+  border: 1px solid rgba(93,67,45,0.16);
+  background: rgba(255,255,255,0.72);
+  color: #2f2118;
+  padding: 0 13px;
+  outline: none;
+  font: inherit;
+  font-size: 0.84rem;
+}
+
+.manual-fields input:focus {
+  border-color: rgba(155,106,47,0.55);
+  box-shadow: 0 0 0 4px rgba(201,160,92,0.14);
+}
+
+.manual-confirm-btn {
+  width: 100%;
+  min-height: 50px;
+  border: 0;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #2d2119, #4b3324);
+  color: #fffaf6;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 14px 30px rgba(45,33,25,0.18);
+}
+
+.manual-confirm-btn:hover {
+  transform: translateY(-1px);
+}
+
+.manual-gateway-status {
+  display: none;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(201,160,92,0.13);
+  color: #4b3829;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.manual-gateway-status.show {
+  display: block;
+}
+
+.manual-note {
+  margin: 0;
+  color: #7a624e;
+  font-size: 0.76rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 640px) {
+  .manual-payment-gateway {
+    padding: 14px;
+    border-radius: 22px;
+  }
+
+  .manual-methods {
+    grid-template-columns: 1fr;
+  }
+
+  .manual-pay-row {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .manual-pay-row button {
+    width: 100%;
+    min-height: 38px;
+  }
+
+  .manual-fields {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================================
+   KAWTHAR SIMPLE PAYMENT CLEANUP
+   Removes visual heaviness from QR/duplicate payment area.
+   ========================================================= */
+
+.simple-payment {
+  gap: 16px !important;
+}
+
+.simple-instapay-box {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 14px;
+  align-items: center;
+  padding: 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(201,160,92,0.28);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(201,160,92,0.14), transparent 38%),
+    rgba(255,250,246,0.68);
+}
+
+.simple-instapay-box span {
+  grid-column: 1 / -1;
+  color: #8b6847;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.simple-instapay-box strong {
+  color: #2f2118;
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.simple-instapay-box button {
+  min-height: 42px;
+  border: 0;
+  border-radius: 14px;
+  padding: 0 16px;
+  background: #2d2119;
+  color: #fffaf6;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(45,33,25,0.14);
+}
+
+.simple-instapay-box button:hover {
+  transform: translateY(-1px);
+}
+
+/* Hide old QR/easy-pay blocks if any old CSS/HTML keeps rendering them */
+[data-payment="instapay-qr"],
+.instapay-qr,
+.payment-qr,
+.qr-payment,
+.easy-pay-qr,
+[class*="qr-code"],
+[class*="instapay-card"] {
+  display: none !important;
+}
+
+@media (max-width: 640px) {
+  .simple-instapay-box {
+    grid-template-columns: 1fr;
+    padding: 14px;
+  }
+
+  .simple-instapay-box button {
+    width: 100%;
+  }
+}
+

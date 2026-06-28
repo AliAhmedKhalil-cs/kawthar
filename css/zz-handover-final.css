@@ -1,0 +1,186 @@
+/* =========================================================
+   KAWTHAR HANDOVER FINAL FOOTER
+   Footer structure only. No logo/color identity changes.
+   ========================================================= */
+
+.kaw-final-footer {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(201,160,92,0.16), transparent 34%),
+    linear-gradient(180deg, #f8f1ea 0%, #eadfd3 100%);
+  color: #3f2d20;
+  border-top: 1px solid rgba(93, 67, 45, 0.12);
+  padding: 64px 0 34px;
+}
+
+.kaw-final-footer * {
+  box-sizing: border-box;
+}
+
+.kaw-final-footer .container {
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+.kaw-final-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.8fr 0.9fr 1fr;
+  gap: clamp(26px, 4vw, 54px);
+  align-items: start;
+}
+
+.kaw-final-brand {
+  max-width: 370px;
+}
+
+.kaw-final-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  margin-bottom: 18px;
+}
+
+.kaw-final-logo img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  opacity: 0.96;
+}
+
+.kaw-final-logo-text {
+  display: grid;
+  gap: 4px;
+}
+
+.kaw-final-logo-text strong {
+  color: #2f2118;
+  font-size: 1rem;
+  letter-spacing: 0.18em;
+  font-weight: 900;
+}
+
+.kaw-final-logo-text span {
+  color: #8b6847;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.kaw-final-desc {
+  margin: 0;
+  color: #5b4635;
+  font-size: 0.94rem;
+  line-height: 1.8;
+}
+
+.kaw-final-badge {
+  margin-top: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 14px;
+  border-radius: 999px;
+  background: rgba(255,250,246,0.62);
+  border: 1px solid rgba(93,67,45,0.12);
+  color: #5b4635;
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.kaw-final-col h3 {
+  margin: 0 0 18px;
+  color: #2f2118;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.kaw-final-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.kaw-final-list a,
+.kaw-final-list span {
+  color: #4b3829;
+  text-decoration: none;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  font-weight: 650;
+  opacity: 1;
+}
+
+.kaw-final-list a:hover {
+  color: #9b6a2f;
+}
+
+.kaw-final-note {
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255,250,246,0.56);
+  border: 1px solid rgba(93,67,45,0.10);
+  color: #5b4635;
+  font-size: 0.8rem;
+  line-height: 1.65;
+}
+
+.kaw-final-bottom {
+  margin-top: 42px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(93,67,45,0.12);
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  color: #6f5a47;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.kaw-final-tags {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.kaw-final-tags span {
+  color: #6f5a47;
+}
+
+@media (max-width: 920px) {
+  .kaw-final-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .kaw-final-brand {
+    grid-column: 1 / -1;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .kaw-final-footer {
+    padding: 46px 0 28px;
+  }
+
+  .kaw-final-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .kaw-final-logo img {
+    width: 62px;
+    height: 62px;
+  }
+
+  .kaw-final-bottom {
+    margin-top: 30px;
+  }
+}

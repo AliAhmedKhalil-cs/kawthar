@@ -1,0 +1,231 @@
+/* =========================================================
+   KAWTHAR CHECKOUT UNLOCK + SIMPLE PAYMENT
+   Fix stuck splash screen and simplify checkout payment UI.
+   ========================================================= */
+
+/* Force stuck loaders/splash screens to disappear on checkout */
+#splashScreen,
+.splash-screen,
+#goStartup,
+.go-startup,
+[aria-label="Loading"],
+[role="status"].splash-screen {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: none !important;
+}
+
+html,
+body {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+body {
+  min-height: 100vh !important;
+}
+
+.site-shell,
+main,
+.checkout-page,
+.checkout-shell {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+/* Hide old QR/heavy payment blocks if still rendered */
+[data-payment="instapay-qr"],
+.instapay-qr,
+.payment-qr,
+.qr-payment,
+.easy-pay-qr,
+[class*="qr-code"],
+[class*="instapay-card"] {
+  display: none !important;
+}
+
+/* New simple payment card */
+.kaw-simple-checkout-pay {
+  display: grid;
+  gap: 16px;
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 28px;
+  border: 1px solid rgba(201,160,92,0.34);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(201,160,92,0.16), transparent 34%),
+    rgba(255,250,246,0.78);
+  box-shadow: 0 18px 42px rgba(45,33,25,0.08);
+}
+
+.kaw-simple-pay-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.kaw-simple-pay-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  background: #2d2119;
+  color: #e8d5a3;
+  font-weight: 900;
+  box-shadow: 0 10px 26px rgba(45,33,25,0.16);
+}
+
+.kaw-simple-pay-head h3 {
+  margin: 0;
+  color: #2d2119;
+  font-size: 1.05rem;
+}
+
+.kaw-simple-pay-head p {
+  margin: 5px 0 0;
+  color: #6f5a47;
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.kaw-simple-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(45,33,25,0.06);
+  border: 1px solid rgba(93,67,45,0.10);
+}
+
+.kaw-simple-total span {
+  color: #6f5a47;
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.kaw-simple-total strong {
+  color: #2d2119;
+  font-size: 1.05rem;
+}
+
+.kaw-instapay-line {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 14px;
+  align-items: center;
+  padding: 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(201,160,92,0.28);
+  background: rgba(255,255,255,0.52);
+}
+
+.kaw-instapay-line span {
+  grid-column: 1 / -1;
+  color: #8b6847;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.kaw-instapay-line strong {
+  color: #2f2118;
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.kaw-copy-btn,
+.kaw-whatsapp-confirm {
+  border: 0;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.kaw-copy-btn {
+  min-height: 42px;
+  border-radius: 14px;
+  padding: 0 16px;
+  background: #2d2119;
+  color: #fffaf6;
+}
+
+.kaw-checkout-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.kaw-checkout-fields input {
+  width: 100%;
+  min-height: 44px;
+  border-radius: 16px;
+  border: 1px solid rgba(93,67,45,0.16);
+  background: rgba(255,255,255,0.72);
+  color: #2f2118;
+  padding: 0 13px;
+  outline: none;
+  font: inherit;
+  font-size: 0.84rem;
+}
+
+.kaw-checkout-fields input:focus {
+  border-color: rgba(155,106,47,0.55);
+  box-shadow: 0 0 0 4px rgba(201,160,92,0.14);
+}
+
+.kaw-whatsapp-confirm {
+  width: 100%;
+  min-height: 50px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #2d2119, #4b3324);
+  color: #fffaf6;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 14px 30px rgba(45,33,25,0.18);
+}
+
+.kaw-pay-status {
+  display: none;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(201,160,92,0.13);
+  color: #4b3829;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.kaw-pay-status.show {
+  display: block;
+}
+
+.kaw-pay-note {
+  margin: 0;
+  color: #7a624e;
+  font-size: 0.76rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 640px) {
+  .kaw-simple-checkout-pay {
+    padding: 15px;
+    border-radius: 22px;
+  }
+
+  .kaw-instapay-line,
+  .kaw-checkout-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .kaw-copy-btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,65 @@
+/* =========================================================
+   KAWTHAR REMOVE OBSTRUCTIONS
+   Removes recently viewed strip and old sticky product CTA bar.
+   Safe visual cleanup only.
+   ========================================================= */
+
+/* Recently viewed strip/cards */
+#recentlyViewed,
+#recentlyViewedWrap,
+#recentlyViewedBar,
+#recentProducts,
+#recentlyProducts,
+.recently-viewed,
+.recentlyViewed,
+.recently-products,
+.recent-products,
+.viewed-products,
+.rv-strip,
+.rv-bar,
+[data-recently-viewed],
+[data-recent-products],
+[class*="recently-viewed"],
+[class*="recentlyViewed"],
+[class*="recent-products"],
+[class*="recentProducts"] {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Old sticky product CTA bars only. Keep green WhatsApp float. */
+body.kaw-remove-product-sticky #stickyWaBar,
+body.kaw-remove-product-sticky .sticky-wa-bar,
+body.kaw-remove-product-sticky .sticky-product-bar,
+body.kaw-remove-product-sticky [id*="stickyWa"],
+body.kaw-remove-product-sticky [class*="sticky-wa"],
+body.kaw-remove-product-sticky [class*="sticky-product"] {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Remove empty space left by old bars */
+body.kaw-remove-product-sticky .site-shell,
+body.kaw-remove-product-sticky main {
+  padding-bottom: 40px !important;
+}
+
+/* Keep real WhatsApp floating button clean */
+.wa-float,
+#waFloatBtn,
+button[aria-label*="WhatsApp"],
+a[aria-label*="WhatsApp"] {
+  z-index: 950 !important;
+}

@@ -1,0 +1,169 @@
+/* =========================================================
+   KAWTHAR CHECKOUT CART CONTROLLER FIX
+   Fixes quantity, remove, totals, and cart persistence.
+   ========================================================= */
+
+.kaw-checkout-cart-fixed {
+  display: grid;
+  gap: 14px;
+}
+
+.kaw-cart-item-fixed {
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 14px;
+  border-radius: 22px;
+  background: rgba(255,250,246,0.72);
+  border: 1px solid rgba(93,67,45,0.12);
+}
+
+.kaw-cart-item-fixed img {
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  object-fit: cover;
+  background: #eadfd3;
+}
+
+.kaw-cart-info-fixed {
+  min-width: 0;
+}
+
+.kaw-cart-info-fixed strong {
+  display: block;
+  color: #2d2119;
+  font-size: 0.98rem;
+  line-height: 1.35;
+  margin-bottom: 5px;
+}
+
+.kaw-cart-info-fixed span {
+  color: #7a624e;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.kaw-cart-controls-fixed {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.kaw-cart-controls-fixed button {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  border: 1px solid rgba(93,67,45,0.14);
+  background: rgba(255,255,255,0.74);
+  color: #2d2119;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.kaw-cart-controls-fixed b {
+  min-width: 22px;
+  text-align: center;
+  color: #2d2119;
+  font-size: 0.92rem;
+}
+
+.kaw-cart-price-fixed {
+  display: grid;
+  justify-items: end;
+  gap: 12px;
+  color: #4b3829;
+  font-weight: 900;
+}
+
+.kaw-cart-remove-fixed {
+  border: 0;
+  background: transparent;
+  color: #a44738;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+
+.kaw-cart-totals-fixed {
+  margin-top: 8px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(93,67,45,0.14);
+  display: grid;
+  gap: 12px;
+}
+
+.kaw-total-line-fixed {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  color: #4b3829;
+  font-size: 0.95rem;
+}
+
+.kaw-total-line-fixed strong {
+  color: #2d2119;
+  font-weight: 900;
+}
+
+.kaw-total-line-fixed.is-grand {
+  margin-top: 8px;
+  font-size: 1.08rem;
+}
+
+.kaw-total-line-fixed.is-grand strong {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  letter-spacing: -0.03em;
+}
+
+.kaw-cart-empty-fixed {
+  padding: 24px;
+  border-radius: 22px;
+  background: rgba(255,250,246,0.74);
+  border: 1px solid rgba(93,67,45,0.12);
+  text-align: center;
+  color: #6f5a47;
+}
+
+.kaw-cart-empty-fixed strong {
+  display: block;
+  color: #2d2119;
+  margin-bottom: 8px;
+}
+
+.kaw-cart-empty-fixed a {
+  display: inline-flex;
+  margin-top: 14px;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: #2d2119;
+  color: #fffaf6;
+  text-decoration: none;
+  font-weight: 900;
+}
+
+@media (max-width: 640px) {
+  .kaw-cart-item-fixed {
+    grid-template-columns: 62px 1fr;
+    align-items: start;
+  }
+
+  .kaw-cart-item-fixed img {
+    width: 62px;
+    height: 62px;
+  }
+
+  .kaw-cart-price-fixed {
+    grid-column: 1 / -1;
+    justify-items: start;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}

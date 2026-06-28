@@ -1,0 +1,14 @@
+<IfModule mod_expires.c>
+  ExpiresActive On
+  
+  # كاش طويل للصور وملفات التنسيق والبرمجة (تسريع الموقع)
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  
+  # منع الكاش لملف الـ HTML لضمان رؤية التحديثات دائماً
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>

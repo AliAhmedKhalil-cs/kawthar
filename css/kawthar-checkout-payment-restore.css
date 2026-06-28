@@ -1,0 +1,254 @@
+/* =========================================================
+   KAWTHAR CHECKOUT PAYMENT RESTORE
+   Restores a strong InstaPay payment card and confirm button.
+   Safe additive patch.
+   ========================================================= */
+
+:root {
+  --kaw-espresso: #2d2119;
+  --kaw-brown: #4b3829;
+  --kaw-soft-brown: #7a624e;
+  --kaw-gold: #c9a05c;
+  --kaw-gold-soft: rgba(201,160,92,0.14);
+  --kaw-ivory: #fffaf6;
+  --kaw-stroke: rgba(93,67,45,0.12);
+  --kaw-shadow: 0 20px 48px rgba(45,33,25,0.09);
+}
+
+#kawPaymentPanel {
+  display: grid;
+  gap: 16px;
+  margin-top: 16px;
+  padding: 18px;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(201,160,92,0.14), transparent 40%),
+    rgba(255,250,246,0.78);
+  border: 1px solid rgba(93,67,45,0.10);
+  box-shadow: var(--kaw-shadow);
+}
+
+.kaw-pay-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.kaw-pay-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #2d2119, #4b3324);
+  color: #f6deb0;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  box-shadow: 0 12px 24px rgba(45,33,25,0.16);
+}
+
+.kaw-pay-head h3 {
+  margin: 0;
+  color: var(--kaw-espresso);
+  font-size: 1.06rem;
+  line-height: 1.2;
+}
+
+.kaw-pay-head p {
+  margin: 5px 0 0;
+  color: var(--kaw-soft-brown);
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.kaw-pay-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 16px;
+  border-radius: 20px;
+  background: rgba(45,33,25,0.05);
+  border: 1px solid rgba(93,67,45,0.10);
+}
+
+.kaw-pay-total span {
+  color: var(--kaw-soft-brown);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.kaw-pay-total strong {
+  color: var(--kaw-espresso);
+  font-size: 1.1rem;
+  font-weight: 900;
+}
+
+.kaw-pay-address {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 14px;
+  align-items: center;
+  padding: 16px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.52);
+  border: 1px solid rgba(93,67,45,0.10);
+}
+
+.kaw-pay-address span {
+  grid-column: 1 / -1;
+  color: #8b6847;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.kaw-pay-address strong {
+  color: var(--kaw-espresso);
+  font-size: clamp(1.08rem, 2vw, 1.42rem);
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.kaw-pay-copy {
+  min-height: 42px;
+  border: 0;
+  border-radius: 14px;
+  padding: 0 16px;
+  background: #2d2119;
+  color: #fffaf6;
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+  box-shadow: 0 12px 24px rgba(45,33,25,0.14);
+}
+
+.kaw-pay-copy:hover,
+.kaw-pay-confirm:hover {
+  transform: translateY(-1px);
+}
+
+.kaw-pay-steps {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  border-radius: 22px;
+  background: rgba(255,250,246,0.58);
+  border: 1px dashed rgba(201,160,92,0.42);
+}
+
+.kaw-pay-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--kaw-brown);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.kaw-pay-step b {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(201,160,92,0.16);
+  color: var(--kaw-espresso);
+  font-size: 0.74rem;
+}
+
+.kaw-pay-fields {
+  display: grid;
+  gap: 10px;
+}
+
+.kaw-pay-fields input,
+.kaw-pay-fields textarea {
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid rgba(93,67,45,0.12);
+  background: rgba(255,255,255,0.72);
+  color: var(--kaw-espresso);
+  padding: 12px 14px;
+  font: inherit;
+  font-size: 0.88rem;
+  outline: none;
+  resize: vertical;
+}
+
+.kaw-pay-fields input:focus,
+.kaw-pay-fields textarea:focus {
+  border-color: rgba(155,106,47,0.54);
+  box-shadow: 0 0 0 4px rgba(201,160,92,0.14);
+}
+
+.kaw-pay-confirm {
+  width: 100%;
+  min-height: 52px;
+  border: 0;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #2d2119, #4b3324);
+  color: #fffaf6;
+  font-weight: 900;
+  font-size: 0.92rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 16px 32px rgba(45,33,25,0.15);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.kaw-pay-status {
+  display: none;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(201,160,92,0.12);
+  color: #4b3829;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.kaw-pay-status.show {
+  display: block;
+}
+
+.kaw-pay-note {
+  margin: 0;
+  color: var(--kaw-soft-brown);
+  font-size: 0.76rem;
+  line-height: 1.6;
+}
+
+.kaw-pay-hidden-old,
+.ipa-qr-card,
+.ipa-qr-wrap,
+.ipa-steps-guide,
+#qrCanvas,
+#onlineGatewayBox {
+  display: none !important;
+}
+
+@media (max-width: 860px) {
+  #kawPaymentPanel {
+    border-radius: 24px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 640px) {
+  .kaw-pay-address {
+    grid-template-columns: 1fr;
+  }
+
+  .kaw-pay-copy {
+    width: 100%;
+  }
+
+  .kaw-pay-head {
+    align-items: flex-start;
+  }
+}

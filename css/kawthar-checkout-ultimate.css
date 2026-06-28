@@ -1,0 +1,540 @@
+/* =========================================================
+   KAWTHAR CHECKOUT ULTIMATE
+   Full isolated checkout UI. Fixes cart quantities, remove,
+   duplicate products, totals, and payment panel.
+   ========================================================= */
+
+:root {
+  --kaw-espresso: #2d2119;
+  --kaw-brown: #4b3829;
+  --kaw-muted: #7a624e;
+  --kaw-gold: #c9a05c;
+  --kaw-ivory: #fffaf6;
+  --kaw-cream: #f5ede4;
+  --kaw-stroke: rgba(93, 67, 45, 0.12);
+  --kaw-shadow: 0 22px 60px rgba(45, 33, 25, 0.10);
+}
+
+body.kaw-checkout-ultimate-ready {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(201,160,92,0.10), transparent 30%),
+    radial-gradient(circle at 88% 12%, rgba(255,250,246,0.72), transparent 28%),
+    linear-gradient(180deg, #f7efe7 0%, #efe4d8 100%) !important;
+  overflow-x: hidden !important;
+}
+
+/* Hide broken legacy checkout content only on checkout page */
+body.kaw-checkout-ultimate-ready main,
+body.kaw-checkout-ultimate-ready .checkout-page,
+body.kaw-checkout-ultimate-ready .checkout-shell,
+body.kaw-checkout-ultimate-ready .checkout-grid,
+body.kaw-checkout-ultimate-ready .checkout-panel,
+body.kaw-checkout-ultimate-ready #coCartList,
+body.kaw-checkout-ultimate-ready #payPanel,
+body.kaw-checkout-ultimate-ready #kawPaymentPanel,
+body.kaw-checkout-ultimate-ready #manualPaymentGateway,
+body.kaw-checkout-ultimate-ready #onlineGatewayBox,
+body.kaw-checkout-ultimate-ready #kawSimpleCheckoutPay {
+  display: none !important;
+}
+
+#kawCheckoutUltimateApp {
+  display: block !important;
+  position: relative;
+  width: min(1240px, calc(100% - 40px));
+  margin: clamp(30px, 5vw, 58px) auto 72px;
+  color: var(--kaw-espresso);
+  isolation: isolate;
+}
+
+#kawCheckoutUltimateApp::before {
+  content: "";
+  position: absolute;
+  width: min(44vw, 520px);
+  height: min(44vw, 520px);
+  right: -14%;
+  top: 4%;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(201,160,92,0.13), transparent 68%);
+  filter: blur(10px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.kaw-co-top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 26px;
+}
+
+.kaw-co-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--kaw-brown);
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.kaw-co-steps {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 7px;
+  border-radius: 999px;
+  background: rgba(255,250,246,0.58);
+  border: 1px solid rgba(93,67,45,0.10);
+}
+
+.kaw-co-step {
+  padding: 9px 14px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 900;
+  color: var(--kaw-muted);
+}
+
+.kaw-co-step.is-active {
+  background: var(--kaw-espresso);
+  color: #fffaf6;
+}
+
+.kaw-co-layout {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(360px, 0.8fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.kaw-co-card {
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(201,160,92,0.10), transparent 40%),
+    rgba(255,250,246,0.78);
+  border: 1px solid rgba(93,67,45,0.10);
+  box-shadow: var(--kaw-shadow);
+  overflow: hidden;
+}
+
+.kaw-co-card-head {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 22px 24px;
+  border-bottom: 1px solid rgba(93,67,45,0.10);
+}
+
+.kaw-co-num {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: var(--kaw-espresso);
+  color: #fffaf6;
+  font-weight: 900;
+}
+
+.kaw-co-card-head h2 {
+  margin: 0;
+  color: var(--kaw-espresso);
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+  line-height: 1.15;
+}
+
+.kaw-co-cart {
+  display: grid;
+  gap: 14px;
+  padding: 20px 24px 24px;
+}
+
+.kaw-co-item {
+  display: grid;
+  grid-template-columns: 78px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 14px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.52);
+  border: 1px solid rgba(93,67,45,0.10);
+}
+
+.kaw-co-item img {
+  width: 78px;
+  height: 78px;
+  border-radius: 17px;
+  object-fit: cover;
+  background: #eadfd3;
+}
+
+.kaw-co-info {
+  min-width: 0;
+}
+
+.kaw-co-info strong {
+  display: block;
+  color: var(--kaw-espresso);
+  font-size: 1rem;
+  line-height: 1.35;
+  margin-bottom: 5px;
+}
+
+.kaw-co-info span {
+  color: var(--kaw-muted);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.kaw-co-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.kaw-co-controls button {
+  width: 31px;
+  height: 31px;
+  border-radius: 999px;
+  border: 1px solid rgba(93,67,45,0.14);
+  background: rgba(255,255,255,0.78);
+  color: var(--kaw-espresso);
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 1rem;
+}
+
+.kaw-co-controls b {
+  min-width: 24px;
+  text-align: center;
+  color: var(--kaw-espresso);
+  font-size: 0.94rem;
+}
+
+.kaw-co-price {
+  display: grid;
+  justify-items: end;
+  gap: 12px;
+  font-weight: 900;
+  color: var(--kaw-brown);
+  white-space: nowrap;
+}
+
+.kaw-co-remove {
+  border: 0;
+  background: transparent;
+  color: #a44738;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 0.78rem;
+}
+
+.kaw-co-totals {
+  display: grid;
+  gap: 12px;
+  margin-top: 8px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(93,67,45,0.14);
+}
+
+.kaw-co-total-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  color: var(--kaw-brown);
+  font-size: 0.96rem;
+}
+
+.kaw-co-total-line strong {
+  color: var(--kaw-espresso);
+}
+
+.kaw-co-total-line.is-grand {
+  margin-top: 8px;
+  font-size: 1.12rem;
+}
+
+.kaw-co-total-line.is-grand strong {
+  font-size: clamp(1.7rem, 3vw, 2.35rem);
+  letter-spacing: -0.04em;
+}
+
+.kaw-co-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.kaw-co-trust span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 0 13px;
+  border-radius: 999px;
+  background: rgba(255,250,246,0.70);
+  border: 1px solid rgba(93,67,45,0.08);
+  color: var(--kaw-brown);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.kaw-co-trust span::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #28c779;
+}
+
+/* Payment */
+.kaw-pay-panel {
+  display: grid;
+  gap: 16px;
+  padding: 20px;
+}
+
+.kaw-pay-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.kaw-pay-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #2d2119, #4b3324);
+  color: #f6deb0;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  box-shadow: 0 12px 24px rgba(45,33,25,0.16);
+}
+
+.kaw-pay-head h3 {
+  margin: 0;
+  color: var(--kaw-espresso);
+  font-size: 1.06rem;
+}
+
+.kaw-pay-head p {
+  margin: 5px 0 0;
+  color: var(--kaw-muted);
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.kaw-pay-total {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  padding: 14px 16px;
+  border-radius: 20px;
+  background: rgba(45,33,25,0.05);
+  border: 1px solid rgba(93,67,45,0.10);
+}
+
+.kaw-pay-total span {
+  color: var(--kaw-muted);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.kaw-pay-total strong {
+  color: var(--kaw-espresso);
+  font-size: 1.15rem;
+}
+
+.kaw-pay-address {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 14px;
+  align-items: center;
+  padding: 16px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.52);
+  border: 1px solid rgba(93,67,45,0.10);
+}
+
+.kaw-pay-address span {
+  grid-column: 1 / -1;
+  color: #8b6847;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.kaw-pay-address strong {
+  color: var(--kaw-espresso);
+  font-size: clamp(1.08rem, 2vw, 1.42rem);
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.kaw-pay-copy {
+  min-height: 42px;
+  border: 0;
+  border-radius: 14px;
+  padding: 0 16px;
+  background: var(--kaw-espresso);
+  color: #fffaf6;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.kaw-pay-fields {
+  display: grid;
+  gap: 10px;
+}
+
+.kaw-pay-fields input,
+.kaw-pay-fields textarea {
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid rgba(93,67,45,0.12);
+  background: rgba(255,255,255,0.72);
+  color: var(--kaw-espresso);
+  padding: 12px 14px;
+  font: inherit;
+  font-size: 0.88rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.kaw-pay-fields textarea {
+  resize: vertical;
+}
+
+.kaw-pay-confirm {
+  width: 100%;
+  min-height: 52px;
+  border: 0;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #2d2119, #4b3324);
+  color: #fffaf6;
+  font-weight: 900;
+  font-size: 0.9rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 16px 32px rgba(45,33,25,0.15);
+}
+
+.kaw-pay-status {
+  display: none;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(201,160,92,0.12);
+  color: var(--kaw-brown);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.kaw-pay-status.show {
+  display: block;
+}
+
+.kaw-pay-note {
+  margin: 0;
+  color: var(--kaw-muted);
+  font-size: 0.76rem;
+  line-height: 1.6;
+}
+
+.kaw-co-empty {
+  padding: 28px;
+  text-align: center;
+  color: var(--kaw-muted);
+}
+
+.kaw-co-empty strong {
+  display: block;
+  color: var(--kaw-espresso);
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+}
+
+.kaw-co-empty a {
+  display: inline-flex;
+  margin-top: 14px;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: var(--kaw-espresso);
+  color: #fffaf6;
+  text-decoration: none;
+  font-weight: 900;
+}
+
+@media (max-width: 960px) {
+  #kawCheckoutUltimateApp {
+    width: min(100% - 24px, 1240px);
+    margin-top: 24px;
+  }
+
+  .kaw-co-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .kaw-co-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+  .kaw-co-card {
+    border-radius: 24px;
+  }
+
+  .kaw-co-card-head {
+    padding: 18px;
+  }
+
+  .kaw-co-cart,
+  .kaw-pay-panel {
+    padding: 15px;
+  }
+
+  .kaw-co-item {
+    grid-template-columns: 64px 1fr;
+    gap: 12px;
+  }
+
+  .kaw-co-item img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .kaw-co-price {
+    grid-column: 1 / -1;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    justify-items: start;
+  }
+
+  .kaw-pay-address {
+    grid-template-columns: 1fr;
+  }
+
+  .kaw-pay-copy {
+    width: 100%;
+  }
+}

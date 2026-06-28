@@ -1,0 +1,459 @@
+#!/usr/bin/env bash
+set -e
+
+echo "=== KAWTHAR PRODUCT SIZE STABILIZER ==="
+
+STAMP="$(date +%F-%H%M%S)"
+
+mkdir -p backups css js
+
+tar -czf "backups/backup-before-product-size-fix-$STAMP.tar.gz" product.html css js 2>/dev/null || true
+
+echo "Backup created: backups/backup-before-product-size-fix-$STAMP.tar.gz"
+
+cat > css/kawthar-product-size-fix.css <<'CSS'
+/* =========================================================
+   KAWTHAR PRODUCT SIZE STABILIZER
+   Fixes oversized product image and sticky product bar.
+   Additive only. No product data changes.
+   ========================================================= */
+
+:root {
+  --kaw-espresso: #2d2119;
+  --kaw-brown: #4b3829;
+  --kaw-soft-brown: #6f5a47;
+  --kaw-gold: #c9a05c;
+  --kaw-ivory: #fffaf6;
+  --kaw-cream: #f5ede4;
+  --kaw-stroke: rgba(93, 67, 45, 0.12);
+  --kaw-shadow: 0 22px 58px rgba(45, 33, 25, 0.10);
+}
+
+body.kaw-product-size-fixed {
+  overflow-x: hidden !important;
+}
+
+/* Keep product page contained */
+body.kaw-product-size-fixed .site-shell {
+  width: 100% !important;
+  max-width: 1240px !important;
+  margin-inline: auto !important;
+  padding: clamp(16px, 2.5vw, 28px) clamp(14px, 2.5vw, 24px) 110px !important;
+  box-sizing: border-box !important;
+}
+
+/* Main product image wrapper detected by JS */
+body.kaw-product-size-fixed .kaw-product-main-media {
+  width: 100% !important;
+  max-width: 1180px !important;
+  height: clamp(360px, 54vh, 560px) !important;
+  max-height: 560px !important;
+  min-height: 340px !important;
+  margin: 0 auto 22px !important;
+  border-radius: 32px !important;
+  overflow: hidden !important;
+  background:
+    radial-gradient(circle at 16% 0%, rgba(201,160,92,0.12), transparent 38%),
+    #efe4d8 !important;
+  border: 1px solid rgba(93, 67, 45, 0.10) !important;
+  box-shadow: var(--kaw-shadow) !important;
+  position: relative !important;
+  display: block !important;
+}
+
+/* The image itself */
+body.kaw-product-size-fixed .kaw-product-main-img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  display: block !important;
+  object-fit: cover !important;
+  object-position: center 42% !important;
+  border-radius: inherit !important;
+}
+
+/* Product image badges */
+body.kaw-product-size-fixed .kaw-product-main-media .badge,
+body.kaw-product-size-fixed .kaw-product-main-media [class*="badge"],
+body.kaw-product-size-fixed .kaw-product-main-media [class*="label"],
+body.kaw-product-size-fixed .kaw-product-main-media [class*="arrival"] {
+  z-index: 4 !important;
+}
+
+/* Favorite heart on image */
+body.kaw-product-size-fixed .kaw-product-main-media button,
+body.kaw-product-size-fixed .kaw-product-main-media a {
+  z-index: 5 !important;
+}
+
+/* Product info under image should not disappear */
+body.kaw-product-size-fixed .product-info,
+body.kaw-product-size-fixed .product-details,
+body.kaw-product-size-fixed .product-page-info,
+body.kaw-product-size-fixed .product-content,
+body.kaw-product-size-fixed [class*="product-info"],
+body.kaw-product-size-fixed [class*="product-detail"] {
+  max-width: 1180px !important;
+  margin-inline: auto !important;
+}
+
+/* Social proof toast should not cover main buttons heavily */
+body.kaw-product-size-fixed .social-proof,
+body.kaw-product-size-fixed .sp-toast,
+body.kaw-product-size-fixed #spToastWrap,
+body.kaw-product-size-fixed [class*="toast"] {
+  max-width: min(310px, calc(100vw - 32px)) !important;
+  z-index: 850 !important;
+}
+
+/* Sticky bottom product bar */
+body.kaw-product-size-fixed #stickyWaBar,
+body.kaw-product-size-fixed .sticky-wa-bar,
+body.kaw-product-size-fixed .sticky-product-bar,
+body.kaw-product-size-fixed [id*="stickyWa"],
+body.kaw-product-size-fixed [class*="sticky-wa"] {
+  position: fixed !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: 16px !important;
+  transform: translateX(-50%) !important;
+  width: min(1180px, calc(100vw - 32px)) !important;
+  max-width: 1180px !important;
+  min-height: 70px !important;
+  padding: 12px 14px !important;
+  border-radius: 26px !important;
+  background: rgba(255, 250, 246, 0.90) !important;
+  border: 1px solid rgba(93, 67, 45, 0.12) !important;
+  box-shadow: 0 18px 46px rgba(45, 33, 25, 0.13) !important;
+  backdrop-filter: blur(16px) !important;
+  z-index: 930 !important;
+  box-sizing: border-box !important;
+}
+
+/* Buttons inside sticky bar */
+body.kaw-product-size-fixed #stickyWaBar button,
+body.kaw-product-size-fixed #stickyWaBar a,
+body.kaw-product-size-fixed .sticky-wa-bar button,
+body.kaw-product-size-fixed .sticky-wa-bar a,
+body.kaw-product-size-fixed .sticky-product-bar button,
+body.kaw-product-size-fixed .sticky-product-bar a {
+  min-height: 46px !important;
+  border-radius: 999px !important;
+  font-weight: 900 !important;
+  white-space: nowrap !important;
+}
+
+/* Floating WhatsApp should not cover sticky CTA */
+body.kaw-product-size-fixed #waFloatBtn,
+body.kaw-product-size-fixed .wa-float,
+body.kaw-product-size-fixed [aria-label*="WhatsApp"][class*="float"] {
+  right: 24px !important;
+  bottom: 24px !important;
+  z-index: 940 !important;
+}
+
+/* Product title safety */
+body.kaw-product-size-fixed h1,
+body.kaw-product-size-fixed .product-title,
+body.kaw-product-size-fixed [class*="product-title"] {
+  max-width: 100% !important;
+  word-break: normal !important;
+}
+
+/* Desktop two-column product layout if existing page has info card beside media */
+@media (min-width: 1020px) {
+  body.kaw-product-size-fixed .kaw-product-main-media {
+    height: clamp(420px, 58vh, 560px) !important;
+  }
+
+  body.kaw-product-size-fixed .product-page-grid,
+  body.kaw-product-size-fixed .product-detail-grid,
+  body.kaw-product-size-fixed .product-layout,
+  body.kaw-product-size-fixed .product-main-grid {
+    max-width: 1180px !important;
+    margin-inline: auto !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 0.95fr) minmax(360px, 1.05fr) !important;
+    gap: clamp(28px, 4vw, 52px) !important;
+    align-items: start !important;
+  }
+}
+
+/* Laptop tuning */
+@media (min-width: 861px) and (max-width: 1180px) {
+  body.kaw-product-size-fixed .kaw-product-main-media {
+    height: clamp(360px, 52vh, 500px) !important;
+    max-height: 500px !important;
+  }
+}
+
+/* Mobile tuning */
+@media (max-width: 860px) {
+  body.kaw-product-size-fixed .site-shell {
+    padding: 12px 12px 124px !important;
+  }
+
+  body.kaw-product-size-fixed .kaw-product-main-media {
+    width: 100% !important;
+    height: min(58vh, 390px) !important;
+    min-height: 300px !important;
+    max-height: 390px !important;
+    border-radius: 24px !important;
+    margin-bottom: 16px !important;
+  }
+
+  body.kaw-product-size-fixed .kaw-product-main-img {
+    object-position: center 40% !important;
+  }
+
+  body.kaw-product-size-fixed #stickyWaBar,
+  body.kaw-product-size-fixed .sticky-wa-bar,
+  body.kaw-product-size-fixed .sticky-product-bar,
+  body.kaw-product-size-fixed [id*="stickyWa"],
+  body.kaw-product-size-fixed [class*="sticky-wa"] {
+    width: calc(100vw - 20px) !important;
+    bottom: 10px !important;
+    padding: 10px !important;
+    border-radius: 22px !important;
+    min-height: auto !important;
+  }
+
+  body.kaw-product-size-fixed #stickyWaBar button,
+  body.kaw-product-size-fixed #stickyWaBar a,
+  body.kaw-product-size-fixed .sticky-wa-bar button,
+  body.kaw-product-size-fixed .sticky-wa-bar a,
+  body.kaw-product-size-fixed .sticky-product-bar button,
+  body.kaw-product-size-fixed .sticky-product-bar a {
+    min-height: 42px !important;
+    font-size: 0.82rem !important;
+    padding-inline: 12px !important;
+  }
+
+  body.kaw-product-size-fixed #waFloatBtn,
+  body.kaw-product-size-fixed .wa-float,
+  body.kaw-product-size-fixed [aria-label*="WhatsApp"][class*="float"] {
+    width: 54px !important;
+    height: 54px !important;
+    right: 18px !important;
+    bottom: 82px !important;
+  }
+
+  body.kaw-product-size-fixed .social-proof,
+  body.kaw-product-size-fixed .sp-toast,
+  body.kaw-product-size-fixed #spToastWrap,
+  body.kaw-product-size-fixed [class*="toast"] {
+    transform: scale(0.88) !important;
+    transform-origin: left bottom !important;
+    left: 10px !important;
+    bottom: 110px !important;
+  }
+}
+
+/* Small phones */
+@media (max-width: 430px) {
+  body.kaw-product-size-fixed .kaw-product-main-media {
+    height: min(54vh, 340px) !important;
+    min-height: 280px !important;
+    max-height: 340px !important;
+  }
+
+  body.kaw-product-size-fixed .social-proof,
+  body.kaw-product-size-fixed .sp-toast,
+  body.kaw-product-size-fixed #spToastWrap,
+  body.kaw-product-size-fixed [class*="toast"] {
+    display: none !important;
+  }
+}
+CSS
+
+cat > js/kawthar-product-size-fix.js <<'JS'
+(function () {
+  "use strict";
+
+  if (!/product\.html/i.test(location.pathname)) return;
+
+  function isVisible(el) {
+    if (!el) return false;
+    const rect = el.getBoundingClientRect();
+    const style = getComputedStyle(el);
+    return rect.width > 20 && rect.height > 20 && style.display !== "none" && style.visibility !== "hidden";
+  }
+
+  function isLogoOrIcon(img) {
+    const src = (img.currentSrc || img.src || "").toLowerCase();
+    const alt = (img.alt || "").toLowerCase();
+    const cls = (img.className || "").toString().toLowerCase();
+
+    return (
+      src.includes("logo") ||
+      alt.includes("logo") ||
+      cls.includes("logo") ||
+      src.includes("icon") ||
+      cls.includes("icon") ||
+      src.includes("whatsapp")
+    );
+  }
+
+  function findLargestProductImage() {
+    const imgs = Array.from(document.querySelectorAll("img")).filter((img) => {
+      if (!isVisible(img)) return false;
+      if (isLogoOrIcon(img)) return false;
+
+      const rect = img.getBoundingClientRect();
+      const area = rect.width * rect.height;
+
+      return area > 45000 && rect.width > 220 && rect.height > 180;
+    });
+
+    if (!imgs.length) return null;
+
+    imgs.sort((a, b) => {
+      const ar = a.getBoundingClientRect();
+      const br = b.getBoundingClientRect();
+      return (br.width * br.height) - (ar.width * ar.height);
+    });
+
+    return imgs[0];
+  }
+
+  function findBestMediaWrapper(img) {
+    if (!img) return null;
+
+    let node = img.parentElement;
+    let best = node;
+
+    for (let i = 0; i < 5 && node && node !== document.body; i++) {
+      const rect = node.getBoundingClientRect();
+      const text = (node.textContent || "").trim();
+
+      const goodBox =
+        rect.width >= img.getBoundingClientRect().width * 0.8 &&
+        rect.height >= img.getBoundingClientRect().height * 0.8 &&
+        text.length < 220;
+
+      if (goodBox) best = node;
+
+      node = node.parentElement;
+    }
+
+    return best || img.parentElement;
+  }
+
+  function applyImageSizing() {
+    document.body.classList.add("kaw-product-size-fixed");
+
+    const img = findLargestProductImage();
+    if (!img) return false;
+
+    const wrapper = findBestMediaWrapper(img);
+
+    img.classList.add("kaw-product-main-img");
+
+    if (wrapper) {
+      wrapper.classList.add("kaw-product-main-media");
+    }
+
+    return true;
+  }
+
+  function fixStickyBarSpacing() {
+    const sticky =
+      document.getElementById("stickyWaBar") ||
+      document.querySelector(".sticky-wa-bar") ||
+      document.querySelector(".sticky-product-bar") ||
+      document.querySelector("[id*='stickyWa']") ||
+      document.querySelector("[class*='sticky-wa']");
+
+    if (!sticky) return;
+
+    sticky.setAttribute("data-kaw-fixed", "true");
+
+    const buttons = sticky.querySelectorAll("button, a");
+    buttons.forEach((btn) => {
+      btn.style.whiteSpace = "nowrap";
+    });
+  }
+
+  function removeExtremeInlineSizes() {
+    const img = document.querySelector(".kaw-product-main-img");
+    if (!img) return;
+
+    img.style.maxHeight = "none";
+    img.style.maxWidth = "none";
+
+    const wrapper = document.querySelector(".kaw-product-main-media");
+    if (wrapper) {
+      wrapper.style.maxWidth = "";
+      wrapper.style.width = "";
+    }
+  }
+
+  function run() {
+    applyImageSizing();
+    fixStickyBarSpacing();
+    removeExtremeInlineSizes();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", run);
+  } else {
+    run();
+  }
+
+  let attempts = 0;
+  const timer = setInterval(() => {
+    attempts += 1;
+    run();
+
+    if (document.querySelector(".kaw-product-main-img") || attempts >= 20) {
+      clearInterval(timer);
+    }
+  }, 250);
+
+  setTimeout(run, 1500);
+  setTimeout(run, 3000);
+
+  console.info("KAWTHAR product size fix loaded.");
+})();
+JS
+
+python3 - <<'PY'
+from pathlib import Path
+import re, time
+
+p = Path("product.html")
+if not p.exists():
+    raise SystemExit("ERROR: product.html not found")
+
+text = p.read_text(encoding="utf-8")
+ver = str(int(time.time()))
+
+text = re.sub(r'\s*<link rel="stylesheet" href="\./css/kawthar-product-size-fix\.css\?v=[^"]*" />', '', text)
+text = re.sub(r'\s*<script src="\./js/kawthar-product-size-fix\.js\?v=[^"]*"></script>', '', text)
+
+text = text.replace(
+    "</head>",
+    f'  <link rel="stylesheet" href="./css/kawthar-product-size-fix.css?v={ver}" />\n</head>',
+    1
+)
+
+text = text.replace(
+    "</body>",
+    f'  <script src="./js/kawthar-product-size-fix.js?v={ver}"></script>\n</body>',
+    1
+)
+
+p.write_text(text, encoding="utf-8")
+
+print("Product size fix linked.")
+print("Version:", ver)
+PY
+
+if command -v node >/dev/null 2>&1; then
+  node --check js/kawthar-product-size-fix.js
+fi
+
+echo "=== DONE ==="
+echo "Test:"
+echo "https://constantly-professionals-devoted-ground.trycloudflare.com/product.html?id=1774967141418&v=size-$STAMP"

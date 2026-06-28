@@ -1,0 +1,583 @@
+/* =========================================================
+   KAWTHAR FINAL DELIVERY POLISH PACK
+   Safe additive CSS only.
+   Keeps logo, identity, colors, products, and content.
+   ========================================================= */
+
+:root {
+  --kaw-espresso: #2d2119;
+  --kaw-brown: #4b3829;
+  --kaw-soft-brown: #6f5a47;
+  --kaw-gold: #c9a05c;
+  --kaw-gold-soft: rgba(201, 160, 92, 0.18);
+  --kaw-ivory: #fffaf6;
+  --kaw-cream: #f5ede4;
+  --kaw-stroke: rgba(93, 67, 45, 0.12);
+  --kaw-shadow: 0 18px 46px rgba(45, 33, 25, 0.08);
+  --kaw-shadow-strong: 0 26px 70px rgba(45, 33, 25, 0.13);
+}
+
+/* Global safety */
+html,
+body {
+  overflow-x: hidden !important;
+}
+
+body.kaw-final-ready {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.kaw-final-ready .site-shell,
+body.kaw-final-ready main {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+/* Remove stuck splash only after JS marks page ready */
+body.kaw-final-ready #splashScreen,
+body.kaw-final-ready .splash-screen,
+body.kaw-final-ready #goStartup,
+body.kaw-final-ready .go-startup {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Premium ambient base */
+.site-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.noise-layer {
+  opacity: 0.035 !important;
+  pointer-events: none !important;
+}
+
+/* Header polish without changing structure */
+.main-header {
+  z-index: 80 !important;
+  border-bottom: 1px solid rgba(93, 67, 45, 0.08) !important;
+  box-shadow: 0 12px 34px rgba(45, 33, 25, 0.035) !important;
+}
+
+.brand-logo-img,
+.brand-logo img {
+  filter: drop-shadow(0 10px 18px rgba(45, 33, 25, 0.08));
+}
+
+.icon-circle,
+.icon-btn {
+  transition: transform 240ms ease, box-shadow 240ms ease, background 240ms ease !important;
+}
+
+.icon-circle:hover,
+.icon-btn:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 12px 24px rgba(45, 33, 25, 0.10) !important;
+}
+
+/* Announcement bar: slim and premium */
+.announcement-bar {
+  overflow: hidden !important;
+  min-height: 32px !important;
+}
+
+.announcement-track {
+  animation-duration: 42s !important;
+  letter-spacing: 0.08em !important;
+}
+
+/* =========================================================
+   HERO CINEMATIC POLISH
+   ========================================================= */
+
+.cin-hero {
+  position: relative !important;
+  isolation: isolate !important;
+  overflow: hidden !important;
+}
+
+.cin-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 82% 22%, rgba(201,160,92,0.14), transparent 28%),
+    radial-gradient(circle at 14% 26%, rgba(255,250,246,0.70), transparent 28%),
+    linear-gradient(115deg, rgba(255,250,246,0.08), transparent 55%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.cin-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(93,67,45,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(93,67,45,0.035) 1px, transparent 1px);
+  background-size: 84px 84px;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 16%, #000 78%, transparent 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.cin-hero__bg,
+.cin-hero__stage,
+.cin-hero__content {
+  position: relative;
+}
+
+.cin-hero__content {
+  z-index: 4 !important;
+}
+
+.cin-hero__stage {
+  z-index: 2 !important;
+}
+
+.cin-hero__float {
+  box-shadow: var(--kaw-shadow-strong) !important;
+  transition: transform 700ms cubic-bezier(.2,.8,.2,1), box-shadow 700ms ease !important;
+}
+
+.cin-hero__float:hover {
+  transform: translateY(-4px) scale(1.015) !important;
+  box-shadow: 0 34px 90px rgba(45, 33, 25, 0.17) !important;
+}
+
+.cin-hero__float img {
+  object-fit: cover !important;
+  transition: transform 1200ms cubic-bezier(.2,.8,.2,1), filter 900ms ease !important;
+}
+
+.cin-hero__float:hover img {
+  transform: scale(1.035) !important;
+  filter: saturate(1.02) contrast(1.02) !important;
+}
+
+/* Hero benefits: convert ugly block into compact premium strip */
+.cin-hero__metrics {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+  width: min(100%, 570px) !important;
+  max-width: 570px !important;
+  margin-top: 20px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+.cin-metric__divider {
+  display: none !important;
+}
+
+.cin-metric {
+  position: relative !important;
+  display: grid !important;
+  gap: 6px !important;
+  min-width: 0 !important;
+  padding: 14px 14px 13px !important;
+  border-radius: 20px !important;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(201,160,92,0.14), transparent 42%),
+    rgba(255, 250, 246, 0.82) !important;
+  border: 1px solid rgba(93, 67, 45, 0.10) !important;
+  box-shadow: 0 12px 28px rgba(45, 33, 25, 0.055) !important;
+  text-align: left !important;
+  overflow: hidden !important;
+}
+
+.cin-metric::before {
+  content: "";
+  width: 22px;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(201, 160, 92, 0.74);
+  display: block;
+  margin-bottom: 1px;
+}
+
+.cin-metric::after {
+  content: "";
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  top: -45px;
+  right: -35px;
+  border-radius: 999px;
+  border: 1px solid rgba(201,160,92,0.18);
+  pointer-events: none;
+}
+
+.cin-metric__icon {
+  display: none !important;
+}
+
+.cin-metric strong {
+  margin: 0 !important;
+  color: var(--kaw-espresso) !important;
+  font-size: 0.92rem !important;
+  line-height: 1.22 !important;
+  font-weight: 850 !important;
+}
+
+.cin-metric span:not(.cin-metric__icon),
+.cin-metric p,
+.cin-metric small {
+  margin: 0 !important;
+  color: var(--kaw-soft-brown) !important;
+  font-size: 0.76rem !important;
+  line-height: 1.45 !important;
+}
+
+/* Buttons */
+.cin-btn,
+.btn {
+  transition: transform 240ms ease, box-shadow 240ms ease, background 240ms ease, border-color 240ms ease !important;
+}
+
+.cin-btn:hover,
+.btn:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* =========================================================
+   CINEMATIC SECTION GRAPHICS
+   ========================================================= */
+
+.cin-material,
+.cin-story,
+.cin-cta,
+.kaw-testimonials,
+.cin-testimonials,
+section[id*="testimonial"] {
+  position: relative !important;
+  isolation: isolate !important;
+  overflow: hidden !important;
+}
+
+.cin-material::before,
+.cin-story::before,
+.cin-cta::before,
+.kaw-testimonials::before,
+.cin-testimonials::before,
+section[id*="testimonial"]::before {
+  content: "";
+  position: absolute;
+  width: min(42vw, 520px);
+  height: min(42vw, 520px);
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(201,160,92,0.12), transparent 66%);
+  filter: blur(12px);
+  opacity: 0.72;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cin-material::before {
+  left: -10%;
+  top: 8%;
+}
+
+.cin-story::before {
+  right: -12%;
+  top: 12%;
+}
+
+.cin-cta::before {
+  left: 50%;
+  top: 8%;
+  transform: translateX(-50%);
+  opacity: 0.45;
+}
+
+.cin-material > *,
+.cin-story > *,
+.cin-cta > *,
+.kaw-testimonials > *,
+.cin-testimonials > *,
+section[id*="testimonial"] > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Luxury image interactions */
+.cin-col-tile,
+.product-card,
+.cin-story__img-frame,
+.cin-story__img-small,
+.cin-craft__img-wrap,
+.product-page-image-wrap {
+  overflow: hidden !important;
+  transition: transform 360ms ease, box-shadow 360ms ease, border-color 360ms ease !important;
+}
+
+.cin-col-tile:hover,
+.product-card:hover,
+.cin-story__img-frame:hover,
+.cin-craft__img-wrap:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: var(--kaw-shadow-strong) !important;
+}
+
+.cin-col-tile img,
+.product-thumb img,
+.cin-story__img-frame img,
+.cin-story__img-small img,
+.cin-craft__img-wrap img,
+.product-page-image-wrap img {
+  transition: transform 900ms cubic-bezier(.2,.8,.2,1), filter 700ms ease !important;
+}
+
+.cin-col-tile:hover img,
+.product-card:hover .product-thumb img,
+.cin-story__img-frame:hover img,
+.cin-craft__img-wrap:hover img {
+  transform: scale(1.035) !important;
+  filter: saturate(1.02) contrast(1.02) !important;
+}
+
+/* Subtle gold line separator */
+.cin-eyebrow,
+.cin-section-label,
+.kaw-testimonials__kicker,
+[class*="eyebrow"],
+[class*="kicker"] {
+  letter-spacing: 0.16em !important;
+}
+
+/* =========================================================
+   FEATURED / SHOP SAFETY STATES
+   ========================================================= */
+
+.kaw-shop-empty-note {
+  grid-column: 1 / -1;
+  padding: 24px;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(201,160,92,0.14), transparent 38%),
+    rgba(255,250,246,0.75);
+  border: 1px solid rgba(93,67,45,0.12);
+  color: var(--kaw-brown);
+  text-align: center;
+  box-shadow: var(--kaw-shadow);
+}
+
+.kaw-shop-empty-note strong {
+  display: block;
+  color: var(--kaw-espresso);
+  font-size: 1rem;
+  margin-bottom: 7px;
+}
+
+.kaw-shop-empty-note p {
+  margin: 0;
+  color: var(--kaw-soft-brown);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+/* =========================================================
+   FOOTER FINAL POLISH
+   ========================================================= */
+
+footer,
+.main-footer,
+.cin-footer,
+.kaw-final-footer {
+  background:
+    radial-gradient(circle at 14% 0%, rgba(201,160,92,0.16), transparent 32%),
+    linear-gradient(180deg, #f8f1ea 0%, #eadfd3 100%) !important;
+  color: var(--kaw-brown) !important;
+  border-top: 1px solid rgba(93,67,45,0.12) !important;
+}
+
+footer a,
+.main-footer a,
+.cin-footer a,
+.kaw-final-footer a {
+  color: var(--kaw-espresso) !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+}
+
+footer a:hover,
+.main-footer a:hover,
+.cin-footer a:hover,
+.kaw-final-footer a:hover {
+  color: #9b6a2f !important;
+}
+
+footer p,
+footer span,
+footer li,
+footer small,
+.main-footer p,
+.main-footer span,
+.main-footer li,
+.main-footer small,
+.cin-footer p,
+.cin-footer span,
+.cin-footer li,
+.cin-footer small {
+  color: var(--kaw-brown) !important;
+  opacity: 1 !important;
+}
+
+footer h1,
+footer h2,
+footer h3,
+footer h4,
+footer h5,
+footer h6,
+.main-footer h1,
+.main-footer h2,
+.main-footer h3,
+.main-footer h4,
+.main-footer h5,
+.main-footer h6,
+.cin-footer h1,
+.cin-footer h2,
+.cin-footer h3,
+.cin-footer h4,
+.cin-footer h5,
+.cin-footer h6 {
+  color: var(--kaw-espresso) !important;
+  opacity: 1 !important;
+}
+
+/* =========================================================
+   CHECKOUT FINAL POLISH
+   ========================================================= */
+
+.checkout-page {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body.kaw-final-ready .checkout-page {
+  display: block !important;
+}
+
+.instapay-main {
+  gap: 16px !important;
+}
+
+.ipa-qr-card,
+.ipa-qr-wrap,
+.ipa-steps-guide {
+  display: none !important;
+}
+
+.ipa-address-card,
+.ipa-amount-card {
+  border-radius: 22px !important;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(201,160,92,0.13), transparent 42%),
+    rgba(255,250,246,0.72) !important;
+  border: 1px solid rgba(93,67,45,0.12) !important;
+  box-shadow: 0 12px 28px rgba(45,33,25,0.055) !important;
+}
+
+.ipa-confirm-btn,
+#confirmPayBtn {
+  border-radius: 18px !important;
+  background: linear-gradient(135deg, #2d2119, #4b3324) !important;
+  color: #fffaf6 !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.06em !important;
+  box-shadow: 0 16px 32px rgba(45,33,25,0.15) !important;
+}
+
+.ipa-hero {
+  border-radius: 26px !important;
+}
+
+/* =========================================================
+   REVEAL ANIMATION
+   ========================================================= */
+
+.kaw-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 700ms ease, transform 700ms cubic-bezier(.2,.8,.2,1);
+}
+
+.kaw-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile */
+@media (max-width: 980px) {
+  .cin-hero__metrics {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    width: min(100%, 420px) !important;
+    margin-inline: auto !important;
+  }
+
+  .cin-metric {
+    padding: 12px 14px !important;
+    border-radius: 18px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .cin-hero__metrics {
+    display: none !important;
+  }
+
+  .cin-hero::after {
+    background-size: 60px 60px;
+    opacity: 0.55;
+  }
+
+  .product-card {
+    border-radius: 20px !important;
+  }
+
+  .product-thumb {
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
+  }
+
+  .cin-col-tile,
+  .cin-col-tile--large {
+    border-radius: 22px !important;
+  }
+
+  .checkout-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .ipa-qr-card,
+  .ipa-qr-wrap {
+    display: none !important;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .kaw-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

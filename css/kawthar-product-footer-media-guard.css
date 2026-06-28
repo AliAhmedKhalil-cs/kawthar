@@ -1,0 +1,141 @@
+/* =========================================================
+   PRODUCT FOOTER + MEDIA GUARD
+   Fixes product page footer gutters and oversized images only.
+   ========================================================= */
+
+body.kaw-pf-guard {
+  overflow-x: hidden !important;
+}
+
+/* Make product footer full bleed, even if it is inside a container */
+body.kaw-pf-guard footer,
+body.kaw-pf-guard footer.kaw-footer-clean {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  border-radius: 0 !important;
+  overflow: hidden !important;
+}
+
+body.kaw-pf-guard footer .kaw-footer-container {
+  width: min(1180px, calc(100% - 40px)) !important;
+  max-width: 1180px !important;
+  margin-inline: auto !important;
+}
+
+/* Remove accidental visible "\n" text leftovers */
+body.kaw-pf-guard .kaw-visible-newline-cleaned {
+  display: none !important;
+}
+
+/* Main / oversized product images */
+body.kaw-pf-guard .kaw-product-media-img-cap {
+  display: block !important;
+  width: min(100%, 620px) !important;
+  max-width: 620px !important;
+  height: clamp(300px, 46vh, 470px) !important;
+  max-height: 470px !important;
+  min-height: 280px !important;
+  object-fit: cover !important;
+  object-position: center 42% !important;
+  margin-inline: auto !important;
+  border-radius: 28px !important;
+  box-shadow: 0 22px 58px rgba(45,33,25,0.10) !important;
+}
+
+body.kaw-pf-guard .kaw-product-media-wrap-cap {
+  width: min(100%, 660px) !important;
+  max-width: 660px !important;
+  margin-inline: auto !important;
+  overflow: visible !important;
+  border-radius: 30px !important;
+}
+
+/* Product grid should stay balanced, not full-screen image only */
+body.kaw-pf-guard .product-page-grid,
+body.kaw-pf-guard .product-detail-grid,
+body.kaw-pf-guard .product-layout,
+body.kaw-pf-guard .product-main-grid {
+  max-width: 1180px !important;
+  margin-inline: auto !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr) !important;
+  gap: clamp(26px, 4vw, 52px) !important;
+  align-items: start !important;
+}
+
+/* Related products / You may also like */
+body.kaw-pf-guard .kaw-related-compact {
+  width: min(1180px, calc(100% - 40px)) !important;
+  margin: 44px auto 26px !important;
+  padding: 0 !important;
+}
+
+body.kaw-pf-guard .kaw-related-compact h1,
+body.kaw-pf-guard .kaw-related-compact h2,
+body.kaw-pf-guard .kaw-related-compact h3,
+body.kaw-pf-guard .kaw-related-compact .section-title {
+  font-size: clamp(2rem, 4vw, 3.6rem) !important;
+  line-height: 1.02 !important;
+  margin-bottom: 22px !important;
+}
+
+body.kaw-pf-guard .kaw-related-compact .product-card,
+body.kaw-pf-guard .kaw-related-compact article,
+body.kaw-pf-guard .kaw-related-compact [class*="product-card"] {
+  max-width: 360px !important;
+  width: min(100%, 360px) !important;
+}
+
+body.kaw-pf-guard .kaw-related-compact img {
+  width: 100% !important;
+  height: 230px !important;
+  max-height: 230px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border-radius: 22px !important;
+}
+
+/* Prevent any product image directly above footer from becoming a giant banner */
+body.kaw-pf-guard footer ~ img,
+body.kaw-pf-guard img.kaw-product-near-footer {
+  max-height: 260px !important;
+}
+
+/* Mobile */
+@media (max-width: 860px) {
+  body.kaw-pf-guard .product-page-grid,
+  body.kaw-pf-guard .product-detail-grid,
+  body.kaw-pf-guard .product-layout,
+  body.kaw-pf-guard .product-main-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  body.kaw-pf-guard .kaw-product-media-img-cap {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: min(52vh, 340px) !important;
+    min-height: 250px !important;
+    max-height: 340px !important;
+    border-radius: 24px !important;
+  }
+
+  body.kaw-pf-guard .kaw-product-media-wrap-cap {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  body.kaw-pf-guard footer .kaw-footer-container,
+  body.kaw-pf-guard .kaw-related-compact {
+    width: min(100% - 24px, 1180px) !important;
+  }
+
+  body.kaw-pf-guard .kaw-related-compact img {
+    height: 210px !important;
+    max-height: 210px !important;
+  }
+}

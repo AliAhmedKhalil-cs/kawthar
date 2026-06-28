@@ -1,0 +1,266 @@
+/* =========================================================
+   KAWTHAR FOOTER FINAL CLEAN
+   Final footer structure. No filler text. No duplicated socials.
+   ========================================================= */
+
+.kaw-footer-clean {
+  position: relative;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(201,160,92,0.14), transparent 32%),
+    linear-gradient(180deg, #f8f1ea 0%, #eadfd3 100%) !important;
+  color: #3f2e22 !important;
+  border-top: 1px solid rgba(93,67,45,0.12);
+  padding: 58px 0 30px;
+  overflow: hidden;
+}
+
+.kaw-footer-clean * {
+  box-sizing: border-box;
+}
+
+.kaw-footer-clean::before {
+  content: "";
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  left: -220px;
+  top: -220px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(201,160,92,0.12), transparent 68%);
+  pointer-events: none;
+}
+
+.kaw-footer-clean .kaw-footer-container {
+  width: min(1180px, calc(100% - 40px));
+  margin-inline: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.kaw-footer-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.8fr 0.9fr 1fr;
+  gap: clamp(34px, 5vw, 74px);
+  align-items: start;
+}
+
+.kaw-footer-brand {
+  max-width: 380px;
+}
+
+.kaw-footer-logo-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.kaw-footer-logo-row img {
+  width: 74px;
+  height: 74px;
+  object-fit: contain;
+  opacity: 0.94;
+  filter: drop-shadow(0 12px 20px rgba(45,33,25,0.08));
+}
+
+.kaw-footer-brand-title {
+  display: grid;
+  gap: 5px;
+}
+
+.kaw-footer-brand-title strong {
+  color: #2d2119;
+  font-size: 1.05rem;
+  letter-spacing: 0.18em;
+  font-weight: 950;
+}
+
+.kaw-footer-brand-title span {
+  color: #8b6847;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 850;
+}
+
+.kaw-footer-desc {
+  margin: 0;
+  color: #5b4635;
+  font-size: 0.94rem;
+  line-height: 1.85;
+  max-width: 350px;
+}
+
+.kaw-footer-col h3 {
+  margin: 0 0 18px;
+  color: #2d2119;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 950;
+}
+
+.kaw-footer-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 13px;
+}
+
+.kaw-footer-list a,
+.kaw-footer-list span {
+  color: #4b3829 !important;
+  text-decoration: none !important;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  font-weight: 760;
+}
+
+.kaw-footer-list a:hover {
+  color: #9b6a2f !important;
+}
+
+.kaw-footer-contact-stack {
+  display: grid;
+  gap: 10px;
+  max-width: 270px;
+}
+
+.kaw-footer-social {
+  display: flex !important;
+  align-items: center;
+  gap: 11px;
+  min-height: 46px;
+  padding: 9px 13px;
+  border-radius: 999px;
+  text-decoration: none !important;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(201,160,92,0.12), transparent 40%),
+    rgba(255,250,246,0.80);
+  border: 1px solid rgba(93,67,45,0.12);
+  color: #2d2119 !important;
+  box-shadow: 0 12px 28px rgba(45,33,25,0.08);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+
+.kaw-footer-social:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(45,33,25,0.13);
+  border-color: rgba(201,160,92,0.36);
+}
+
+.kaw-footer-social-icon {
+  width: 31px;
+  height: 31px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: -0.02em;
+}
+
+.kaw-footer-social.wa .kaw-footer-social-icon {
+  background: #25d366;
+}
+
+.kaw-footer-social.ig .kaw-footer-social-icon {
+  background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 55%, #fcb045 100%);
+}
+
+.kaw-footer-social.fb .kaw-footer-social-icon {
+  background: #1877f2;
+}
+
+.kaw-footer-social-copy {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.kaw-footer-social-copy strong {
+  color: #2d2119 !important;
+  font-size: 0.86rem;
+  line-height: 1.1;
+  font-weight: 950;
+}
+
+.kaw-footer-social-copy span {
+  color: #6f5a47 !important;
+  font-size: 0.68rem;
+  line-height: 1.1;
+  font-weight: 760;
+}
+
+.kaw-footer-bottom {
+  margin-top: 44px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(93,67,45,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  color: #6f5a47;
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+
+.kaw-footer-bottom-note {
+  color: #6f5a47;
+}
+
+/* Force-hide previous filler blocks if another script injects them */
+footer .kaw-footer-social-final,
+footer .kaw-footer-contact-social,
+footer .kaw-social-link,
+footer .kaw-final-note,
+footer .kaw-final-badge,
+footer .kaw-final-tags,
+footer .kaw-footer-tags,
+footer [class*="payment"],
+footer [class*="tag"] {
+  display: none !important;
+}
+
+@media (max-width: 920px) {
+  .kaw-footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .kaw-footer-brand {
+    grid-column: 1 / -1;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .kaw-footer-clean {
+    padding: 46px 0 26px;
+  }
+
+  .kaw-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .kaw-footer-logo-row img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .kaw-footer-contact-stack {
+    max-width: 100%;
+  }
+
+  .kaw-footer-social {
+    width: min(100%, 290px);
+  }
+
+  .kaw-footer-bottom {
+    margin-top: 34px;
+  }
+}

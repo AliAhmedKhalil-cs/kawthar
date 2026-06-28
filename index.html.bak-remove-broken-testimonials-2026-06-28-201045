@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <script id="kawthar-lang-head-fix">
+    document.documentElement.lang = localStorage.getItem('kawthar_lang') || 'en';
+    document.documentElement.dir = document.documentElement.lang === 'ar' ? 'rtl' : 'ltr';
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KAWTHAR | Kawthar Accessories</title>
+  <meta name="description" content="كوثر - وجهتك الأولى للإكسسوارات النسائية الفاخرة من الستانلس ستيل المقاوم للصدأ وشنط الهاند ميد الراقية." />
+  <meta name="keywords" content="إكسسوارات, ستانلس ستيل, خواتم, سلاسل, شنط هاند ميد, هدايا نسائية, إكسسوارات مصر, Kawthar Accessories" />
+  <meta name="author" content="Ali Ahmed Khalil" />
+  <meta name="theme-color" content="#b9a38f" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta property="og:title" content="KAWTHAR | Kawthar Accessories" />
+  <meta property="og:description" content="Radiate elegance with Kawthar exclusive range of tarnish-free jewelry and artisanal handmade bags." />
+  <meta property="og:image" content="https://kawthar.site/assets/logo/kawthar-logo-hd.webp" />
+  <meta property="og:url" content="https://kawthar.site" />
+  <meta property="og:type" content="website" />
+  
+  <link rel="preload" href="./assets/logo/kawthar-logo-hd.webp" as="image" fetchpriority="high" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/main.css?v=3.0" />
+  <link rel="stylesheet" href="./css/cinematic.css?v=1.0" />
+  <link rel="stylesheet" href="./css/fix-layout.css?v=hero-fix-1782671452" />
+  <link rel="stylesheet" href="./css/zz-final-polish.css?v=1782672319" />
+  <link rel="stylesheet" href="./css/zz-footer-payment-fix.css?v=manualpay-1782675920" />
+  <link rel="stylesheet" href="./css/zz-handover-final.css?v=1782676601" />
+  <link rel="stylesheet" href="./css/zz-testimonials-fix.css?v=1782676961" />
+</head>
+<body>
+
+<div id="splashScreen" class="splash-screen" role="status" aria-label="Loading">
+  <div class="splash-content">
+    <img src="./assets/logo/kawthar-logo-hd.webp" alt="KAWTHAR" class="splash-logo" width="120" height="120" fetchpriority="high" decoding="sync">
+    <div class="splash-loader" aria-hidden="true"></div>
+  </div>
+</div>
+
+<div class="site-shell">
+  <div class="aurora aurora-1" aria-hidden="true"></div>
+  <div class="aurora aurora-2" aria-hidden="true"></div>
+  <!-- aurora-3 removed: was fixed overlay causing z-index conflicts -->
+  <div class="noise-layer" aria-hidden="true"></div>
+
+  <div class="announcement-bar" role="marquee" aria-label="Announcements">
+    <div class="announcement-track">
+        <span data-i18n="announce_1">KAWTHAR • Stainless Steel Anti Rust</span>
+        <span>✦</span>
+        <span data-i18n="announce_2">Handmade Premium Bags</span>
+        <span>✦</span>
+        <span data-i18n="announce_3">Direct inquiry via WhatsApp</span>
+      </div>
+  </div>
+
+  <div id="siteOverlay" class="site-overlay" aria-hidden="true"></div>
+
+  <header id="mainHeader" class="main-header" role="banner">
+    <div class="container header-inner">
+      <div class="header-left">
+        <button class="icon-btn mobile-only" id="mobileMenuBtn" aria-label="فتح القائمة" aria-expanded="false" type="button">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="desktop-nav" role="navigation" aria-label="Main navigation">
+          <a href="./index.html#home" class="nav-link active" data-i18n="nav_home">Home</a>
+          <a href="./shop.html" class="nav-link" data-i18n="nav_shop">Shop</a>
+          <a href="./index.html#collections" class="nav-link" data-i18n="nav_collections">Collections</a>
+          <a href="./index.html#featured" class="nav-link" data-i18n="nav_featured">Featured</a>
+          <a href="./index.html#story" class="nav-link" data-i18n="nav_story">Story</a>
+        </nav>
+      </div>
+      <a href="./index.html" class="brand-logo" aria-label="KAWTHAR Home">
+        <img src="./assets/logo/kawthar-logo-hd.webp" width="72" height="72" alt="Kawthar Logo" class="brand-logo-img" fetchpriority="high" decoding="async">
+      </a>
+      <div class="header-actions">
+        <button class="icon-circle" id="searchOpenBtn" aria-label="بحث" type="button">🔍</button>
+        <button class="icon-circle" id="langToggleBtn" type="button" aria-label="تغيير اللغة">ع</button>
+        <button class="icon-circle badge-anchor" id="wishlistOpenBtn" aria-label="المفضلة" type="button">♥<span id="wishlistCount" class="badge" aria-label="wishlist items">0</span></button>
+        <button class="icon-circle badge-anchor" id="cartOpenBtn" aria-label="السلة" type="button">🛒<span id="cartCount" class="badge" aria-label="cart items">0</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 1 — CINEMATIC LUXURY HERO
+    ═══════════════════════════════════════════ -->
+    <section id="home" class="cin-hero" aria-labelledby="hero-heading">
+      <div class="cin-hero__bg" aria-hidden="true">
+        <div class="cin-hero__orb cin-hero__orb--1"></div>
+        <div class="cin-hero__orb cin-hero__orb--2"></div>
+        <div class="cin-hero__orb cin-hero__orb--3"></div>
+        <div class="cin-hero__grid-lines"></div>
+      </div>
+
+      <div class="cin-hero__stage" aria-hidden="true">
+        <div class="cin-hero__float cin-hero__float--1">
+          <img src="./assets/products/1.webp" alt="" width="320" height="420" fetchpriority="high" decoding="sync">
+        </div>
+        <div class="cin-hero__float cin-hero__float--2">
+          <img src="./assets/products/2.webp" alt="" width="260" height="340" loading="lazy">
+        </div>
+        <div class="cin-hero__float cin-hero__float--3">
+          <img src="./assets/products/3.webp" alt="" width="200" height="260" loading="lazy">
+        </div>
+        <div class="cin-hero__float cin-hero__float--4">
+          <img src="./assets/products/8.webp" alt="" width="180" height="230" loading="lazy">
+        </div>
+        <!-- Particles removed: decorative noise, not storytelling -->
+      </div>
+
+      <div class="container cin-hero__content">
+        <div class="cin-hero__kicker" data-cin-reveal="fade-up" data-cin-delay="0">
+          <span class="cin-kicker-line" aria-hidden="true"></span>
+          <span data-i18n="hero_kicker">KAWTHAR COLLECTION</span>
+          <span class="cin-kicker-line" aria-hidden="true"></span>
+        </div>
+
+        <h1 id="hero-heading" class="cin-hero__title" data-cin-reveal="fade-up" data-cin-delay="150">
+          <em data-i18n="hero_title_main">Define your</em>
+          <strong data-i18n="hero_title_sub">elegance</strong>
+        </h1>
+
+        <p class="cin-hero__sub" data-cin-reveal="fade-up" data-cin-delay="300" data-i18n="hero_desc">
+          Premium stainless steel accessories and handmade artisan bags designed for your unique style.
+        </p>
+
+        <div class="cin-hero__actions" data-cin-reveal="fade-up" data-cin-delay="450">
+          <a href="#featured" class="cin-btn cin-btn--primary" data-i18n="btn_shop">Shop Collection</a>
+          <a href="./shop.html" class="cin-btn cin-btn--ghost" data-i18n="btn_view">View Full Shop</a>
+        </div>
+
+        <div class="cin-hero__metrics" data-cin-reveal="fade-up" data-cin-delay="600">
+          <div class="cin-metric">
+            <span class="cin-metric__icon" aria-hidden="true">✦</span>
+            <strong data-i18n="metric_1_title">Luxury Feel</strong>
+            <span data-i18n="metric_1_desc">Soft feminine premium identity</span>
+          </div>
+          <div class="cin-metric__divider" aria-hidden="true"></div>
+          <div class="cin-metric">
+            <span class="cin-metric__icon" aria-hidden="true">◆</span>
+            <strong data-i18n="metric_2_title">Anti Rust</strong>
+            <span data-i18n="metric_2_desc">Made from stainless steel</span>
+          </div>
+          <div class="cin-metric__divider" aria-hidden="true"></div>
+          <div class="cin-metric">
+            <span class="cin-metric__icon" aria-hidden="true">✦</span>
+            <strong data-i18n="metric_3_title">Fast Inquiry</strong>
+            <span data-i18n="metric_3_desc">Order directly on WhatsApp</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cin-hero__scroll-cue" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 2 — MATERIAL STORY (ANIMATED)
+    ═══════════════════════════════════════════ -->
+    <section class="cin-material" aria-labelledby="material-heading">
+      <div class="cin-material__bg" aria-hidden="true">
+        <div class="cin-material__line cin-material__line--1"></div>
+        <div class="cin-material__line cin-material__line--2"></div>
+      </div>
+      <div class="container">
+        <div class="cin-material__intro" data-cin-reveal="fade-up">
+          <p class="cin-eyebrow" data-i18n="material_eyebrow">The Material</p>
+          <h2 id="material-heading" class="cin-title" data-i18n="material_title">
+            Built to last.<br>Designed to dazzle.
+          </h2>
+        </div>
+
+        <div class="cin-material__pillars">
+          <article class="cin-pillar" data-cin-reveal="fade-up" data-cin-delay="0">
+            <div class="cin-pillar__number" aria-hidden="true">01</div>
+            <div class="cin-pillar__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+                <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M16 24c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8-8-3.582-8-8z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M24 8v4M24 36v4M8 24h4M36 24h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 data-i18n="material_1_title">Stainless Steel</h3>
+            <p data-i18n="material_1_desc">Medical-grade alloy that holds its form and finish across every season.</p>
+          </article>
+
+          <article class="cin-pillar" data-cin-reveal="fade-up" data-cin-delay="120">
+            <div class="cin-pillar__number" aria-hidden="true">02</div>
+            <div class="cin-pillar__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+                <path d="M24 6c0 0-12 10-12 20a12 12 0 0024 0C36 16 24 6 24 6z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M18 28c1.5 3 4 5 6 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 data-i18n="material_2_title">Waterproof</h3>
+            <p data-i18n="material_2_desc">Wear it in the rain, to the pool, or through your day — it never fades.</p>
+          </article>
+
+          <article class="cin-pillar" data-cin-reveal="fade-up" data-cin-delay="240">
+            <div class="cin-pillar__number" aria-hidden="true">03</div>
+            <div class="cin-pillar__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+                <path d="M24 4l3.6 10.8H39l-9.3 6.7 3.5 10.8L24 25.6l-9.2 6.7 3.5-10.8L9 14.8h11.4L24 4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M14 38h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M18 42h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 data-i18n="material_3_title">Anti Rust</h3>
+            <p data-i18n="material_3_desc">Zero tarnish. Zero compromise. Your jewelry stays brilliant, always.</p>
+          </article>
+
+          <article class="cin-pillar" data-cin-reveal="fade-up" data-cin-delay="360">
+            <div class="cin-pillar__number" aria-hidden="true">04</div>
+            <div class="cin-pillar__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+                <path d="M8 24l8 8 24-24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="36" cy="12" r="8" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3 data-i18n="material_4_title">Premium Quality</h3>
+            <p data-i18n="material_4_desc">Every piece passes a rigorous standard before reaching your hands.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 3 — CRAFTSMANSHIP (IMMERSIVE)
+    ═══════════════════════════════════════════ -->
+    <section class="cin-craft" aria-labelledby="craft-heading">
+      <div class="cin-craft__visual" aria-hidden="true">
+        <div class="cin-craft__img-wrap cin-craft__img-wrap--1">
+          <img src="./assets/products/7.webp" alt="" width="600" height="700" loading="lazy">
+        </div>
+        <div class="cin-craft__img-wrap cin-craft__img-wrap--2">
+          <img src="./assets/products/9.webp" alt="" width="400" height="500" loading="lazy">
+        </div>
+        <div class="cin-craft__badge" aria-hidden="true">
+          <span class="cin-craft__badge-ring"></span>
+          <span class="cin-craft__badge-text">KAWTHAR</span>
+        </div>
+      </div>
+      <div class="cin-craft__copy" data-cin-reveal="fade-left">
+        <p class="cin-eyebrow" data-i18n="craft_eyebrow">Craftsmanship</p>
+        <h2 id="craft-heading" class="cin-title" data-i18n="craft_title">
+          Where artistry<br>meets precision.
+        </h2>
+        <p class="cin-body" data-i18n="craft_desc_1">
+          Each KAWTHAR piece is born from a philosophy of restraint — every curve, every finish deliberate.
+        </p>
+        <p class="cin-body" data-i18n="craft_desc_2">
+          Our stainless steel is chosen for its resilience and its ability to hold a mirror-bright shine season after season.
+        </p>
+        <div class="cin-craft__stats">
+          <div class="cin-stat" data-cin-reveal="fade-up" data-cin-delay="0">
+            <strong class="cin-stat__num">100%</strong>
+            <span data-i18n="stat_1">Stainless Steel</span>
+          </div>
+          <div class="cin-stat" data-cin-reveal="fade-up" data-cin-delay="100">
+            <strong class="cin-stat__num">∞</strong>
+            <span data-i18n="stat_2">Wear Life</span>
+          </div>
+          <div class="cin-stat" data-cin-reveal="fade-up" data-cin-delay="200">
+            <strong class="cin-stat__num">0</strong>
+            <span data-i18n="stat_3">Rust. Ever.</span>
+          </div>
+        </div>
+        <a href="./shop.html" class="cin-btn cin-btn--outline" data-i18n="btn_view">View Full Shop</a>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 4 — COLLECTION REVEAL
+    ═══════════════════════════════════════════ -->
+    <section id="collections" class="cin-collections" aria-labelledby="collections-heading">
+      <div class="container">
+        <div class="cin-collections__head" data-cin-reveal="fade-up">
+          <p class="cin-eyebrow" data-i18n="coll_eyebrow">Collections</p>
+          <h2 id="collections-heading" class="cin-title" data-i18n="coll_title">Curated for a polished feminine style</h2>
+        </div>
+        <div class="cin-collections__grid">
+          <article class="cin-col-tile cin-col-tile--large" data-cin-reveal="fade-up" data-cin-delay="0">
+            <div class="cin-col-tile__img">
+              <img src="./assets/products/4.webp" alt="شنط هاند ميد مميزة كوثر" width="512" height="636" loading="lazy" decoding="async">
+            </div>
+            <div class="cin-col-tile__overlay" aria-hidden="true"></div>
+            <div class="cin-col-tile__content">
+              <span class="cin-col-tile__tag" data-i18n="coll_bags_tag">Handmade Bags</span>
+              <h3 class="cin-col-tile__title" data-i18n="coll_bags_title">Artisan Crafts</h3>
+              <button class="cin-col-tile__cta" data-filter-btn="handmade_bag" type="button" data-i18n="btn_explore">
+                <span>Explore</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </article>
+
+          <div class="cin-collections__sub">
+            <article class="cin-col-tile" data-cin-reveal="fade-up" data-cin-delay="120">
+              <div class="cin-col-tile__img">
+                <img src="./assets/products/5.webp" alt="خواتم ملكية فاخرة" width="300" height="400" loading="lazy" decoding="async">
+              </div>
+              <div class="cin-col-tile__overlay" aria-hidden="true"></div>
+              <div class="cin-col-tile__content">
+                <span class="cin-col-tile__tag" data-i18n="coll_rings_tag">Signature Line</span>
+                <h3 class="cin-col-tile__title" data-i18n="coll_rings_title">Royal Selection</h3>
+                <button class="cin-col-tile__cta" data-filter-btn="ring" type="button" data-i18n="btn_explore">
+                  <span>Explore</span>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              </div>
+            </article>
+
+            <article class="cin-col-tile" data-cin-reveal="fade-up" data-cin-delay="240">
+              <div class="cin-col-tile__img">
+                <img src="./assets/products/6.webp" alt="أساور ستانلس ستيل راقية" width="300" height="300" loading="lazy" decoding="async">
+              </div>
+              <div class="cin-col-tile__overlay" aria-hidden="true"></div>
+              <div class="cin-col-tile__content">
+                <span class="cin-col-tile__tag" data-i18n="coll_3_tag">Daily luxury</span>
+                <h3 class="cin-col-tile__title" data-i18n="coll_3_title">Bracelets</h3>
+                <button class="cin-col-tile__cta" data-filter-btn="bracelet" type="button" data-i18n="btn_explore">
+                  <span>Explore</span>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 5 — FEATURED PRODUCTS
+    ═══════════════════════════════════════════ -->
+    <section id="featured" class="cin-featured" aria-labelledby="featured-heading">
+      <div class="container">
+        <div class="cin-featured__head" data-cin-reveal="fade-up">
+          <p class="cin-eyebrow" data-i18n="feat_eyebrow">Featured</p>
+          <h2 id="featured-heading" class="cin-title" data-i18n="feat_title">Most requested pieces from KAWTHAR</h2>
+        </div>
+        <div class="store-toolbar reveal delay-1" role="toolbar" aria-label="Filter and sort products">
+          <div class="toolbar-left" role="group" aria-label="Filter by category">
+            <button class="filter-pill active" data-filter="all" type="button" aria-pressed="true" data-i18n="filter_all">All</button>
+            <button class="filter-pill" data-filter="necklace" type="button" aria-pressed="false" data-i18n="filter_necklaces">Necklaces</button>
+            <button class="filter-pill" data-filter="ring" type="button" aria-pressed="false" data-i18n="filter_rings">Rings</button>
+            <button class="filter-pill" data-filter="bracelet" type="button" aria-pressed="false" data-i18n="filter_bracelets">Bracelets</button>
+            <button class="filter-pill" data-filter="handmade_bag" type="button" aria-pressed="false" data-i18n="filter_bags">Bags</button>
+            <button class="filter-pill" data-filter="set" type="button" aria-pressed="false" data-i18n="filter_sets">Sets</button>
+          </div>
+          <div class="toolbar-right">
+            <label for="sortSelect" class="sr-only">Sort products</label>
+            <select id="sortSelect" class="select-input">
+              <option value="featured" data-i18n="sort_featured">Featured</option>
+              <option value="name-asc" data-i18n="sort_asc">Name A-Z</option>
+              <option value="name-desc" data-i18n="sort_desc">Name Z-A</option>
+              <option value="price-asc" data-i18n="sort_price_asc">Price: Low to High</option>
+              <option value="price-desc" data-i18n="sort_price_desc">Price: High to Low</option>
+            </select>
+          </div>
+        </div>
+        <div id="productsGrid" class="products-grid" aria-label="Products"></div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 6 — LIFESTYLE / STORY
+    ═══════════════════════════════════════════ -->
+    <section id="story" class="cin-story" aria-labelledby="story-heading">
+      <div class="cin-story__bg" aria-hidden="true"></div>
+      <div class="container cin-story__inner">
+        <div class="cin-story__media" data-cin-reveal="fade-right">
+          <div class="cin-story__img-frame">
+            <img src="./assets/products/7.webp" alt="قصة علامة كوثر التجارية" width="400" height="500" loading="lazy" decoding="async">
+            <div class="cin-story__frame-deco" aria-hidden="true"></div>
+          </div>
+          <div class="cin-story__img-small">
+            <img src="./assets/products/10.webp" alt="" width="240" height="300" loading="lazy">
+          </div>
+          <div class="cin-story__quote-float" aria-hidden="true">
+            <span>"Elegance is not about being noticed,<br>it's about being remembered."</span>
+          </div>
+        </div>
+        <div class="cin-story__copy" data-cin-reveal="fade-left">
+          <p class="cin-eyebrow" data-i18n="story_eyebrow">Our story</p>
+          <h2 id="story-heading" class="cin-title" data-i18n="story_title">Luxury, but with our own softer feminine signature</h2>
+          <p class="cin-body" data-i18n="story_p1">KAWTHAR is built around elegant pieces that feel refined, giftable, and visually premium from the first impression.</p>
+          <p class="cin-body" data-i18n="story_p2">The store experience is designed to move the client naturally from attraction to interest to direct WhatsApp inquiry.</p>
+          <div class="cin-story__actions">
+            <a href="https://wa.me/201034110499" class="cin-btn cin-btn--primary" target="_blank" rel="noreferrer noopener" data-i18n="btn_ask_wa">Ask on WhatsApp</a>
+            <a href="https://www.instagram.com/kawtheraeg_/" class="cin-btn cin-btn--ghost" target="_blank" rel="noreferrer noopener" data-i18n="btn_visit_ig">Visit Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 7 — TESTIMONIALS
+    ═══════════════════════════════════════════ -->
+    <section class="cin-testimonials" aria-labelledby="testimonials-heading">
+      <div class="container">
+        <div class="cin-testimonials__head" data-cin-reveal="fade-up">
+          <p class="cin-eyebrow" data-i18n="test_eyebrow">Testimonials</p>
+          <h2 id="testimonials-heading" class="cin-title" data-i18n="test_title">Worn &amp; adored</h2>
+        </div>
+        <div class="cin-testimonials__grid">
+          <article class="cin-review" data-cin-reveal="fade-up" data-cin-delay="0">
+            <div class="cin-review__stars" aria-label="5 stars">★★★★★</div>
+            <p class="cin-review__text" data-i18n="review_1">"The bracelet I ordered hasn't tarnished in 8 months. I wear it every single day, even in the shower."</p>
+            <footer class="cin-review__author">
+              <strong>Nour A.</strong>
+              <span data-i18n="review_verified">Verified buyer</span>
+            </footer>
+          </article>
+          <article class="cin-review cin-review--featured" data-cin-reveal="fade-up" data-cin-delay="120">
+            <div class="cin-review__stars" aria-label="5 stars">★★★★★</div>
+            <p class="cin-review__text" data-i18n="review_2">"The packaging alone felt like a luxury gift. I bought it for myself and couldn't be happier."</p>
+            <footer class="cin-review__author">
+              <strong>Mariam K.</strong>
+              <span data-i18n="review_verified">Verified buyer</span>
+            </footer>
+          </article>
+          <article class="cin-review" data-cin-reveal="fade-up" data-cin-delay="240">
+            <div class="cin-review__stars" aria-label="5 stars">★★★★★</div>
+            <p class="cin-review__text" data-i18n="review_3">"Ordered via WhatsApp and received my necklace in perfect condition. KAWTHAR is my go-to for gifts."</p>
+            <footer class="cin-review__author">
+              <strong>Sara M.</strong>
+              <span data-i18n="review_verified">Verified buyer</span>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 8 — FINAL LUXURY CTA
+    ═══════════════════════════════════════════ -->
+    <section class="cin-cta" aria-labelledby="cta-heading">
+      <div class="cin-cta__bg" aria-hidden="true">
+        <div class="cin-cta__orb" aria-hidden="true"></div>
+      </div>
+      <div class="container">
+        <div class="cin-cta__inner" data-cin-reveal="fade-up">
+          <p class="cin-eyebrow" data-i18n="cta_eyebrow">Direct conversion</p>
+          <h2 id="cta-heading" class="cin-cta__title" data-i18n="cta_title">
+            Ready to find your<br><em>perfect piece?</em>
+          </h2>
+          <p class="cin-cta__sub" data-i18n="cta_desc">Tap WhatsApp and send the product name directly. The store is designed to make that step natural and easy.</p>
+          <div class="cin-cta__actions">
+            <a href="https://wa.me/201034110499" class="cin-btn cin-btn--primary cin-btn--lg" target="_blank" rel="noreferrer noopener" data-i18n="btn_start_wa">Start WhatsApp inquiry</a>
+            <a href="https://www.instagram.com/kawtheraeg_/" class="cin-btn cin-btn--ghost cin-btn--lg" target="_blank" rel="noreferrer noopener" data-i18n="btn_follow_ig">Follow Instagram</a>
+          </div>
+          <div class="cin-cta__trust" aria-label="Trust signals">
+            <span>✦ Anti Rust</span>
+            <span>✦ Waterproof</span>
+            <span>✦ Premium Quality</span>
+            <span>✦ Fast Delivery</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Drawers (unchanged) -->
+  <aside id="mobileMenu" class="drawer left-drawer" aria-hidden="true" aria-label="Mobile navigation">
+    <div class="drawer-header">
+      <div class="drawer-title-wrap">
+        <p class="eyebrow" data-i18n="nav_title">Navigation</p>
+        <h2>KAWTHAR</h2>
+      </div>
+      <button class="icon-close" id="mobileMenuCloseBtn" type="button" aria-label="Close menu">×</button>
+    </div>
+    <nav class="drawer-nav" role="navigation" aria-label="Mobile navigation">
+      <a href="#home" class="drawer-nav-link" data-i18n="nav_home">Home</a>
+      <a href="./shop.html" class="drawer-nav-link" data-i18n="nav_shop">Shop</a>
+      <a href="#collections" class="drawer-nav-link" data-i18n="nav_collections">Collections</a>
+      <a href="#featured" class="drawer-nav-link" data-i18n="nav_featured">Featured</a>
+      <a href="#contact" class="drawer-nav-link" data-i18n="contact_title">Contact</a>
+    </nav>
+  </aside>
+
+  <aside id="searchDrawer" class="drawer top-drawer" aria-hidden="true" aria-label="Search">
+    <div class="drawer-header">
+      <div class="drawer-title-wrap">
+        <p class="eyebrow" data-i18n="search_title">Search</p>
+        <h2 data-i18n="search_heading">Find your next piece</h2>
+      </div>
+      <button class="icon-close" id="searchCloseBtn" type="button" aria-label="Close search">×</button>
+    </div>
+    <div class="search-drawer-body">
+      <div class="search-input-wrap">
+        <label for="searchInput" class="sr-only">Search products</label>
+        <input type="search" id="searchInput" data-i18n-placeholder="search_placeholder" placeholder="Search..." autocomplete="off" />
+      </div>
+      <div class="search-tags" role="group" aria-label="Search by category">
+        <button class="chip" data-search-tag="necklace" type="button" data-i18n="filter_necklaces">Necklaces</button>
+        <button class="chip" data-search-tag="ring" type="button" data-i18n="filter_rings">Rings</button>
+        <button class="chip" data-search-tag="bracelet" type="button" data-i18n="filter_bracelets">Bracelets</button>
+        <button class="chip" data-search-tag="handmade_bag" type="button" data-i18n="filter_bags">Handmade Bags</button>
+        <button class="chip" data-search-tag="set" type="button" data-i18n="filter_sets">Sets</button>
+      </div>
+      <div id="searchResults" class="search-results" aria-live="polite"></div>
+    </div>
+  </aside>
+
+  <aside id="wishlistDrawer" class="drawer right-drawer" aria-hidden="true" aria-label="Wishlist">
+    <div class="drawer-header">
+      <div class="drawer-title-wrap">
+        <p class="eyebrow" data-i18n="saved_title">Saved</p>
+        <h2 data-i18n="saved_heading">Your wishlist</h2>
+      </div>
+      <button class="icon-close" id="wishlistCloseBtn" type="button" aria-label="Close wishlist">×</button>
+    </div>
+    <div id="wishlistItems" class="drawer-scroll-body"></div>
+  </aside>
+
+  <aside id="cartDrawer" class="drawer right-drawer" aria-hidden="true" aria-label="Shopping cart">
+    <div class="drawer-header">
+      <div class="drawer-title-wrap">
+        <p class="eyebrow" data-i18n="cart_title">Cart</p>
+        <h2 data-i18n="cart_heading">Your selection</h2>
+      </div>
+      <button class="icon-close" id="cartCloseBtn" type="button" aria-label="Close cart">×</button>
+    </div>
+    <div id="cartItems" class="drawer-scroll-body"></div>
+    <div class="drawer-footer">
+      <div class="cart-summary">
+        <div class="cart-summary-row">
+          <span data-i18n="items">Items</span>
+          <strong id="cartItemsCount">0</strong>
+        </div>
+      </div>
+      <a id="checkoutWhatsAppBtn" class="btn btn-primary btn-block" href="https://wa.me/201034110499" target="_blank" rel="noreferrer noopener" data-i18n="check_whatsapp">Check on WhatsApp</a>
+    </div>
+  </aside>
+
+  <footer id="contact" class="main-footer cin-footer" role="contentinfo">
+  <div class="container kaw-footer-grid">
+    <div class="kaw-footer-brand-block">
+      <a href="./index.html" class="kaw-footer-brand" aria-label="KAWTHAR Home">
+        <img src="./assets/logo/kawthar-logo-hd.webp" width="74" height="74" alt="Kawthar Logo" loading="lazy" decoding="async">
+        <span class="kaw-footer-brand-name">
+          <strong>KAWTHAR</strong>
+          <span>Accessories & Artisan Bags</span>
+        </span>
+      </a>
+      <p class="kaw-footer-text">A luxury-first storefront for premium stainless steel anti-rust accessories and handmade artisan bags.</p>
+      <div class="kaw-footer-note">Direct inquiry via WhatsApp. Online payment gateway is being prepared for card and wallet payments.</div>
+    </div>
+
+    <div class="kaw-footer-col">
+      <h3>Shop</h3>
+      <ul class="kaw-footer-list">
+        <li><a href="./shop.html">All products</a></li>
+        <li><a href="./index.html#collections">Collections</a></li>
+        <li><a href="./index.html#featured">Featured pieces</a></li>
+      </ul>
+    </div>
+
+    <div class="kaw-footer-col">
+      <h3>Order</h3>
+      <ul class="kaw-footer-list">
+        <li><a href="./checkout.html">Checkout</a></li>
+        <li><span>Card payment soon</span></li>
+        <li><span>Mobile wallet soon</span></li>
+      </ul>
+    </div>
+
+    <div class="kaw-footer-col">
+      <h3>Contact</h3>
+      <ul class="kaw-footer-list">
+        <li><a href="https://wa.me/201034110499" target="_blank" rel="noreferrer noopener">WhatsApp</a></li>
+        <li><a href="https://www.instagram.com/kawtheraeg_/" target="_blank" rel="noreferrer noopener">Instagram</a></li>
+        <li><span>Premium Stainless Steel & Artisan Bags</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container kaw-footer-bottom">
+    <span>© KAWTHAR Accessories</span>
+    <span class="kaw-footer-mini">
+      <span>Anti Rust</span>
+      <span>Waterproof</span>
+      <span>Premium Quality</span>
+    </span>
+  </div>
+</footer>
+</div>
+
+<button id="waFloatBtn" class="wa-float" aria-label="Chat with us on WhatsApp" type="button">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white" width="28" height="28" aria-hidden="true" style="position:relative; z-index:2;">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.524 5.849L.057 23.428a.5.5 0 0 0 .515.572l5.718-1.502A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.7-.5-5.26-1.37l-.38-.22-3.94 1.03 1.05-3.83-.25-.4A10 10 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+  </svg>
+  <span class="wa-float-tooltip">Chat with us now</span>
+</button>
+
+<div id="spToastWrap" class="sp-toast-wrap" role="status" aria-live="polite"></div>
+<div id="quickViewOverlay" class="quick-view-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Product quick view"></div>
+
+<script>
+  document.documentElement.lang = localStorage.getItem('kawthar_lang') || 'en';
+  document.documentElement.dir = document.documentElement.lang === 'ar' ? 'rtl' : 'ltr';
+</script>
+<script type="module" src="./js/app.js"></script>
+<script type="module" src="./js/cinematic.js"></script>
+  <script src="./js/footer-overhaul.js?v=1782676601"></script>
+  <script src="./js/testimonials-overhaul.js?v=1782676961"></script>
+</body>
+</html>

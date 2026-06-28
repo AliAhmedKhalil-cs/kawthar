@@ -1,0 +1,79 @@
+/* =========================================================
+   KAWTHAR FOOTER SOCIAL FINAL
+   Instagram + Facebook + WhatsApp visual chips.
+   ========================================================= */
+
+.kaw-footer-social-final {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.kaw-footer-social-chip {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 10px;
+  min-height: 42px;
+  padding: 8px 13px;
+  border-radius: 999px;
+  text-decoration: none !important;
+  background: rgba(255,250,246,0.78);
+  border: 1px solid rgba(93,67,45,0.10);
+  color: #3f2e22 !important;
+  box-shadow: 0 12px 26px rgba(45,33,25,0.08);
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+
+.kaw-footer-social-chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(45,33,25,0.12);
+}
+
+.kaw-footer-social-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  color: #fff;
+  font-weight: 900;
+  font-size: 0.88rem;
+}
+
+.kaw-footer-social-chip.is-whatsapp .kaw-footer-social-icon {
+  background: #25d366;
+}
+
+.kaw-footer-social-chip.is-instagram .kaw-footer-social-icon {
+  background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 55%, #fcb045 100%);
+}
+
+.kaw-footer-social-chip.is-facebook .kaw-footer-social-icon {
+  background: #1877f2;
+}
+
+.kaw-footer-social-text {
+  display: grid;
+  gap: 1px;
+}
+
+.kaw-footer-social-text strong {
+  color: #2d2119 !important;
+  font-size: 0.84rem;
+  line-height: 1.1;
+}
+
+.kaw-footer-social-text span {
+  color: #6f5a47 !important;
+  font-size: 0.68rem;
+  line-height: 1.1;
+}
+
+@media (max-width: 640px) {
+  .kaw-footer-social-final {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
