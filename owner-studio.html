@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KAWTHAR Owner Studio</title>
+  <link rel="stylesheet" href="./css/kawthar-owner-studio.css?v=1">
+</head>
+<body>
+  <main class="studio-shell">
+    <section class="studio-hero">
+      <div>
+        <span class="studio-kicker">KAWTHAR Brand Owner</span>
+        <h1>Simple Product Studio</h1>
+        <p>Add product photos without folders, file names, or technical steps. Fill the details, preview the result, then download one update file and send it to Ali.</p>
+      </div>
+      <a class="studio-shop-link" href="./shop.html" target="_blank">View Shop</a>
+    </section>
+
+    <section class="studio-grid">
+      <form id="productForm" class="studio-card">
+        <h2>Add product</h2>
+
+        <label>
+          Product name
+          <input id="productName" type="text" placeholder="Gold Leaf Bracelet" required>
+        </label>
+
+        <label>
+          Price EGP
+          <input id="productPrice" type="number" min="1" placeholder="150" required>
+        </label>
+
+        <label>
+          Category
+          <select id="productCategory">
+            <option>Bracelets</option>
+            <option>Necklaces</option>
+            <option>Rings</option>
+            <option>Anklets</option>
+            <option>Sets</option>
+            <option>Handmade Bags</option>
+          </select>
+        </label>
+
+        <label>
+          Short note
+          <textarea id="productNote" rows="3" placeholder="Anti-rust stainless steel. Soft feminine daily wear."></textarea>
+        </label>
+
+        <label class="upload-box" for="productImage">
+          <input id="productImage" type="file" accept="image/*" required>
+          <span>Click to choose product photo</span>
+          <small>No folders. No renaming. Just select the image.</small>
+        </label>
+
+        <div id="imagePreview" class="image-preview">
+          <span>Image preview will appear here</span>
+        </div>
+
+        <button type="submit">Add to update list</button>
+      </form>
+
+      <section class="studio-card">
+        <div class="list-head">
+          <h2>Update list</h2>
+          <button id="clearBtn" type="button" class="ghost-btn">Clear</button>
+        </div>
+
+        <div id="productsList" class="products-list">
+          <p class="empty">No products added yet.</p>
+        </div>
+
+        <div class="studio-actions">
+          <button id="downloadJsonBtn" type="button">Download Product Update File</button>
+          <button id="copyTextBtn" type="button" class="ghost-btn">Copy Summary</button>
+        </div>
+
+        <p class="owner-note">
+          Send the downloaded file to Ali. He will review it and publish it safely without breaking the live website.
+        </p>
+      </section>
+    </section>
+  </main>
+
+  <script src="./js/kawthar-owner-studio.js?v=1"></script>
+</body>
+</html>
