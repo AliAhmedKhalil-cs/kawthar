@@ -1,0 +1,47 @@
+/* =========================================================
+   KAWTHAR HOME CLIENT CUT
+   Removes long storytelling blocks from homepage only.
+   ========================================================= */
+
+body.kaw-home-client-cut {
+  overflow-x: hidden !important;
+}
+
+body.kaw-home-client-cut .kaw-client-remove-block {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Hide nav items that point to removed sections on homepage only */
+body.kaw-home-client-cut nav a.kaw-client-hide-nav,
+body.kaw-home-client-cut header a.kaw-client-hide-nav,
+body.kaw-home-client-cut .kaw-client-hide-nav {
+  display: none !important;
+}
+
+/* Pull product/featured content up after removing blocks */
+body.kaw-home-client-cut main,
+body.kaw-home-client-cut .main {
+  padding-top: 0 !important;
+}
+
+body.kaw-home-client-cut section {
+  scroll-margin-top: 110px !important;
+}
+
+/* Keep the next product section clean and closer */
+body.kaw-home-client-cut .kaw-client-products-priority {
+  margin-top: 36px !important;
+  padding-top: 36px !important;
+}
+
+/* Remove huge empty gaps if old layout left wrappers */
+body.kaw-home-client-cut .kaw-client-empty-gap {
+  display: none !important;
+}
