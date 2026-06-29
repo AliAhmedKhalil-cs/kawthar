@@ -1,0 +1,20 @@
+/* Final homepage trim: static safe CSS only */
+body.kaw-home-final-trim header a[href*="#story"],
+body.kaw-home-final-trim header a[href*="story"],
+body.kaw-home-final-trim nav a[href*="#story"],
+body.kaw-home-final-trim nav a[href*="story"],
+body.kaw-home-final-trim header a[href*="#collections"],
+body.kaw-home-final-trim header a[href*="collections"],
+body.kaw-home-final-trim nav a[href*="#collections"],
+body.kaw-home-final-trim nav a[href*="collections"] {
+  display: none !important;
+}
+
+body.kaw-home-final-trim main section {
+  scroll-margin-top: 110px;
+}
+
+body.kaw-home-final-trim .kaw-after-trim-priority {
+  margin-top: 24px !important;
+  padding-top: 24px !important;
+}
