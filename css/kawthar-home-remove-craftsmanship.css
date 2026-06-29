@@ -1,0 +1,21 @@
+/* Remove homepage craftsmanship/story filler only */
+body.kaw-remove-craftsmanship .kaw-craftsmanship-remove {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* remove any empty vertical gap after hiding it */
+body.kaw-remove-craftsmanship .kaw-craftsmanship-gap {
+  display: none !important;
+}
+
+/* pull following sections upward */
+body.kaw-remove-craftsmanship main section:not(.kaw-craftsmanship-remove) {
+  scroll-margin-top: 105px !important;
+}
