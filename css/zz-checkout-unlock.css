@@ -54,11 +54,11 @@ main,
   margin: 20px 0;
   padding: 20px;
   border-radius: 28px;
-  border: 1px solid rgba(201,160,92,0.34);
+  border: 1px solid rgba(255,87,34,0.34);
   background:
-    radial-gradient(circle at 10% 0%, rgba(201,160,92,0.16), transparent 34%),
-    rgba(255,250,246,0.78);
-  box-shadow: 0 18px 42px rgba(45,33,25,0.08);
+    radial-gradient(circle at 10% 0%, rgba(255,87,34,0.16), transparent 34%),
+    rgba(255,255,255,0.78);
+  box-shadow: 0 18px 42px rgba(45,45,45,0.08);
 }
 
 .kaw-simple-pay-head {
@@ -73,21 +73,21 @@ main,
   border-radius: 18px;
   display: grid;
   place-items: center;
-  background: #2d2119;
-  color: #e8d5a3;
+  background: #2d2d2d;
+  color: #ffd5c4;
   font-weight: 900;
-  box-shadow: 0 10px 26px rgba(45,33,25,0.16);
+  box-shadow: 0 10px 26px rgba(45,45,45,0.16);
 }
 
 .kaw-simple-pay-head h3 {
   margin: 0;
-  color: #2d2119;
+  color: #2d2d2d;
   font-size: 1.05rem;
 }
 
 .kaw-simple-pay-head p {
   margin: 5px 0 0;
-  color: #6f5a47;
+  color: #666666;
   font-size: 0.84rem;
   line-height: 1.55;
 }
@@ -99,12 +99,12 @@ main,
   gap: 16px;
   padding: 14px 16px;
   border-radius: 18px;
-  background: rgba(45,33,25,0.06);
-  border: 1px solid rgba(93,67,45,0.10);
+  background: rgba(45,45,45,0.06);
+  border: 1px solid rgba(233,30,99,0.10);
 }
 
 .kaw-simple-total span {
-  color: #6f5a47;
+  color: #666666;
   font-size: 0.76rem;
   font-weight: 900;
   letter-spacing: 0.12em;
@@ -112,7 +112,7 @@ main,
 }
 
 .kaw-simple-total strong {
-  color: #2d2119;
+  color: #2d2d2d;
   font-size: 1.05rem;
 }
 
@@ -123,13 +123,13 @@ main,
   align-items: center;
   padding: 16px;
   border-radius: 20px;
-  border: 1px solid rgba(201,160,92,0.28);
+  border: 1px solid rgba(255,87,34,0.28);
   background: rgba(255,255,255,0.52);
 }
 
 .kaw-instapay-line span {
   grid-column: 1 / -1;
-  color: #8b6847;
+  color: #666666;
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -137,7 +137,7 @@ main,
 }
 
 .kaw-instapay-line strong {
-  color: #2f2118;
+  color: #2d2d2d;
   font-size: clamp(1.15rem, 2vw, 1.55rem);
   line-height: 1.2;
   word-break: break-word;
@@ -154,8 +154,8 @@ main,
   min-height: 42px;
   border-radius: 14px;
   padding: 0 16px;
-  background: #2d2119;
-  color: #fffaf6;
+  background: #2d2d2d;
+  color: #ffffff;
 }
 
 .kaw-checkout-fields {
@@ -168,9 +168,9 @@ main,
   width: 100%;
   min-height: 44px;
   border-radius: 16px;
-  border: 1px solid rgba(93,67,45,0.16);
+  border: 1px solid rgba(233,30,99,0.16);
   background: rgba(255,255,255,0.72);
-  color: #2f2118;
+  color: #2d2d2d;
   padding: 0 13px;
   outline: none;
   font: inherit;
@@ -179,26 +179,26 @@ main,
 
 .kaw-checkout-fields input:focus {
   border-color: rgba(155,106,47,0.55);
-  box-shadow: 0 0 0 4px rgba(201,160,92,0.14);
+  box-shadow: 0 0 0 4px rgba(255,87,34,0.14);
 }
 
 .kaw-whatsapp-confirm {
   width: 100%;
   min-height: 50px;
   border-radius: 18px;
-  background: linear-gradient(135deg, #2d2119, #4b3324);
-  color: #fffaf6;
+  background: linear-gradient(135deg, #e91e63 0%, #ff5722 100%);
+  color: #ffffff;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  box-shadow: 0 14px 30px rgba(45,33,25,0.18);
+  box-shadow: 0 14px 30px rgba(45,45,45,0.18);
 }
 
 .kaw-pay-status {
   display: none;
   padding: 12px 14px;
   border-radius: 16px;
-  background: rgba(201,160,92,0.13);
-  color: #4b3829;
+  background: rgba(255,87,34,0.13);
+  color: #ff5722;
   font-size: 0.82rem;
   line-height: 1.55;
 }
@@ -209,7 +209,7 @@ main,
 
 .kaw-pay-note {
   margin: 0;
-  color: #7a624e;
+  color: #666666;
   font-size: 0.76rem;
   line-height: 1.55;
 }

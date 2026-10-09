@@ -67,7 +67,7 @@ footer.kaw-footer-clean .kaw-footer-brand-title,
 footer.kaw-footer-clean .kaw-footer-brand-title strong,
 .kaw-footer-clean .kaw-footer-brand-title strong {
   display: block !important;
-  color: #2d2119 !important;
+  color: #2d2d2d !important;
   font-size: 1.05rem !important;
   line-height: 1.15 !important;
   letter-spacing: 0.18em !important;
@@ -82,7 +82,7 @@ footer.kaw-footer-clean .kaw-footer-brand-title strong,
 footer.kaw-footer-clean .kaw-footer-brand-title span,
 .kaw-footer-clean .kaw-footer-brand-title span {
   display: block !important;
-  color: #8b6847 !important;
+  color: #666666 !important;
   font-size: 0.72rem !important;
   line-height: 1.45 !important;
   letter-spacing: 0.12em !important;
@@ -103,7 +103,7 @@ footer.kaw-footer-clean .kaw-footer-desc,
   max-width: 360px !important;
   margin: 0 !important;
   padding: 0 !important;
-  color: #5b4635 !important;
+  color: #666666 !important;
   font-size: 0.94rem !important;
   line-height: 1.85 !important;
   position: static !important;

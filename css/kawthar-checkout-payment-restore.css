@@ -5,14 +5,14 @@
    ========================================================= */
 
 :root {
-  --kaw-espresso: #2d2119;
-  --kaw-brown: #4b3829;
-  --kaw-soft-brown: #7a624e;
-  --kaw-gold: #c9a05c;
-  --kaw-gold-soft: rgba(201,160,92,0.14);
-  --kaw-ivory: #fffaf6;
-  --kaw-stroke: rgba(93,67,45,0.12);
-  --kaw-shadow: 0 20px 48px rgba(45,33,25,0.09);
+  --kaw-espresso: #2d2d2d;
+  --kaw-brown: #ff5722;
+  --kaw-soft-brown: #666666;
+  --kaw-gold: #ff5722;
+  --kaw-gold-soft: rgba(255,87,34,0.14);
+  --kaw-ivory: #ffffff;
+  --kaw-stroke: rgba(233,30,99,0.12);
+  --kaw-shadow: 0 20px 48px rgba(45,45,45,0.09);
 }
 
 #kawPaymentPanel {
@@ -22,9 +22,9 @@
   padding: 18px;
   border-radius: 28px;
   background:
-    radial-gradient(circle at 10% 0%, rgba(201,160,92,0.14), transparent 40%),
-    rgba(255,250,246,0.78);
-  border: 1px solid rgba(93,67,45,0.10);
+    radial-gradient(circle at 10% 0%, rgba(255,87,34,0.14), transparent 40%),
+    rgba(255,255,255,0.78);
+  border: 1px solid rgba(233,30,99,0.10);
   box-shadow: var(--kaw-shadow);
 }
 
@@ -40,11 +40,11 @@
   border-radius: 18px;
   display: grid;
   place-items: center;
-  background: linear-gradient(135deg, #2d2119, #4b3324);
-  color: #f6deb0;
+  background: linear-gradient(135deg, #e91e63 0%, #ff5722 100%);
+  color: #ffd5c4;
   font-weight: 900;
   letter-spacing: 0.08em;
-  box-shadow: 0 12px 24px rgba(45,33,25,0.16);
+  box-shadow: 0 12px 24px rgba(45,45,45,0.16);
 }
 
 .kaw-pay-head h3 {
@@ -68,8 +68,8 @@
   gap: 16px;
   padding: 14px 16px;
   border-radius: 20px;
-  background: rgba(45,33,25,0.05);
-  border: 1px solid rgba(93,67,45,0.10);
+  background: rgba(45,45,45,0.05);
+  border: 1px solid rgba(233,30,99,0.10);
 }
 
 .kaw-pay-total span {
@@ -94,12 +94,12 @@
   padding: 16px;
   border-radius: 22px;
   background: rgba(255,255,255,0.52);
-  border: 1px solid rgba(93,67,45,0.10);
+  border: 1px solid rgba(233,30,99,0.10);
 }
 
 .kaw-pay-address span {
   grid-column: 1 / -1;
-  color: #8b6847;
+  color: #666666;
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -118,12 +118,12 @@
   border: 0;
   border-radius: 14px;
   padding: 0 16px;
-  background: #2d2119;
-  color: #fffaf6;
+  background: #2d2d2d;
+  color: #ffffff;
   font-weight: 900;
   cursor: pointer;
   transition: transform 220ms ease, box-shadow 220ms ease;
-  box-shadow: 0 12px 24px rgba(45,33,25,0.14);
+  box-shadow: 0 12px 24px rgba(45,45,45,0.14);
 }
 
 .kaw-pay-copy:hover,
@@ -136,8 +136,8 @@
   gap: 10px;
   padding: 16px;
   border-radius: 22px;
-  background: rgba(255,250,246,0.58);
-  border: 1px dashed rgba(201,160,92,0.42);
+  background: rgba(255,255,255,0.58);
+  border: 1px dashed rgba(255,87,34,0.42);
 }
 
 .kaw-pay-step {
@@ -156,7 +156,7 @@
   border-radius: 999px;
   display: grid;
   place-items: center;
-  background: rgba(201,160,92,0.16);
+  background: rgba(255,87,34,0.16);
   color: var(--kaw-espresso);
   font-size: 0.74rem;
 }
@@ -170,7 +170,7 @@
 .kaw-pay-fields textarea {
   width: 100%;
   border-radius: 16px;
-  border: 1px solid rgba(93,67,45,0.12);
+  border: 1px solid rgba(233,30,99,0.12);
   background: rgba(255,255,255,0.72);
   color: var(--kaw-espresso);
   padding: 12px 14px;
@@ -183,7 +183,7 @@
 .kaw-pay-fields input:focus,
 .kaw-pay-fields textarea:focus {
   border-color: rgba(155,106,47,0.54);
-  box-shadow: 0 0 0 4px rgba(201,160,92,0.14);
+  box-shadow: 0 0 0 4px rgba(255,87,34,0.14);
 }
 
 .kaw-pay-confirm {
@@ -191,14 +191,14 @@
   min-height: 52px;
   border: 0;
   border-radius: 18px;
-  background: linear-gradient(135deg, #2d2119, #4b3324);
-  color: #fffaf6;
+  background: linear-gradient(135deg, #e91e63 0%, #ff5722 100%);
+  color: #ffffff;
   font-weight: 900;
   font-size: 0.92rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
-  box-shadow: 0 16px 32px rgba(45,33,25,0.15);
+  box-shadow: 0 16px 32px rgba(45,45,45,0.15);
   transition: transform 220ms ease, box-shadow 220ms ease;
 }
 
@@ -206,8 +206,8 @@
   display: none;
   padding: 12px 14px;
   border-radius: 16px;
-  background: rgba(201,160,92,0.12);
-  color: #4b3829;
+  background: rgba(255,87,34,0.12);
+  color: #ff5722;
   font-size: 0.82rem;
   line-height: 1.55;
 }

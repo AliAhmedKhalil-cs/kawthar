@@ -6,10 +6,10 @@
 .kaw-footer-clean {
   position: relative;
   background:
-    radial-gradient(circle at 12% 0%, rgba(201,160,92,0.14), transparent 32%),
-    linear-gradient(180deg, #f8f1ea 0%, #eadfd3 100%) !important;
-  color: #3f2e22 !important;
-  border-top: 1px solid rgba(93,67,45,0.12);
+    radial-gradient(circle at 12% 0%, rgba(255,87,34,0.14), transparent 32%),
+    linear-gradient(180deg, #fff0f5 0%, #ffe4ee 100%) !important;
+  color: #2d2d2d !important;
+  border-top: 1px solid rgba(233,30,99,0.12);
   padding: 58px 0 30px;
   overflow: hidden;
 }
@@ -26,7 +26,7 @@
   left: -220px;
   top: -220px;
   border-radius: 999px;
-  background: radial-gradient(circle, rgba(201,160,92,0.12), transparent 68%);
+  background: radial-gradient(circle, rgba(255,87,34,0.12), transparent 68%);
   pointer-events: none;
 }
 
@@ -60,7 +60,7 @@
   height: 74px;
   object-fit: contain;
   opacity: 0.94;
-  filter: drop-shadow(0 12px 20px rgba(45,33,25,0.08));
+  filter: drop-shadow(0 12px 20px rgba(45,45,45,0.08));
 }
 
 .kaw-footer-brand-title {
@@ -69,14 +69,14 @@
 }
 
 .kaw-footer-brand-title strong {
-  color: #2d2119;
+  color: #2d2d2d;
   font-size: 1.05rem;
   letter-spacing: 0.18em;
   font-weight: 950;
 }
 
 .kaw-footer-brand-title span {
-  color: #8b6847;
+  color: #666666;
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -85,7 +85,7 @@
 
 .kaw-footer-desc {
   margin: 0;
-  color: #5b4635;
+  color: #666666;
   font-size: 0.94rem;
   line-height: 1.85;
   max-width: 350px;
@@ -93,7 +93,7 @@
 
 .kaw-footer-col h3 {
   margin: 0 0 18px;
-  color: #2d2119;
+  color: #2d2d2d;
   font-size: 0.78rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -110,7 +110,7 @@
 
 .kaw-footer-list a,
 .kaw-footer-list span {
-  color: #4b3829 !important;
+  color: #ff5722 !important;
   text-decoration: none !important;
   font-size: 0.92rem;
   line-height: 1.45;
@@ -118,7 +118,7 @@
 }
 
 .kaw-footer-list a:hover {
-  color: #9b6a2f !important;
+  color: #ff5722 !important;
 }
 
 .kaw-footer-contact-stack {
@@ -136,18 +136,18 @@
   border-radius: 999px;
   text-decoration: none !important;
   background:
-    radial-gradient(circle at 12% 0%, rgba(201,160,92,0.12), transparent 40%),
-    rgba(255,250,246,0.80);
-  border: 1px solid rgba(93,67,45,0.12);
-  color: #2d2119 !important;
-  box-shadow: 0 12px 28px rgba(45,33,25,0.08);
+    radial-gradient(circle at 12% 0%, rgba(255,87,34,0.12), transparent 40%),
+    rgba(255,255,255,0.80);
+  border: 1px solid rgba(233,30,99,0.12);
+  color: #2d2d2d !important;
+  box-shadow: 0 12px 28px rgba(45,45,45,0.08);
   transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
 }
 
 .kaw-footer-social:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 34px rgba(45,33,25,0.13);
-  border-color: rgba(201,160,92,0.36);
+  box-shadow: 0 16px 34px rgba(45,45,45,0.13);
+  border-color: rgba(255,87,34,0.36);
 }
 
 .kaw-footer-social-icon {
@@ -164,15 +164,15 @@
 }
 
 .kaw-footer-social.wa .kaw-footer-social-icon {
-  background: #25d366;
+  background: #e91e63;
 }
 
 .kaw-footer-social.ig .kaw-footer-social-icon {
-  background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 55%, #fcb045 100%);
+  background: linear-gradient(135deg, #e91e63 0%, #ff5722 55%, #ff8a65 100%);
 }
 
 .kaw-footer-social.fb .kaw-footer-social-icon {
-  background: #1877f2;
+  background: #e91e63;
 }
 
 .kaw-footer-social-copy {
@@ -182,14 +182,14 @@
 }
 
 .kaw-footer-social-copy strong {
-  color: #2d2119 !important;
+  color: #2d2d2d !important;
   font-size: 0.86rem;
   line-height: 1.1;
   font-weight: 950;
 }
 
 .kaw-footer-social-copy span {
-  color: #6f5a47 !important;
+  color: #666666 !important;
   font-size: 0.68rem;
   line-height: 1.1;
   font-weight: 760;
@@ -198,19 +198,19 @@
 .kaw-footer-bottom {
   margin-top: 44px;
   padding-top: 22px;
-  border-top: 1px solid rgba(93,67,45,0.12);
+  border-top: 1px solid rgba(233,30,99,0.12);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 18px;
   flex-wrap: wrap;
-  color: #6f5a47;
+  color: #666666;
   font-size: 0.78rem;
   font-weight: 750;
 }
 
 .kaw-footer-bottom-note {
-  color: #6f5a47;
+  color: #666666;
 }
 
 /* Force-hide previous filler blocks if another script injects them */

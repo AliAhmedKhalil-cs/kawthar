@@ -5,10 +5,10 @@
 
 .kaw-final-footer {
   background:
-    radial-gradient(circle at 12% 0%, rgba(201,160,92,0.16), transparent 34%),
-    linear-gradient(180deg, #f8f1ea 0%, #eadfd3 100%);
-  color: #3f2d20;
-  border-top: 1px solid rgba(93, 67, 45, 0.12);
+    radial-gradient(circle at 12% 0%, rgba(255,87,34,0.16), transparent 34%),
+    linear-gradient(180deg, #fff0f5 0%, #ffe4ee 100%);
+  color: #2d2d2d;
+  border-top: 1px solid rgba(233,30,99, 0.12);
   padding: 64px 0 34px;
 }
 
@@ -54,14 +54,14 @@
 }
 
 .kaw-final-logo-text strong {
-  color: #2f2118;
+  color: #2d2d2d;
   font-size: 1rem;
   letter-spacing: 0.18em;
   font-weight: 900;
 }
 
 .kaw-final-logo-text span {
-  color: #8b6847;
+  color: #666666;
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -70,7 +70,7 @@
 
 .kaw-final-desc {
   margin: 0;
-  color: #5b4635;
+  color: #666666;
   font-size: 0.94rem;
   line-height: 1.8;
 }
@@ -82,16 +82,16 @@
   gap: 8px;
   padding: 11px 14px;
   border-radius: 999px;
-  background: rgba(255,250,246,0.62);
-  border: 1px solid rgba(93,67,45,0.12);
-  color: #5b4635;
+  background: rgba(255,255,255,0.62);
+  border: 1px solid rgba(233,30,99,0.12);
+  color: #666666;
   font-size: 0.76rem;
   font-weight: 800;
 }
 
 .kaw-final-col h3 {
   margin: 0 0 18px;
-  color: #2f2118;
+  color: #2d2d2d;
   font-size: 0.78rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -108,7 +108,7 @@
 
 .kaw-final-list a,
 .kaw-final-list span {
-  color: #4b3829;
+  color: #ff5722;
   text-decoration: none;
   font-size: 0.92rem;
   line-height: 1.45;
@@ -117,16 +117,16 @@
 }
 
 .kaw-final-list a:hover {
-  color: #9b6a2f;
+  color: #ff5722;
 }
 
 .kaw-final-note {
   margin-top: 16px;
   padding: 14px;
   border-radius: 18px;
-  background: rgba(255,250,246,0.56);
-  border: 1px solid rgba(93,67,45,0.10);
-  color: #5b4635;
+  background: rgba(255,255,255,0.56);
+  border: 1px solid rgba(233,30,99,0.10);
+  color: #666666;
   font-size: 0.8rem;
   line-height: 1.65;
 }
@@ -134,12 +134,12 @@
 .kaw-final-bottom {
   margin-top: 42px;
   padding-top: 20px;
-  border-top: 1px solid rgba(93,67,45,0.12);
+  border-top: 1px solid rgba(233,30,99,0.12);
   display: flex;
   justify-content: space-between;
   gap: 18px;
   flex-wrap: wrap;
-  color: #6f5a47;
+  color: #666666;
   font-size: 0.78rem;
   font-weight: 700;
 }
@@ -151,7 +151,7 @@
 }
 
 .kaw-final-tags span {
-  color: #6f5a47;
+  color: #666666;
 }
 
 @media (max-width: 920px) {
