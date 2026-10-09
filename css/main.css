@@ -260,13 +260,28 @@ aside {
   height: 20px;
   padding: 0 6px;
   border-radius: 999px;
-  background: var(--brand-dark);
-  color: #fff;
+  background: var(--gradient-luxury-accent);
+  color: var(--text);
   font-size: 0.72rem;
   font-weight: 700;
   display: grid;
   place-items: center;
   line-height: 1;
+}
+
+.gradient-brand-primary {
+  background: var(--gradient-brand-primary);
+  color: #fff;
+}
+
+.gradient-luxury-accent {
+  background: var(--gradient-luxury-accent);
+  color: var(--text);
+}
+
+.gradient-soft-bg {
+  background: var(--gradient-soft-bg);
+  color: var(--text);
 }
 
 .btn {
@@ -292,7 +307,7 @@ aside {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--brand-dark), var(--brand-deep));
+  background: var(--gradient-brand-primary);
   color: #fff;
   box-shadow: var(--shadow-sm);
 }
@@ -326,6 +341,13 @@ aside {
   background: rgba(255, 250, 246, 0.56);
   backdrop-filter: blur(10px);
   box-shadow: var(--shadow-sm);
+}
+
+.metric-card,
+.trust-card,
+.review-card,
+.cta-box {
+  background: var(--gradient-soft-bg);
 }
 
 .metric-card {
@@ -1033,9 +1055,9 @@ aside {
   margin: 0 0 18px;
   padding: 8px 16px;
   border-radius: var(--radius-pill);
-  background: rgba(183, 159, 139, 0.18);
-  border: 1px solid rgba(183, 159, 139, 0.3);
-  color: var(--brand-deep);
+  background: var(--gradient-soft-bg);
+  border: 1px solid rgba(255, 126, 179, 0.4);
+  color: var(--text);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -2181,6 +2203,10 @@ aside {
   --brand-deep: #5e4a3d;
   --brand-dark: #2d2119;
   --brand-highlight: #eedacb;
+
+  --gradient-brand-primary: linear-gradient(135deg, #ff3366 0%, #ff7e5f 100%);
+  --gradient-luxury-accent: linear-gradient(135deg, #fbc531 0%, #e84393 100%);
+  --gradient-soft-bg: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
   
   --kawtharabdo-gold: #c9a05c;
   --logo-glow: 0 0 25px rgba(201, 160, 92, 0.35);
@@ -2208,8 +2234,8 @@ aside {
    ANNOUNCEMENT BAR — LUXURY GOLD UPGRADE
    ═══════════════════════════════════════════════════════════════════ */
 .announcement-bar {
-  background: linear-gradient(90deg, #1a1108, #2d1f10, #1a1108);
-  color: #e8d5a3;
+  background: var(--gradient-brand-primary);
+  color: #fff;
   overflow: hidden;
   white-space: nowrap;
   height: 40px;
