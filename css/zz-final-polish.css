@@ -584,7 +584,7 @@ footer,
 .site-footer,
 .cin-footer,
 .footer {
-  color: #5b4635 !important;
+  color: #666666 !important;
 }
 
 footer p,
@@ -603,7 +603,7 @@ footer small,
 .footer span,
 .footer li,
 .footer small {
-  color: #5b4635 !important;
+  color: #666666 !important;
   opacity: 1 !important;
   text-shadow: none !important;
 }
@@ -612,7 +612,7 @@ footer a,
 .site-footer a,
 .cin-footer a,
 .footer a {
-  color: #3f2d20 !important;
+  color: #2d2d2d !important;
   opacity: 1 !important;
   font-weight: 600 !important;
   text-decoration-color: rgba(63, 45, 32, 0.28) !important;
@@ -622,7 +622,7 @@ footer a:hover,
 .site-footer a:hover,
 .cin-footer a:hover,
 .footer a:hover {
-  color: #9b6a2f !important;
+  color: #ff5722 !important;
 }
 
 footer h1,
@@ -653,7 +653,7 @@ footer .cin-footer__heading,
 .footer h4,
 .footer h5,
 .footer h6 {
-  color: #2f2118 !important;
+  color: #2d2d2d !important;
   opacity: 1 !important;
   font-weight: 700 !important;
 }
@@ -669,7 +669,7 @@ footer [class*="eyebrow"],
 .site-footer [class*="label"],
 .cin-footer [class*="label"],
 .footer [class*="label"] {
-  color: #9b6a2f !important;
+  color: #ff5722 !important;
   opacity: 1 !important;
   font-weight: 700 !important;
   letter-spacing: 0.12em !important;
@@ -689,7 +689,7 @@ footer [class*="muted"],
 .site-footer .muted,
 .cin-footer .muted,
 .footer .muted {
-  color: #6f5a47 !important;
+  color: #666666 !important;
   opacity: 1 !important;
 }
 
@@ -699,14 +699,14 @@ footer [class*="muted"],
   .site-footer,
   .cin-footer,
   .footer {
-    color: #4b3829 !important;
+    color: #ff5722 !important;
   }
 
   footer a,
   .site-footer a,
   .cin-footer a,
   .footer a {
-    color: #332319 !important;
+    color: #2d2d2d !important;
     min-height: 30px !important;
     display: inline-flex !important;
     align-items: center !important;
@@ -728,7 +728,7 @@ footer [class*="muted"],
   .footer span,
   .footer li,
   .footer small {
-    color: #4b3829 !important;
+    color: #ff5722 !important;
   }
 }
 
@@ -756,9 +756,9 @@ footer [class*="muted"],
   min-width: 0 !important;
   padding: 14px 14px 12px !important;
   border-radius: 20px !important;
-  background: rgba(255,250,246,0.82) !important;
-  border: 1px solid rgba(93,67,45,0.10) !important;
-  box-shadow: 0 10px 24px rgba(45,33,25,0.05) !important;
+  background: rgba(255,255,255,0.82) !important;
+  border: 1px solid rgba(233,30,99,0.10) !important;
+  box-shadow: 0 10px 24px rgba(45,45,45,0.05) !important;
   text-align: left !important;
   display: grid !important;
   gap: 6px !important;
@@ -770,12 +770,12 @@ footer [class*="muted"],
   width: 18px !important;
   height: 2px !important;
   border-radius: 999px !important;
-  background: rgba(201,160,92,0.7) !important;
+  background: rgba(255,87,34,0.7) !important;
   margin-bottom: 2px !important;
 }
 
 .cin-metric strong {
-  color: #2f2118 !important;
+  color: #2d2d2d !important;
   font-size: 0.92rem !important;
   line-height: 1.2 !important;
   font-weight: 800 !important;
@@ -786,7 +786,7 @@ footer [class*="muted"],
 .cin-metric p,
 .cin-metric small,
 .cin-metric div:last-child {
-  color: #7a624e !important;
+  color: #666666 !important;
   font-size: 0.78rem !important;
   line-height: 1.5 !important;
   margin: 0 !important;

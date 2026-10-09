@@ -5,21 +5,21 @@
    ========================================================= */
 
 :root {
-  --kaw-espresso: #2d2119;
-  --kaw-brown: #4b3829;
-  --kaw-muted: #7a624e;
-  --kaw-gold: #c9a05c;
-  --kaw-ivory: #fffaf6;
-  --kaw-cream: #f5ede4;
-  --kaw-stroke: rgba(93, 67, 45, 0.12);
-  --kaw-shadow: 0 22px 60px rgba(45, 33, 25, 0.10);
+  --kaw-espresso: #2d2d2d;
+  --kaw-brown: #ff5722;
+  --kaw-muted: #666666;
+  --kaw-gold: #ff5722;
+  --kaw-ivory: #ffffff;
+  --kaw-cream: #fff0f5;
+  --kaw-stroke: rgba(233,30,99, 0.12);
+  --kaw-shadow: 0 22px 60px rgba(45,45,45, 0.10);
 }
 
 body.kaw-checkout-ultimate-ready {
   background:
-    radial-gradient(circle at 12% 8%, rgba(201,160,92,0.10), transparent 30%),
-    radial-gradient(circle at 88% 12%, rgba(255,250,246,0.72), transparent 28%),
-    linear-gradient(180deg, #f7efe7 0%, #efe4d8 100%) !important;
+    radial-gradient(circle at 12% 8%, rgba(255,87,34,0.10), transparent 30%),
+    radial-gradient(circle at 88% 12%, rgba(255,255,255,0.72), transparent 28%),
+    linear-gradient(180deg, #fff0f5 0%, #ffe4ee 100%) !important;
   overflow-x: hidden !important;
 }
 
@@ -55,7 +55,7 @@ body.kaw-checkout-ultimate-ready #kawSimpleCheckoutPay {
   right: -14%;
   top: 4%;
   border-radius: 999px;
-  background: radial-gradient(circle, rgba(201,160,92,0.13), transparent 68%);
+  background: radial-gradient(circle, rgba(255,87,34,0.13), transparent 68%);
   filter: blur(10px);
   pointer-events: none;
   z-index: 0;
@@ -86,8 +86,8 @@ body.kaw-checkout-ultimate-ready #kawSimpleCheckoutPay {
   align-items: center;
   padding: 7px;
   border-radius: 999px;
-  background: rgba(255,250,246,0.58);
-  border: 1px solid rgba(93,67,45,0.10);
+  background: rgba(255,255,255,0.58);
+  border: 1px solid rgba(233,30,99,0.10);
 }
 
 .kaw-co-step {
@@ -100,7 +100,7 @@ body.kaw-checkout-ultimate-ready #kawSimpleCheckoutPay {
 
 .kaw-co-step.is-active {
   background: var(--kaw-espresso);
-  color: #fffaf6;
+  color: #ffffff;
 }
 
 .kaw-co-layout {
@@ -115,9 +115,9 @@ body.kaw-checkout-ultimate-ready #kawSimpleCheckoutPay {
 .kaw-co-card {
   border-radius: 30px;
   background:
-    radial-gradient(circle at 12% 0%, rgba(201,160,92,0.10), transparent 40%),
-    rgba(255,250,246,0.78);
-  border: 1px solid rgba(93,67,45,0.10);
+    radial-gradient(circle at 12% 0%, rgba(255,87,34,0.10), transparent 40%),
+    rgba(255,255,255,0.78);
+  border: 1px solid rgba(233,30,99,0.10);
   box-shadow: var(--kaw-shadow);
   overflow: hidden;
 }
@@ -127,7 +127,7 @@ body.kaw-checkout-ultimate-ready #kawSimpleCheckoutPay {
   align-items: center;
   gap: 13px;
   padding: 22px 24px;
-  border-bottom: 1px solid rgba(93,67,45,0.10);
+  border-bottom: 1px solid rgba(233,30,99,0.10);
 }
 
 .kaw-co-num {
@@ -137,7 +137,7 @@ body.kaw-checkout-ultimate-ready #kawSimpleCheckoutPay {
   display: grid;
   place-items: center;
   background: var(--kaw-espresso);
-  color: #fffaf6;
+  color: #ffffff;
   font-weight: 900;
 }
 
@@ -162,7 +162,7 @@ body.kaw-checkout-ultimate-ready #kawSimpleCheckoutPay {
   padding: 14px;
   border-radius: 22px;
   background: rgba(255,255,255,0.52);
-  border: 1px solid rgba(93,67,45,0.10);
+  border: 1px solid rgba(233,30,99,0.10);
 }
 
 .kaw-co-item img {
@@ -170,7 +170,7 @@ body.kaw-checkout-ultimate-ready #kawSimpleCheckoutPay {
   height: 78px;
   border-radius: 17px;
   object-fit: cover;
-  background: #eadfd3;
+  background: #ffe4ee;
 }
 
 .kaw-co-info {
@@ -202,7 +202,7 @@ body.kaw-checkout-ultimate-ready #kawSimpleCheckoutPay {
   width: 31px;
   height: 31px;
   border-radius: 999px;
-  border: 1px solid rgba(93,67,45,0.14);
+  border: 1px solid rgba(233,30,99,0.14);
   background: rgba(255,255,255,0.78);
   color: var(--kaw-espresso);
   cursor: pointer;
@@ -229,7 +229,7 @@ body.kaw-checkout-ultimate-ready #kawSimpleCheckoutPay {
 .kaw-co-remove {
   border: 0;
   background: transparent;
-  color: #a44738;
+  color: #ff5722;
   cursor: pointer;
   font-weight: 800;
   font-size: 0.78rem;
@@ -240,7 +240,7 @@ body.kaw-checkout-ultimate-ready #kawSimpleCheckoutPay {
   gap: 12px;
   margin-top: 8px;
   padding-top: 18px;
-  border-top: 1px solid rgba(93,67,45,0.14);
+  border-top: 1px solid rgba(233,30,99,0.14);
 }
 
 .kaw-co-total-line {
@@ -280,8 +280,8 @@ body.kaw-checkout-ultimate-ready #kawSimpleCheckoutPay {
   min-height: 34px;
   padding: 0 13px;
   border-radius: 999px;
-  background: rgba(255,250,246,0.70);
-  border: 1px solid rgba(93,67,45,0.08);
+  background: rgba(255,255,255,0.70);
+  border: 1px solid rgba(233,30,99,0.08);
   color: var(--kaw-brown);
   font-size: 0.78rem;
   font-weight: 800;
@@ -292,7 +292,7 @@ body.kaw-checkout-ultimate-ready #kawSimpleCheckoutPay {
   width: 7px;
   height: 7px;
   border-radius: 999px;
-  background: #28c779;
+  background: #ff5722;
 }
 
 /* Payment */
@@ -314,11 +314,11 @@ body.kaw-checkout-ultimate-ready #kawSimpleCheckoutPay {
   border-radius: 18px;
   display: grid;
   place-items: center;
-  background: linear-gradient(135deg, #2d2119, #4b3324);
-  color: #f6deb0;
+  background: linear-gradient(135deg, #e91e63 0%, #ff5722 100%);
+  color: #ffd5c4;
   font-weight: 900;
   letter-spacing: 0.08em;
-  box-shadow: 0 12px 24px rgba(45,33,25,0.16);
+  box-shadow: 0 12px 24px rgba(45,45,45,0.16);
 }
 
 .kaw-pay-head h3 {
@@ -341,8 +341,8 @@ body.kaw-checkout-ultimate-ready #kawSimpleCheckoutPay {
   align-items: center;
   padding: 14px 16px;
   border-radius: 20px;
-  background: rgba(45,33,25,0.05);
-  border: 1px solid rgba(93,67,45,0.10);
+  background: rgba(45,45,45,0.05);
+  border: 1px solid rgba(233,30,99,0.10);
 }
 
 .kaw-pay-total span {
@@ -366,12 +366,12 @@ body.kaw-checkout-ultimate-ready #kawSimpleCheckoutPay {
   padding: 16px;
   border-radius: 22px;
   background: rgba(255,255,255,0.52);
-  border: 1px solid rgba(93,67,45,0.10);
+  border: 1px solid rgba(233,30,99,0.10);
 }
 
 .kaw-pay-address span {
   grid-column: 1 / -1;
-  color: #8b6847;
+  color: #666666;
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -391,7 +391,7 @@ body.kaw-checkout-ultimate-ready #kawSimpleCheckoutPay {
   border-radius: 14px;
   padding: 0 16px;
   background: var(--kaw-espresso);
-  color: #fffaf6;
+  color: #ffffff;
   font-weight: 900;
   cursor: pointer;
 }
@@ -405,7 +405,7 @@ body.kaw-checkout-ultimate-ready #kawSimpleCheckoutPay {
 .kaw-pay-fields textarea {
   width: 100%;
   border-radius: 16px;
-  border: 1px solid rgba(93,67,45,0.12);
+  border: 1px solid rgba(233,30,99,0.12);
   background: rgba(255,255,255,0.72);
   color: var(--kaw-espresso);
   padding: 12px 14px;
@@ -424,21 +424,21 @@ body.kaw-checkout-ultimate-ready #kawSimpleCheckoutPay {
   min-height: 52px;
   border: 0;
   border-radius: 18px;
-  background: linear-gradient(135deg, #2d2119, #4b3324);
-  color: #fffaf6;
+  background: linear-gradient(135deg, #e91e63 0%, #ff5722 100%);
+  color: #ffffff;
   font-weight: 900;
   font-size: 0.9rem;
   letter-spacing: 0.07em;
   text-transform: uppercase;
   cursor: pointer;
-  box-shadow: 0 16px 32px rgba(45,33,25,0.15);
+  box-shadow: 0 16px 32px rgba(45,45,45,0.15);
 }
 
 .kaw-pay-status {
   display: none;
   padding: 12px 14px;
   border-radius: 16px;
-  background: rgba(201,160,92,0.12);
+  background: rgba(255,87,34,0.12);
   color: var(--kaw-brown);
   font-size: 0.82rem;
   line-height: 1.55;
@@ -477,7 +477,7 @@ body.kaw-checkout-ultimate-ready #kawSimpleCheckoutPay {
   padding: 0 18px;
   border-radius: 999px;
   background: var(--kaw-espresso);
-  color: #fffaf6;
+  color: #ffffff;
   text-decoration: none;
   font-weight: 900;
 }

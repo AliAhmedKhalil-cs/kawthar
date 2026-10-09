@@ -26,9 +26,9 @@ body.kaw-product-full-fit .product-image-card {
   margin-inline: auto !important;
   border-radius: 30px !important;
   overflow: hidden !important;
-  background: #efe4d8 !important;
-  border: 1px solid rgba(93,67,45,0.10) !important;
-  box-shadow: 0 22px 58px rgba(45,33,25,0.10) !important;
+  background: #ffe4ee !important;
+  border: 1px solid rgba(233,30,99,0.10) !important;
+  box-shadow: 0 22px 58px rgba(45,45,45,0.10) !important;
   display: grid !important;
   place-items: center !important;
 }
@@ -57,8 +57,8 @@ body.kaw-product-full-fit .kaw-product-media-wrap-cap::after {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 50% 42%, rgba(255,250,246,0.18), transparent 44%),
-    linear-gradient(180deg, rgba(255,250,246,0.20), rgba(239,228,216,0.42));
+    radial-gradient(circle at 50% 42%, rgba(255,255,255,0.18), transparent 44%),
+    linear-gradient(180deg, rgba(255,255,255,0.20), rgba(255,240,245,0.42));
   z-index: 1;
   pointer-events: none;
 }
@@ -117,7 +117,7 @@ body.kaw-product-full-fit .kaw-related-stable img {
   object-fit: contain !important;
   object-position: center center !important;
   background:
-    radial-gradient(circle at center, rgba(255,250,246,0.68), rgba(239,228,216,0.92)) !important;
+    radial-gradient(circle at center, rgba(255,255,255,0.68), rgba(255,240,245,0.92)) !important;
   border-radius: 22px !important;
   padding: 10px !important;
 }

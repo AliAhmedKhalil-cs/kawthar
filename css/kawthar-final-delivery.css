@@ -5,16 +5,16 @@
    ========================================================= */
 
 :root {
-  --kaw-espresso: #2d2119;
-  --kaw-brown: #4b3829;
-  --kaw-soft-brown: #6f5a47;
-  --kaw-gold: #c9a05c;
-  --kaw-gold-soft: rgba(201, 160, 92, 0.18);
-  --kaw-ivory: #fffaf6;
-  --kaw-cream: #f5ede4;
-  --kaw-stroke: rgba(93, 67, 45, 0.12);
-  --kaw-shadow: 0 18px 46px rgba(45, 33, 25, 0.08);
-  --kaw-shadow-strong: 0 26px 70px rgba(45, 33, 25, 0.13);
+  --kaw-espresso: #2d2d2d;
+  --kaw-brown: #ff5722;
+  --kaw-soft-brown: #666666;
+  --kaw-gold: #ff5722;
+  --kaw-gold-soft: rgba(255,87,34, 0.18);
+  --kaw-ivory: #ffffff;
+  --kaw-cream: #fff0f5;
+  --kaw-stroke: rgba(233,30,99, 0.12);
+  --kaw-shadow: 0 18px 46px rgba(45,45,45, 0.08);
+  --kaw-shadow-strong: 0 26px 70px rgba(45,45,45, 0.13);
 }
 
 /* Global safety */
@@ -60,13 +60,13 @@ body.kaw-final-ready .go-startup {
 /* Header polish without changing structure */
 .main-header {
   z-index: 80 !important;
-  border-bottom: 1px solid rgba(93, 67, 45, 0.08) !important;
-  box-shadow: 0 12px 34px rgba(45, 33, 25, 0.035) !important;
+  border-bottom: 1px solid rgba(233,30,99, 0.08) !important;
+  box-shadow: 0 12px 34px rgba(45,45,45, 0.035) !important;
 }
 
 .brand-logo-img,
 .brand-logo img {
-  filter: drop-shadow(0 10px 18px rgba(45, 33, 25, 0.08));
+  filter: drop-shadow(0 10px 18px rgba(45,45,45, 0.08));
 }
 
 .icon-circle,
@@ -77,7 +77,7 @@ body.kaw-final-ready .go-startup {
 .icon-circle:hover,
 .icon-btn:hover {
   transform: translateY(-1px) !important;
-  box-shadow: 0 12px 24px rgba(45, 33, 25, 0.10) !important;
+  box-shadow: 0 12px 24px rgba(45,45,45, 0.10) !important;
 }
 
 /* Announcement bar: slim and premium */
@@ -106,9 +106,9 @@ body.kaw-final-ready .go-startup {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 82% 22%, rgba(201,160,92,0.14), transparent 28%),
-    radial-gradient(circle at 14% 26%, rgba(255,250,246,0.70), transparent 28%),
-    linear-gradient(115deg, rgba(255,250,246,0.08), transparent 55%);
+    radial-gradient(circle at 82% 22%, rgba(255,87,34,0.14), transparent 28%),
+    radial-gradient(circle at 14% 26%, rgba(255,255,255,0.70), transparent 28%),
+    linear-gradient(115deg, rgba(255,255,255,0.08), transparent 55%);
   z-index: 0;
   pointer-events: none;
 }
@@ -118,8 +118,8 @@ body.kaw-final-ready .go-startup {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(93,67,45,0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(93,67,45,0.035) 1px, transparent 1px);
+    linear-gradient(rgba(233,30,99,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(233,30,99,0.035) 1px, transparent 1px);
   background-size: 84px 84px;
   mask-image: linear-gradient(180deg, transparent 0%, #000 16%, #000 78%, transparent 100%);
   z-index: 0;
@@ -147,7 +147,7 @@ body.kaw-final-ready .go-startup {
 
 .cin-hero__float:hover {
   transform: translateY(-4px) scale(1.015) !important;
-  box-shadow: 0 34px 90px rgba(45, 33, 25, 0.17) !important;
+  box-shadow: 0 34px 90px rgba(45,45,45, 0.17) !important;
 }
 
 .cin-hero__float img {
@@ -187,10 +187,10 @@ body.kaw-final-ready .go-startup {
   padding: 14px 14px 13px !important;
   border-radius: 20px !important;
   background:
-    radial-gradient(circle at 18% 0%, rgba(201,160,92,0.14), transparent 42%),
-    rgba(255, 250, 246, 0.82) !important;
-  border: 1px solid rgba(93, 67, 45, 0.10) !important;
-  box-shadow: 0 12px 28px rgba(45, 33, 25, 0.055) !important;
+    radial-gradient(circle at 18% 0%, rgba(255,87,34,0.14), transparent 42%),
+    rgba(255,255,255, 0.82) !important;
+  border: 1px solid rgba(233,30,99, 0.10) !important;
+  box-shadow: 0 12px 28px rgba(45,45,45, 0.055) !important;
   text-align: left !important;
   overflow: hidden !important;
 }
@@ -200,7 +200,7 @@ body.kaw-final-ready .go-startup {
   width: 22px;
   height: 2px;
   border-radius: 999px;
-  background: rgba(201, 160, 92, 0.74);
+  background: rgba(255,87,34, 0.74);
   display: block;
   margin-bottom: 1px;
 }
@@ -213,7 +213,7 @@ body.kaw-final-ready .go-startup {
   top: -45px;
   right: -35px;
   border-radius: 999px;
-  border: 1px solid rgba(201,160,92,0.18);
+  border: 1px solid rgba(255,87,34,0.18);
   pointer-events: none;
 }
 
@@ -275,7 +275,7 @@ section[id*="testimonial"]::before {
   width: min(42vw, 520px);
   height: min(42vw, 520px);
   border-radius: 999px;
-  background: radial-gradient(circle, rgba(201,160,92,0.12), transparent 66%);
+  background: radial-gradient(circle, rgba(255,87,34,0.12), transparent 66%);
   filter: blur(12px);
   opacity: 0.72;
   pointer-events: none;
@@ -363,9 +363,9 @@ section[id*="testimonial"] > * {
   padding: 24px;
   border-radius: 24px;
   background:
-    radial-gradient(circle at 10% 0%, rgba(201,160,92,0.14), transparent 38%),
-    rgba(255,250,246,0.75);
-  border: 1px solid rgba(93,67,45,0.12);
+    radial-gradient(circle at 10% 0%, rgba(255,87,34,0.14), transparent 38%),
+    rgba(255,255,255,0.75);
+  border: 1px solid rgba(233,30,99,0.12);
   color: var(--kaw-brown);
   text-align: center;
   box-shadow: var(--kaw-shadow);
@@ -394,10 +394,10 @@ footer,
 .cin-footer,
 .kaw-final-footer {
   background:
-    radial-gradient(circle at 14% 0%, rgba(201,160,92,0.16), transparent 32%),
-    linear-gradient(180deg, #f8f1ea 0%, #eadfd3 100%) !important;
+    radial-gradient(circle at 14% 0%, rgba(255,87,34,0.16), transparent 32%),
+    linear-gradient(180deg, #fff0f5 0%, #ffe4ee 100%) !important;
   color: var(--kaw-brown) !important;
-  border-top: 1px solid rgba(93,67,45,0.12) !important;
+  border-top: 1px solid rgba(233,30,99,0.12) !important;
 }
 
 footer a,
@@ -413,7 +413,7 @@ footer a:hover,
 .main-footer a:hover,
 .cin-footer a:hover,
 .kaw-final-footer a:hover {
-  color: #9b6a2f !important;
+  color: #ff5722 !important;
 }
 
 footer p,
@@ -481,20 +481,20 @@ body.kaw-final-ready .checkout-page {
 .ipa-amount-card {
   border-radius: 22px !important;
   background:
-    radial-gradient(circle at 12% 0%, rgba(201,160,92,0.13), transparent 42%),
-    rgba(255,250,246,0.72) !important;
-  border: 1px solid rgba(93,67,45,0.12) !important;
-  box-shadow: 0 12px 28px rgba(45,33,25,0.055) !important;
+    radial-gradient(circle at 12% 0%, rgba(255,87,34,0.13), transparent 42%),
+    rgba(255,255,255,0.72) !important;
+  border: 1px solid rgba(233,30,99,0.12) !important;
+  box-shadow: 0 12px 28px rgba(45,45,45,0.055) !important;
 }
 
 .ipa-confirm-btn,
 #confirmPayBtn {
   border-radius: 18px !important;
-  background: linear-gradient(135deg, #2d2119, #4b3324) !important;
-  color: #fffaf6 !important;
+  background: linear-gradient(135deg, #e91e63 0%, #ff5722 100%) !important;
+  color: #ffffff !important;
   font-weight: 900 !important;
   letter-spacing: 0.06em !important;
-  box-shadow: 0 16px 32px rgba(45,33,25,0.15) !important;
+  box-shadow: 0 16px 32px rgba(45,45,45,0.15) !important;
 }
 
 .ipa-hero {
