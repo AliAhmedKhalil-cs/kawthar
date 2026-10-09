@@ -1272,3 +1272,19 @@ body {
 [dir="rtl"] .cin-craft__img-wrap--2 { right: auto; left: -1px; border-top-left-radius: 0; border-top-right-radius: 24px; }
 [dir="rtl"] .cin-craft__badge { left: auto; right: 28px; }
 [dir="rtl"] .cin-pillar__number { right: auto; left: 24px; }
+/* Custom Kawthar Brand Redesign for Cinematic CTA Section */
+.cin-cta, .cin-cta_bg {
+    background: linear-gradient(135deg, #e91e63 0%, #ff5722 100%) !important;
+}
+
+.cin-cta .btn-whatsapp, .cin-cta_actions a:first-child {
+    background: #ffffff !important;
+    color: #e91e63 !important;
+    border: 2px solid #ffffff !important;
+    font-weight: bold;
+}
+
+.cin-cta .btn-whatsapp:hover {
+    background: transparent !important;
+    color: #ffffff !important;
+}
