@@ -1,8 +1,6 @@
 // js/data.js - Fetching products directly from Google Sheets CSV
-// لا تنسَ تغيير هذا الرابط برابط الـ CSV الخاص بك من Google Sheets
 const googleSheetCSVUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQLpLF4cWZN61EezC989XnPbeBIKYx-2PrMiYQX_zBsDALEkcbhtsb0kaC7lIO_CFst8dvCJc_v4o3w/pub?output=csv";
 
-// المنتجات الافتراضية للنسخ الاحتياطي في حال فشل التحميل من جوجل
 const fallbackProducts = [
   {
     id: 1,
@@ -40,11 +38,11 @@ const fetchProductsFromSheet = async () => {
         for (let i = 1; i < rows.length; i++) {
             if (!rows[i].trim()) continue;
             
-            // معالجة النصوص المحاطة بعلامات تنصيص
-            const row = rows[i].match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || [];
+            // الحل: كود الفصل الصحيح الذي يعتمد على الفواصل فقط (,) ويتجاهل المسافات
+            const row = rows[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
             const cleanRow = row.map(cell => cell.replace(/^"|"$/g, '').trim());
 
-            if (cleanRow.length >= 11) {
+            if (cleanRow.length >= 10) {
                 parsedProducts.push({
                     id: Number(cleanRow[0]) || Date.now(),
                     nameAr: cleanRow[1],
@@ -52,13 +50,13 @@ const fetchProductsFromSheet = async () => {
                     category: cleanRow[3] || 'necklace',
                     price: Number(cleanRow[4]) || 0,
                     badgeAr: cleanRow[5],
-                    badge: "Featured", // Default badge in English if needed
+                    badge: "Featured",
                     descriptionAr: cleanRow[6],
                     description: cleanRow[7],
                     materialAr: cleanRow[8],
-                    material: "Stainless Steel Anti Rust", // Default
+                    material: "Stainless Steel Anti Rust",
                     image: cleanRow[9],
-                    slug: cleanRow[10],
+                    slug: cleanRow[10] || "",
                     alt: cleanRow[1] || cleanRow[2]
                 });
             }
@@ -74,15 +72,13 @@ const fetchProductsFromSheet = async () => {
         console.error("KAWTHAR: Fetching from Google Sheets failed. Using fallback.", error);
     }
     
-    // في حال الفشل أو عدم وجود بيانات، نستخدم النسخ الاحتياطي
     productsCache = [...fallbackProducts];
     notify();
     return productsCache;
 };
 
-// تهيئة التحميل
 const _loadProducts = async () => {
-    productsCache = [...fallbackProducts]; // تحميل سريع مبدئي
+    productsCache = [...fallbackProducts]; 
     await fetchProductsFromSheet();
 };
 
@@ -91,7 +87,6 @@ _loadPromise = _loadProducts();
 export const waitForProducts = () => _loadPromise;
 export const getProducts = () => productsCache.length ? productsCache : [...fallbackProducts];
 
-// دوال وهمية لمنع حدوث أخطاء في الصفحات الأخرى التي تستدعيها
 export const saveProductToDB = async () => console.warn("Saving directly is disabled when using Google Sheets.");
 export const removeProductFromDB = async () => console.warn("Removing directly is disabled when using Google Sheets.");
 export const saveProducts = async () => console.warn("Bulk save is disabled.");
