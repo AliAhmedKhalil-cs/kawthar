@@ -1,15 +1,22 @@
+// js/store.js - Managing Cart and Wishlist via LocalStorage
 import { CONFIG } from "./config.js";
 
 const read = (key) => {
   try {
-    return JSON.parse(localStorage.getItem(key)) || [];
-  } catch {
+    const data = localStorage.getItem(key);
+    return data ? JSON.parse(data) : [];
+  } catch (error) {
+    console.error(`Error reading ${key} from localStorage`, error);
     return [];
   }
 };
 
 const write = (key, value) => {
-  localStorage.setItem(key, JSON.stringify(value));
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (error) {
+    console.error(`Error writing ${key} to localStorage`, error);
+  }
 };
 
 const normalizeCartItem = (item) => ({
