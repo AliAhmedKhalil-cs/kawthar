@@ -895,7 +895,29 @@
     const getName = (p) => lang === "ar" && p.nameAr ? p.nameAr : p.name;
 
     /* ── Cart Data ── */
-    let cart = Store.getCart();
+    const safeGetCart = () => {
+      try {
+        const items = Store.getCart();
+        if (!Array.isArray(items)) return [];
+        return items.map((item) => ({
+          ...item,
+          quantity: Math.max(1, Math.floor(Number(item?.quantity) || 1))
+        }));
+      } catch {
+        return [];
+      }
+    };
+
+    const safeSetCart = (items) => {
+      try {
+        Store.setCart(items);
+        return true;
+      } catch {
+        return false;
+      }
+    };
+
+    let cart = safeGetCart();
 
     const calcTotals = () => {
       const subtotal = cart.reduce((s, i) => s + Number(i.price) * i.quantity, 0);
@@ -919,21 +941,21 @@
         return;
       }
 
-      list.innerHTML = cart.map(item => `
+      list.innerHTML = cart.map((item, index) => `
         <div class="co-cart-item">
           <img src="${item.image}" alt="${item.alt}" loading="lazy" />
           <div>
             <h3 class="co-item-name">${getName(item)}</h3>
             <p class="co-item-meta">${lang === "ar" && item.materialAr ? item.materialAr : item.material}</p>
             <div class="co-item-qty">
-              <button class="co-qty-btn" data-action="cart-decrease" data-id="${item.id}" type="button">−</button>
+              <button class="co-qty-btn" data-action="cart-decrease" data-id="${item.id ?? ""}" data-index="${index}" type="button">−</button>
               <span class="co-qty-num">${item.quantity}</span>
-              <button class="co-qty-btn" data-action="cart-increase" data-id="${item.id}" type="button">+</button>
+              <button class="co-qty-btn" data-action="cart-increase" data-id="${item.id ?? ""}" data-index="${index}" type="button">+</button>
             </div>
           </div>
           <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
             <span class="co-item-price">${fmtPrice(Number(item.price) * item.quantity)}</span>
-            <button class="co-item-remove" data-action="cart-remove" data-id="${item.id}" type="button">${t.remove}</button>
+            <button class="co-item-remove" data-action="cart-remove" data-id="${item.id ?? ""}" data-index="${index}" type="button">${t.remove}</button>
           </div>
         </div>
       `).join("") + `
@@ -951,6 +973,57 @@
       `;
 
       updateAmount(total);
+    };
+
+    const updateCheckoutCart = (nextCart) => {
+      cart = Array.isArray(nextCart) ? nextCart : [];
+      if (!safeSetCart(cart)) {
+        alert(lang === "ar" ? "تعذر تحديث السلة، حاولي مرة أخرى." : "Could not update cart. Please try again.");
+        cart = safeGetCart();
+      }
+      renderCart();
+    };
+
+    const onCartAction = (event) => {
+      const btn = event.target.closest("[data-action]");
+      if (!btn) return;
+
+      const action = btn.dataset.action;
+      if (!["cart-increase", "cart-decrease", "cart-remove"].includes(action)) return;
+
+      const id = String(btn.dataset.id || "");
+      const fallbackIndex = Number(btn.dataset.index);
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      const index = id
+        ? cart.findIndex((item) => String(item.id) === id)
+        : (Number.isInteger(fallbackIndex) ? fallbackIndex : -1);
+      if (index < 0) {
+        cart = safeGetCart();
+        renderCart();
+        return;
+      }
+
+      const nextCart = [...cart];
+      const currentQty = Math.max(1, Math.floor(Number(nextCart[index]?.quantity) || 1));
+
+      if (action === "cart-increase") {
+        nextCart[index] = { ...nextCart[index], quantity: currentQty + 1 };
+      }
+
+      if (action === "cart-decrease") {
+        const nextQty = currentQty - 1;
+        if (nextQty <= 0) nextCart.splice(index, 1);
+        else nextCart[index] = { ...nextCart[index], quantity: nextQty };
+      }
+
+      if (action === "cart-remove") {
+        nextCart.splice(index, 1);
+      }
+
+      updateCheckoutCart(nextCart);
     };
 
     const updateAmount = (total) => {
@@ -1166,6 +1239,11 @@
     /* ── Init ── */
     const startApp = async () => {
       await waitForProducts();
+      document.getElementById("coCartList")?.addEventListener("click", onCartAction);
+      window.addEventListener("storage", () => {
+        cart = safeGetCart();
+        renderCart();
+      });
       renderCart();
       renderSteps();
       hideSplash();
